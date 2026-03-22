@@ -1,0 +1,8 @@
+{
+  "uuid": "e58a5e8a-2d60-4ff1-b0e7-21564c47423f",
+  "issue_uuid": "91f79a88-95e6-4fc2-b328-8e3438caf239",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Added 'Try It: Your First Rust Program' section to the end of the Language Landscape chapter. Walks through: cargo new, cargo run to see Hello World, then two agent-directed modifications (add name input with greeting, then add a loop until quit). Ends with edge-case prompts (empty input, long string) to practice verification. Explicitly framed as scratch work, not portfolio. Gives them familiarity with the cargo workflow before Phase 2.",
+  "created_at": "2026-03-22T17:19:33.436140403Z",
+  "kind": "result"
+}
