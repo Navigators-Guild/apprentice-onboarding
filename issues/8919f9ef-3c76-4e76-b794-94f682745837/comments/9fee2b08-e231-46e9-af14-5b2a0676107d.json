@@ -1,0 +1,8 @@
+{
+  "uuid": "9fee2b08-e231-46e9-af14-5b2a0676107d",
+  "issue_uuid": "8919f9ef-3c76-4e76-b794-94f682745837",
+  "author": "anon-13168fa2",
+  "content": "Plan: Four changes. (1) README: Rework projects table to map clearly to phases. (2) README: Add 'why this project' rationale to each guided build. (3) Portfolio Review chapter: Rewrite audience section to be honest about credential timeline - where it is now vs where it's going. (4) Portfolio Review chapter: Make the review process concrete - who evaluates, how, what the rubric is.",
+  "created_at": "2026-03-22T17:52:23.429556951Z",
+  "kind": "plan"
+}
