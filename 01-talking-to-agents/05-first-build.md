@@ -186,6 +186,28 @@ All of it is valuable. Take notes on every piece of feedback. Then go back, fix 
 
 This cycle (build, review, refine) is the heart of the guild methodology. Your first time through will feel intense. By your third project, it'll feel natural.
 
+## When Things Don't Go Smoothly
+
+The walkthrough above makes it sound like a straight line. It won't be. Here's what actually happens and what to do about it.
+
+**The agent gives you code that doesn't work at all.** The HTML page is blank, or shows an error in the browser console. Don't start over. Open your browser's developer tools (right-click the page, click "Inspect," then click the "Console" tab). If there are red error messages, copy them. Share the error and the code with your agent:
+
+> "The page is blank. Here's the console error: [paste]. Here's the current code: [paste]. Fix it."
+
+**The agent gives you code that works but isn't what you asked for.** The bookmark manager saves bookmarks but the layout is completely different from what you described, or it added features you didn't ask for. Don't accept it and move on. Be specific about what's wrong:
+
+> "This works but it's not what I described. I asked for a minimal layout with the add form at the top and the list below. This has a sidebar I didn't ask for. Also remove the categories dropdown, that's not in the design doc. Stick to the design doc."
+
+**You get an error message you don't understand.** Don't try to decode it yourself. Copy the entire thing and ask:
+
+> "I don't understand this error. What does it mean and how do I fix it? [paste the full error]"
+
+**The agent seems confused about your project.** In a long conversation, the agent might start contradicting earlier decisions or forget what you're building. This is context drift. The fix: start a new conversation, paste your design doc, summarize what's done so far, and continue from there.
+
+**You're stuck and nothing is working.** Step back. Close the conversation. Take a break. When you come back, start fresh: paste the design doc, describe where you are, and describe the specific problem. A fresh context often solves problems that felt impossible in a degraded one.
+
+None of this is failure. It's the normal process of building software. The next chapter goes deeper into debugging and handling errors.
+
 ## What Comes Next
 
 This was a guided build. Your next two Apprentice portfolio projects will be self-directed. You choose what to build, you decompose it yourself, you manage the process from design doc to adversarial review.

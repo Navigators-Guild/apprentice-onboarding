@@ -57,6 +57,28 @@ Each file has a clear job. `main.rs` is short. It parses arguments, calls the ri
 
 You don't need to memorize this layout. Your agent knows Rust module conventions. What you need is to *direct* it toward this kind of structure from the start.
 
+## Refactoring: From God File to Modules
+
+Here's what a real refactoring looks like. Say your issue tracker ended up with a `main.rs` that's 400 lines: argument parsing, data types, file I/O, display formatting, and business logic all tangled together.
+
+You tell your agent:
+
+> "main.rs has grown too large. Refactor it into modules. Here's how I want it split:
+> - `models.rs`: the Issue struct and Priority enum
+> - `storage.rs`: everything that reads or writes the JSON file
+> - `output.rs`: everything that formats output for the terminal
+> - `cli.rs`: the clap argument definitions
+> - `commands/create.rs`, `commands/list.rs`, `commands/close.rs`: one file per subcommand
+> - `main.rs`: just the entry point, under 30 lines. Parse args, call the right command, handle errors.
+>
+> Move the code, don't rewrite it. Everything should work exactly the same after the split."
+
+The agent will extract the code into the right files, add the `mod` declarations, update the `use` statements, and make sure everything still compiles. You run `cargo build` to verify, then test that every command still works.
+
+What changed? The *behavior* is identical. The *structure* is transformed. Now when you need to change how storage works, you open `storage.rs`. When you need to add a new command, you add a file in `commands/`. When the adversary roasts your output formatting, you know exactly which file to look at.
+
+The best time to refactor is before the god file gets painful. The second best time is now.
+
 ## DRY: Don't Repeat Yourself
 
 The other principle that keeps projects healthy: **if you're writing the same thing in two places, pull it out into one place and use it from both.**

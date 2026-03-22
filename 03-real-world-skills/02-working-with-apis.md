@@ -31,13 +31,34 @@ This is the preferred approach for agentic development because:
 - GitHub - Search for "mcp server [service name]" and you'll often find one
 - The Claude Code documentation covers how to configure MCP servers in your project's `.mcp.json` file
 
-**Setting up an MCP server** is usually straightforward. Most come with installation instructions. The general pattern is:
+**Setting up an MCP server** is usually straightforward. Here's a concrete example using the filesystem MCP server, which gives your agent the ability to read and write files in a specified directory:
 
-1. Install the server (often via npm or pip)
-2. Add it to your project's `.mcp.json` configuration
-3. Start a conversation with your agent. It now has access to the new tools
+**Step 1: Install the server.**
+```
+npm install -g @modelcontextprotocol/server-filesystem
+```
 
-Your agent can see what MCP tools are available and use them as needed. You direct what to build, the agent reaches for the right tool.
+**Step 2: Add it to your project's `.mcp.json` file.** Create this file in your project root if it doesn't exist:
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/allowed/directory"
+      ]
+    }
+  }
+}
+```
+
+**Step 3: Start a conversation with your agent.** It now has access to filesystem tools. You can say "list the files in the project directory" or "read the contents of config.toml" and the agent calls the MCP tools directly instead of writing code to do file I/O.
+
+That's it. The pattern is the same for any MCP server: install, configure in `.mcp.json`, use. Some servers need API keys (which go in environment variables, never in the config file). Some need additional setup. The server's README will tell you.
+
+The real power shows up when you stack multiple MCP servers. A project might have a filesystem server, a database server, and a GitHub server all configured at once. Your agent can read files, query the database, and check PR status all as native tools, without you writing any integration code.
 
 ### 2. Claude Skills (Pre-Built Capabilities)
 

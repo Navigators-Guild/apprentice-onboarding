@@ -215,23 +215,78 @@ The simplest form of distribution. Your code is on GitHub. Someone clones it and
 
 A step up. You build the binary for your platform, create a release on GitHub, and attach the binary as a downloadable file. Someone can download and run it without installing Rust.
 
-> "Create a GitHub release for version 0.1.0. Build the release binary with cargo build --release and attach it. Write release notes summarizing what the tool does and how to use it."
+Here's the process:
+
+```
+cargo build --release
+```
+
+This produces an optimized binary in `target/release/`. On GitHub, go to your repo, click "Releases," then "Create a new release." Tag it with a version number (like `v0.1.0`), write release notes, and upload the binary from `target/release/`.
+
+**Writing good release notes:**
+- Lead with what the tool does (for people who haven't seen it before)
+- List what's new or changed since the last release
+- Include installation instructions ("download the binary, put it in your PATH")
+- Mention known issues if any
+- Keep it short. A few bullet points, not an essay
+
+> "Write release notes for v0.1.0 of the issue tracker. This is the first release. Describe what the tool does, list the features, and include installation instructions for Linux, macOS, and Windows."
+
+### Continuous Integration (CI)
+
+CI means your tests run automatically every time you push code. You don't have to remember to run them. A service (usually GitHub Actions) checks out your code, builds it, runs the tests, and tells you if anything failed.
+
+Here's what a basic CI workflow looks like. Ask your agent:
+
+> "Create a GitHub Actions workflow file at `.github/workflows/ci.yml`. It should:
+> - Run on every push and every pull request
+> - Test on Ubuntu, macOS, and Windows
+> - Run cargo build, cargo test, cargo clippy -- -D warnings, and cargo fmt --check
+> - Use the stable Rust toolchain"
+
+The agent will generate the YAML file. Commit it, push, and check the "Actions" tab on your GitHub repo. You'll see the workflow running. Green checkmarks mean everything passed. Red X means something failed, and you can click through to see the exact error.
+
+Once CI is set up, you'll catch problems you'd never find locally:
+- Code that compiles on Linux but not Windows (path separator issues, missing dependencies)
+- Tests that pass on your machine but fail on a clean environment (because you have something installed locally that isn't in the project)
+- Formatting inconsistencies between different developers
+
+**CI is not optional for shipped software.** If other people depend on your tool, automated testing on every change is the minimum bar. Set it up early. The earlier it catches a problem, the cheaper it is to fix.
 
 ### Cross-Compilation
 
 Building for platforms you're not on. Rust supports this well. You can build a Windows `.exe` from a Linux machine, or a macOS binary from a Linux CI runner.
 
-> "Set up a GitHub Actions workflow that builds release binaries for Linux (x86_64), macOS (x86_64 and aarch64), and Windows (x86_64). Attach all binaries to a GitHub release when I push a version tag."
+> "Extend the GitHub Actions workflow to build release binaries for Linux (x86_64), macOS (x86_64 and aarch64), and Windows (x86_64) when I push a version tag. Attach all binaries to a GitHub release automatically."
 
-This is how mature Rust projects distribute binaries. The user downloads the one for their platform and runs it.
+This is how mature Rust projects distribute binaries. The user downloads the one for their platform and runs it. No Rust installation required on their end.
 
 ### cargo publish
 
 If your tool is useful to other Rust developers, you can publish it to [crates.io](https://crates.io), Rust's package registry. Then anyone can install it with `cargo install your-tool-name`.
 
-This has higher standards than just pushing to GitHub. Your Cargo.toml needs proper metadata (description, license, repository URL). Your documentation needs to exist. Your tests need to pass. crates.io is permanent. Once you publish a version, you can't delete it.
+This has higher standards than pushing to GitHub:
 
-> "Prepare this crate for publishing to crates.io. Make sure Cargo.toml has all required fields: description, license, repository, keywords, categories. Add a README that crates.io will display. Run cargo publish --dry-run to check for issues."
+**Metadata must be complete.** Your `Cargo.toml` needs: `description`, `license`, `repository`, `keywords`, and `categories`. These show up on the crates.io listing page.
+
+**Documentation must exist.** A README at minimum. Ideally, doc comments on your public API so [docs.rs](https://docs.rs) can generate reference documentation automatically.
+
+**Tests must pass.** Run `cargo test` before every publish. Shipping broken code to a public registry is bad form and you can't unpublish.
+
+**Versions are permanent.** Once you publish version 0.1.0, you can't delete it or modify it. You can publish 0.1.1 with a fix, but the old version stays. Think before you publish.
+
+**Dry run first:**
+```
+cargo publish --dry-run
+```
+
+This checks everything without actually publishing. Fix any warnings or errors it reports. Then when you're ready:
+
+```
+cargo publish
+```
+
+You'll need a crates.io account linked to your GitHub. The first time you run `cargo publish`, it will walk you through the authentication.
 
 ### The Packaging Checklist
 
@@ -240,10 +295,12 @@ Before you ship anything, run through this:
 - **Does it build from a clean checkout?** Clone a fresh copy and build it. Don't rely on anything in your local environment that isn't in the repo.
 - **Do all tests pass?** `cargo test`. No skipping, no ignoring failures.
 - **Does clippy pass?** `cargo clippy -- -D warnings`. Clean code ships cleaner.
-- **Is there a README?** What does the tool do, how do you install it, how do you use it.
-- **Are there release notes?** What changed since the last version.
-- **Are secrets excluded?** No API keys, no tokens, no `.env` files in the repo.
-- **Does it work on a fresh machine?** This is what VMs and CI are for.
+- **Does CI pass?** If you have GitHub Actions, the green checkmark is your baseline. Don't ship if CI is red.
+- **Is there a README?** What does the tool do, how do you install it, how do you use it. Write it for someone who's never seen your project before.
+- **Are there release notes?** What changed since the last version. What's new, what's fixed, what's known-broken.
+- **Is the version number correct?** Follow semantic versioning: major.minor.patch. Bug fixes increment patch. New features increment minor. Breaking changes increment major.
+- **Are secrets excluded?** No API keys, no tokens, no `.env` files in the repo. Check your `.gitignore`.
+- **Does it work on a fresh machine?** This is what VMs and CI are for. If you only tested on your machine, you haven't tested enough.
 
 ## Exercises
 

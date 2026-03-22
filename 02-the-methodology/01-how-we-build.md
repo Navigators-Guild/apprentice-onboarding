@@ -101,6 +101,55 @@ This is the exit signal. When the Builder can look at the Adversary's feedback a
 
 This is a much better stopping point than "I feel like it's done" or "I'm tired of working on this." It's an observable signal: the harshest possible critic has run out of legitimate complaints.
 
+## A Roast In Action
+
+Let's walk through what a real adversarial review cycle looks like. Say you've built a function that saves an issue to a JSON file.
+
+**Your code (first draft):**
+
+```rust
+fn save_issue(issue: &Issue) -> Result<()> {
+    let data = serde_json::to_string(issue)?;
+    std::fs::write("issues.json", data)?;
+    Ok(())
+}
+```
+
+It works. It compiles. It saves the issue. You ship it to the Adversary.
+
+**Round 1 - The Adversary says:**
+
+> "This overwrites the entire file with a single issue every time it's called. If you have ten issues and save the eleventh, the first ten are gone. Also, the file path is hardcoded. Also, `to_string` produces compact JSON with no formatting, so the file is unreadable if a human opens it. Also, there's no error context. If the write fails, the user gets 'Permission denied' with no indication of which file or why."
+
+All legitimate. You fix:
+
+```rust
+fn save_issues(issues: &[Issue], path: &Path) -> Result<()> {
+    let data = serde_json::to_string_pretty(issues)?;
+    std::fs::write(path, &data)
+        .with_context(|| format!("Failed to write issues to {}", path.display()))?;
+    Ok(())
+}
+```
+
+**Round 2 - Fresh context. The Adversary says:**
+
+> "If the program crashes between clearing the file and finishing the write, you lose all data. This isn't atomic. Write to a temporary file first, then rename it over the original. Also, you're holding all issues in memory and serializing the entire list every time. That's fine for 100 issues, but what happens at 100,000?"
+
+The atomicity concern is real. The 100,000 issue concern is arguably premature for a personal issue tracker, but it's worth a comment in the code acknowledging the limitation. You fix the atomic write, note the scaling limitation, and submit again.
+
+**Round 3 - Fresh context. The Adversary says:**
+
+> "The function takes `&[Issue]` which means the caller has to load all issues into memory before saving. Consider a streaming approach that writes issues incrementally."
+
+This is where it gets interesting. A streaming JSON writer for a personal issue tracker that will never have more than a few hundred issues? That's overengineering. The Adversary is reaching. You push back:
+
+> "This is a personal CLI tool. The in-memory approach is fine for the expected scale. The atomic write handles the crash case. The streaming suggestion would add complexity without meaningful benefit."
+
+The Adversary was forced to invent a problem because the real ones are fixed. That's the exit signal. Three rounds, two real improvements, one hallucinated critique. Done.
+
+Notice what happened: the first draft was functional but fragile. The final version handles real failure modes (data loss on crash, missing context in errors, unreadable output). None of those improvements came from testing. They came from someone looking at the code with the specific intent of finding what's wrong. That's the value of the roast.
+
 ## The Principles Behind It All
 
 If you take nothing else from this chapter, take these:

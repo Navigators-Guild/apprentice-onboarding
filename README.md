@@ -47,6 +47,8 @@ This repository contains the **Apprentice Learning Path**: everything you need t
 3. [Context Is Everything](01-talking-to-agents/03-context-is-everything.md) - What the agent needs to know and why
 4. [Breaking Problems Down](01-talking-to-agents/04-breaking-problems-down.md) - The most important skill you'll learn
 5. [Your First Build](01-talking-to-agents/05-first-build.md) - A guided project from design doc to working software
+6. [When Things Break](01-talking-to-agents/06-when-things-break.md) - Debugging, error messages, and getting unstuck
+7. [Finding Answers](01-talking-to-agents/07-finding-answers.md) - Documentation, search, and verifying what the agent tells you
 
 ### Phase 2: The Methodology
 *The discipline that makes the output actually good.*
