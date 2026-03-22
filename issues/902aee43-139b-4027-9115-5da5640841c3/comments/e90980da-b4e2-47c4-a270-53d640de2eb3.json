@@ -1,0 +1,8 @@
+{
+  "uuid": "e90980da-b4e2-47c4-a270-53d640de2eb3",
+  "issue_uuid": "902aee43-139b-4027-9115-5da5640841c3",
+  "author": "anon-13168fa2",
+  "content": "Plan: Write 03-real-world-skills/02-working-with-apis.md. Needs to cover: (1) What an API is conceptually (no syntax, just the mental model of software talking to other software), (2) MCPs (Model Context Protocol servers) as the agentic way to work with APIs - the agent gets tools it can call directly rather than writing HTTP code, (3) Claude skills as pre-built capabilities, (4) Where to find MCPs and skills (registries, community), (5) When you still need to write API code directly (the agent writes it, you verify), (6) Error handling for external services (they go down, they rate limit, they change), (7) API keys and secrets management. The key insight for this audience: in agentic workflow you often don't write API integration code at all - you give the agent an MCP server and it calls the API through that. Update README to link the chapter.",
+  "created_at": "2026-03-22T15:55:54.807319073Z",
+  "kind": "plan"
+}
