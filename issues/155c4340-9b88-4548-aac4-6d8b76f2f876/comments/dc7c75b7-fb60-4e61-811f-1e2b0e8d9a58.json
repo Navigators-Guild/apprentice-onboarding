@@ -1,0 +1,8 @@
+{
+  "uuid": "dc7c75b7-fb60-4e61-811f-1e2b0e8d9a58",
+  "issue_uuid": "155c4340-9b88-4548-aac4-6d8b76f2f876",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Created 03-real-world-skills/03-project-architecture.md. Covers: (1) The god file problem - why agents default to single-file projects and why it breaks down (context window limits, testability, change ripple). (2) Separation of concerns - data/logic/interface/config as natural boundaries, example Rust project layout with modules. (3) DRY - how agents duplicate logic unless directed otherwise, specific prompts for catching and preventing it. (4) How to direct your agent - four scenarios: set structure at project start, say where new features go, watch for file growth, call out duplication. Each with example prompts. (5) When NOT to split - small projects don't need 8 modules, don't separate genuinely cohesive code. (6) Rust module basics - module/pub/crate/use vocabulary without syntax details. (7) The architecture conversation - having the agent plan structure before any code exists. 4 exercises including deliberately letting an agent create a god file then refactoring it. Updated README.",
+  "created_at": "2026-03-22T16:12:06.416751873Z",
+  "kind": "result"
+}
