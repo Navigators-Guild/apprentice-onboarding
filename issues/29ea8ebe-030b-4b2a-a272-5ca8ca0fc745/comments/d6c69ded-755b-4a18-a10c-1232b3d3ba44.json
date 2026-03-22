@@ -1,0 +1,8 @@
+{
+  "uuid": "d6c69ded-755b-4a18-a10c-1232b3d3ba44",
+  "issue_uuid": "29ea8ebe-030b-4b2a-a272-5ca8ca0fc745",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Committed all 20 curriculum chapters + README + CHANGELOG + .gitignore in a single commit. Excluded tooling config (.claude/, .crosslink/, .mcp.json). Commit: 460580b. Branch is ahead of origin by 1, user needs to git push manually.",
+  "created_at": "2026-03-22T16:32:19.675696830Z",
+  "kind": "result"
+}
