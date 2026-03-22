@@ -1,0 +1,8 @@
+{
+  "uuid": "24bdf7b3-616b-45c5-8045-bb200fc5a664",
+  "issue_uuid": "5793ff48-8c17-4d89-a0f5-9186e35a7912",
+  "author": "anon-13168fa2",
+  "content": "Plan: Three changes based on adversarial review. (1) Soften anti-education framing in README Philosophy section and 01-the-new-literacy.md. Reposition guild as complementary to traditional education, not in conflict. (2) Strengthen beginner motivation: lead with tangible outcomes (build an app, job skill, make your idea real) in README and New Literacy chapter. Address what beginners THINK they need, not just what they actually need. (3) Add recognition system: phase completion badges, journeyman certificate. Rewrite the 'no certificates' stance in portfolio-review.md. Need to find all instances of anti-education language across all files.",
+  "created_at": "2026-03-22T16:44:14.500921174Z",
+  "kind": "plan"
+}
