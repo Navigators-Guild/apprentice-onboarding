@@ -64,11 +64,23 @@ guild-portfolio/
 └── 06-mentoring.md        # your mentoring reflection
 ```
 
-Your portfolio README should tell your story. Not a resume. A narrative. When you started, what you knew (or didn't), what was hard, what clicked, what you're proud of, where you want to go next. Two to three paragraphs. Evaluators read dozens of these. The ones that are honest and specific stand out. The ones that are generic and polished don't.
+Your portfolio README should tell your story. Not a resume. A narrative. When you started, what you knew (or didn't), what was hard, what clicked, what you're proud of, where you want to go next. Two to three paragraphs. Reviewers read dozens of these. The ones that are honest and specific stand out. The ones that are generic and polished don't.
 
-## What Evaluators Look For
+## The Review Process
 
-The portfolio review isn't a pass/fail test. It's a holistic evaluation. Here's what matters:
+Your portfolio is reviewed by **two guild journeymen or masters** who have completed the path themselves. They review independently, then compare notes. This isn't a faceless committee. You'll know who your reviewers are, and they'll know you from the guild community.
+
+The review takes about a week. Reviewers read your design docs, look at your code and commit history, check your test coverage, read your retrospectives, and look at your Chainlink issue history. They write up feedback covering strengths, areas for improvement, and a recommendation.
+
+There's no numerical score or letter grade. The recommendation is one of three outcomes:
+
+- **Ready.** Your work demonstrates journeyman-level competence. You advance.
+- **Almost there.** Your work is strong in most areas but has specific gaps. You get detailed feedback on what to strengthen and can resubmit.
+- **More time needed.** You need more practice in fundamental areas. You get guidance on which phases to revisit. This isn't a judgment on you. It's a signal that the process needs more time.
+
+## What Reviewers Look For
+
+The review is holistic, not a checklist. But here's what matters most:
 
 ### Process Over Product
 
@@ -114,11 +126,19 @@ The guild recognizes your progress at every stage. You earn badges for completin
 
 These are real markers of real accomplishment. Display them, share them, be proud of them. You earned each one by doing the work.
 
-## The Portfolio
+## What Your Credential Is (and Isn't)
 
-Your portfolio URL is the strongest part of your credential. It's a public body of work that anyone can inspect: employers, collaborators, other guilds. The commit history, the issue tracking, the review cycles, the retrospectives. It's all there, and it can't be faked because the entire process is visible.
+Let's be honest about where this stands.
 
-A certificate tells someone you completed a program. A portfolio shows them *how*. You have both.
+**Right now,** the guild is new. An HR recruiter at a large company has never heard of it. Your Journeyman certificate won't get past a keyword-scanning resume filter. That's the reality of any new credential, and pretending otherwise would be dishonest.
+
+**What your portfolio does right now** is prove your skills to anyone who actually looks at the work. A technical hiring manager, a potential collaborator, an open source maintainer, anyone who clicks through your repos and reads your process documentation will see evidence of real capability that can't be faked. That's immediately valuable in contexts where people evaluate your work directly.
+
+**What the certificate does** is mark your achievement within the guild. It says you completed a rigorous process, were reviewed by peers, and met the standard. As more guild members enter the workforce and perform well, that marker builds external reputation.
+
+**Over time,** credentials gain recognition the same way they always have: the people who hold them turn out to be consistently good at their jobs. CompTIA, AWS, and Cisco certifications weren't prestigious when they started either. They built credibility over years because certified people performed. The guild is on the same path, and you're part of building that reputation.
+
+So you have two things: a certificate that marks your achievement and a portfolio that proves it. The certificate will gain recognition as the guild grows. The portfolio works right now, for anyone willing to look. Together, they're stronger than either alone.
 
 You started this path with the ability to think and communicate. You end it with a body of work that proves you can direct intelligent systems to build things that work, and the process discipline to do it reliably. Everything else you'll learn on the job, because you've proven you know how to learn.
 

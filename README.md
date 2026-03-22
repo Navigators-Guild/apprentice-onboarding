@@ -74,17 +74,16 @@ This repository contains the **Apprentice Learning Path**: everything you need t
 
 ## Projects
 
-Each phase includes hands-on builds of increasing complexity:
+Each phase includes hands-on builds. The guided projects are chosen so every apprentice works on the same targets, which makes review and comparison consistent across the guild. Your self-directed projects and capstone are where you choose what to build.
 
-| # | Project | Language | What It Teaches |
+| Phase | Project | Language | Why This Project |
 |---|---|---|---|
-| 1 | Bookmark Manager | HTML/JS | Prompting, verification, the build-verify loop |
-| 2 | Issue Tracker | Rust | State machines, CLI design, structured data, first Rust project |
-| 3 | Guild Toolkit | Rust | Reading existing code, working within established patterns, PRs |
-| 4 | API Client | Rust | Network requests, error handling, external dependencies |
-| 5 | *Architecture project* | Rust | Multi-file structure, modules, managing complexity at scale |
-
-The bookmark manager is the one exception to the Rust default. It's your very first build, and seeing something appear in a browser is the fastest path to "I made a thing." From project 2 onward, everything is Rust.
+| Phase 1 | Bookmark Manager | HTML/JS | Your first build. Teaches the prompting and verification loop with instant visual feedback in a browser. HTML/JS is the one exception to the Rust default because seeing a result immediately matters more than toolchain when you're starting out. |
+| Phase 2 | Issue Tracker CLI | Rust | Your first Rust project. Introduces the compiler, CLI design, and structured data (state machines, serialization). You're building a tool like the one you'll use daily, so you understand issue tracking from the inside. |
+| Phase 3 | Guild Toolkit | Rust | Your first time working in someone else's codebase. Teaches reading before writing, following existing conventions, the PR process, and building for an audience other than yourself. |
+| Phase 3 | API + Architecture | Rust | Covered in the chapter exercises. Teaches network requests, error handling, multi-file structure, and module design. Not a single named project because these skills get practiced across multiple exercises and toolkit contributions. |
+| Phase 4 | Capstone | Rust | Fully self-directed. You pick the problem, design the solution, and ship it. Must involve something unfamiliar. This is your masterpiece. |
+| All | 3-5 Self-Directed | Any | Your own ideas, your own design docs, your own process. These prove you can work without a guide. |
 
 ---
 
