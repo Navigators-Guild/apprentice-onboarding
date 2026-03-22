@@ -2,11 +2,12 @@
   "uuid": "155c4340-9b88-4548-aac4-6d8b76f2f876",
   "display_id": 10,
   "title": "Write Project Architecture chapter on multi-file projects and managing complexity",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "created_by": "anon-13168fa2",
   "created_at": "2026-03-22T16:09:43.646053194Z",
-  "updated_at": "2026-03-22T16:09:47.416536047Z",
+  "updated_at": "2026-03-22T16:12:08.207375910Z",
+  "closed_at": "2026-03-22T16:12:08.207375910Z",
   "labels": [
     "enhancement"
   ]
