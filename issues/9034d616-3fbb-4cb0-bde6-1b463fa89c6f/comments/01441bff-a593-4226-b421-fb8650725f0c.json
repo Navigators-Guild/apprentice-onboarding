@@ -1,0 +1,8 @@
+{
+  "uuid": "01441bff-a593-4226-b421-fb8650725f0c",
+  "issue_uuid": "9034d616-3fbb-4cb0-bde6-1b463fa89c6f",
+  "author": "anon-13168fa2",
+  "content": "Observation: Chainlink key features for the chapter: (1) local-first SQLite, no cloud dependency, (2) session management with handoff notes that survive context resets, (3) hierarchical decomposition (issues → subissues), (4) dependencies/blocking, (5) quick workflow for fast issue+work, (6) breadcrumb actions for context compression resilience, (7) labels/priorities for organization, (8) works with any AI agent via context provider. The ELI5 doc frames it perfectly: 'a to-do list for AI assistants' / 'gives AI assistants a memory that survives between conversations.'",
+  "created_at": "2026-03-22T14:03:38.099958722Z",
+  "kind": "observation"
+}
