@@ -1,0 +1,8 @@
+{
+  "uuid": "b73d3409-27e9-4345-84ab-7e29d73db995",
+  "issue_uuid": "82f3c697-7041-4902-82b6-78c681302e80",
+  "author": "anon-13168fa2",
+  "content": "Subissues: (a) Write language landscape chapter, (b) Renumber + update workspace for Rust, (c) Update issue tracker project to Rust CLI, (d) Rewrite README for full path. Working in this order.",
+  "created_at": "2026-03-22T14:34:54.987910261Z",
+  "kind": "plan"
+}
