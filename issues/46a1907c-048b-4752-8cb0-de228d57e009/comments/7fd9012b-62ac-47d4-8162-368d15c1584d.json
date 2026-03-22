@@ -1,0 +1,8 @@
+{
+  "uuid": "7fd9012b-62ac-47d4-8162-368d15c1584d",
+  "issue_uuid": "46a1907c-048b-4752-8cb0-de228d57e009",
+  "author": "anon-13168fa2",
+  "content": "Observation: guild-toolkit is a Cargo workspace at github.com/Navigators-Guild/guild-toolkit. Workspace has 9 crates under crates/: guild-core (shared library), guild-scaffold, guild-review, guild-progress, guild-portfolio, guild-search, guild-roast, guild-deps, guild-stats. Each is its own binary. Shared deps: clap, serde, toml, thiserror, anyhow, colored. Edition 2024, MSRV 1.85. Tools share state via ~/.guild/ directory with TOML files. No dispatcher binary - each tool invoked directly. Design doc in .design/ describes full architecture. Difficulty ratings: scaffold/progress=beginner, review/portfolio/search/deps/stats=intermediate, roast=advanced.",
+  "created_at": "2026-03-22T15:37:08.456290582Z",
+  "kind": "observation"
+}
