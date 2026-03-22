@@ -2,11 +2,12 @@
   "uuid": "143cfb48-8c8f-42b9-89e7-d95a050db67c",
   "display_id": 18,
   "title": "Seed security habits earlier in Phase 1 and Phase 2 chapters",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "created_by": "anon-13168fa2",
   "created_at": "2026-03-22T17:25:34.963917145Z",
-  "updated_at": "2026-03-22T17:25:37.622715293Z",
+  "updated_at": "2026-03-22T17:26:37.235817956Z",
+  "closed_at": "2026-03-22T17:26:37.235817956Z",
   "labels": [
     "enhancement"
   ]
