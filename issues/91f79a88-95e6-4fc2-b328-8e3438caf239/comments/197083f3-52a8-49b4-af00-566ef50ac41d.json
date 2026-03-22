@@ -1,0 +1,8 @@
+{
+  "uuid": "197083f3-52a8-49b4-af00-566ef50ac41d",
+  "issue_uuid": "91f79a88-95e6-4fc2-b328-8e3438caf239",
+  "author": "anon-13168fa2",
+  "content": "Plan: Add a 'Try It: Your First Rust Program' section at the end of the Language Landscape chapter, before the closing. Something tiny - a single-file Rust program the student builds with their agent. Goal is just to touch the compiler: cargo new, cargo run, see output, make a small change, see it compile. Not a real project, just enough to demystify the toolchain before Phase 2 where they build for real. Should feel like the terminal practice section in the Workspace chapter - quick, hands-on, confidence-building.",
+  "created_at": "2026-03-22T17:18:53.931797112Z",
+  "kind": "plan"
+}
