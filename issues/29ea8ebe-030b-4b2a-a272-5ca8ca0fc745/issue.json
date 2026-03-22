@@ -2,11 +2,12 @@
   "uuid": "29ea8ebe-030b-4b2a-a272-5ca8ca0fc745",
   "display_id": 14,
   "title": "Commit full apprentice curriculum to main",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "created_by": "anon-13168fa2",
   "created_at": "2026-03-22T16:31:34.120476392Z",
-  "updated_at": "2026-03-22T16:31:35.424239864Z",
+  "updated_at": "2026-03-22T16:32:21.196151114Z",
+  "closed_at": "2026-03-22T16:32:21.196151114Z",
   "labels": [
     "enhancement"
   ]
