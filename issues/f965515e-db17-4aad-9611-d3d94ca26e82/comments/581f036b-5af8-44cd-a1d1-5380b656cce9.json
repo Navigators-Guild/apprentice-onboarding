@@ -1,0 +1,8 @@
+{
+  "uuid": "581f036b-5af8-44cd-a1d1-5380b656cce9",
+  "issue_uuid": "f965515e-db17-4aad-9611-d3d94ca26e82",
+  "author": "anon-13168fa2",
+  "content": "Plan: Write a FORWARD.md that goes before everything else. Not a chapter in a phase — a standalone piece at the very front. Tone: honest, direct, personal. About checking ego at the door, the sting of being wrong, why the adversarial process feels harsh but comes from a place of believing you can handle it, compiler errors as feedback not judgment, iteration against failure as the only real path to competence. Link it from the README before Phase 0.",
+  "created_at": "2026-03-22T20:51:22.918621561Z",
+  "kind": "plan"
+}
