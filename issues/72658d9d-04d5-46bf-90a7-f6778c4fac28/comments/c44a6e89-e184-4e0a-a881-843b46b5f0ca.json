@@ -1,0 +1,8 @@
+{
+  "uuid": "c44a6e89-e184-4e0a-a881-843b46b5f0ca",
+  "issue_uuid": "72658d9d-04d5-46bf-90a7-f6778c4fac28",
+  "author": "anon-13168fa2",
+  "content": "Plan: Seven additions across the curriculum.\n\nEnhancements to existing chapters:\n(a) Phase 1 first build - add troubleshooting section (agent gives broken code, errors you don't understand, technically correct but wrong)\n(b) Phase 2 VDD chapter - add worked roast example with before/after code\n(c) Phase 3 APIs - add concrete MCP setup walkthrough end to end\n(d) Phase 3 architecture - add real refactoring example (god file → modules)\n(e) Phase 3 shipping - flesh out delivery section (CI, crates.io, release notes)\n\nNew chapters:\n(f) Debugging chapter - reading errors, giving agents failure context, systematic debugging. Placing in Phase 1 as chapter 06 since that's when they first hit errors.\n(g) Reading documentation chapter - finding docs, evaluating them, sharing with agents. Placing in Phase 1 as chapter 06 before debugging becomes 07. Actually - debugging should come right after first build. So: 06-when-things-break (debugging), and docs reading can fold into the context chapter or be standalone.\n\nWorking through these in order.",
+  "created_at": "2026-03-22T19:48:20.142941499Z",
+  "kind": "plan"
+}
