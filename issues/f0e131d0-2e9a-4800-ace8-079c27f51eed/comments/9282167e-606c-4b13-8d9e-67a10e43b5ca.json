@@ -1,0 +1,8 @@
+{
+  "uuid": "9282167e-606c-4b13-8d9e-67a10e43b5ca",
+  "issue_uuid": "f0e131d0-2e9a-4800-ace8-079c27f51eed",
+  "author": "anon-13168fa2",
+  "content": "Plan: Write 03-real-world-skills/04-shipping-it.md. Two major sections: Testing (the larger half) and Delivery. Testing covers: unit tests, integration tests, smoke tests, property-based tests, formal verification. For each: what it is, what it catches, when you need it. Critical agent-specific issue: tautological tests (testing that the code does what the code does, not what it should do). Tests themselves need adversarial review. Edge case hunting as a skill. Cross-platform testing with VMs. Delivery covers: cargo publish, GitHub releases, cross-compilation, packaging, the gap between 'it works' and 'someone else can use it'. Update README.",
+  "created_at": "2026-03-22T16:16:03.077505103Z",
+  "kind": "plan"
+}
