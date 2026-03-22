@@ -1,0 +1,8 @@
+{
+  "uuid": "e775533e-c8e3-4c8c-ab95-4467583d9f34",
+  "issue_uuid": "46a1907c-048b-4752-8cb0-de228d57e009",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Created 03-real-world-skills/01-the-workshop.md. Covers: why working in existing code is different from greenfield, intro to guild-toolkit (all 9 crates with difficulty ratings in a table), how it's different from portfolio projects (architecture you didn't choose, conventions to follow, other people's code, building for an audience), getting started guide (clone, build, explore, read guild-core, pick a tool), the 6-step contribution process (claim, read, design, build layers, submit PR, ship), what it teaches (reading code, working within constraints, collaboration, PR process, building for others), 4 exercises. Updated README: moved Workshop to first in Phase 3 since it should come before API/architecture work, updated projects table.",
+  "created_at": "2026-03-22T15:38:47.360462686Z",
+  "kind": "result"
+}
