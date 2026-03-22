@@ -2,11 +2,12 @@
   "uuid": "d6547cec-a9cd-41e3-963d-085ed97f53ab",
   "display_id": 20,
   "title": "Fix timeline references and duplicate mkdir in Phase 0 chapters",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "created_by": "anon-13168fa2",
   "created_at": "2026-03-22T18:10:06.318901147Z",
-  "updated_at": "2026-03-22T18:10:09.722298460Z",
+  "updated_at": "2026-03-22T18:11:33.343657761Z",
+  "closed_at": "2026-03-22T18:11:33.343657761Z",
   "labels": [
     "fix"
   ]
