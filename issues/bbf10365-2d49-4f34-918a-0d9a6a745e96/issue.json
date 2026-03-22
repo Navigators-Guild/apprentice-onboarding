@@ -2,11 +2,12 @@
   "uuid": "bbf10365-2d49-4f34-918a-0d9a6a745e96",
   "display_id": 5,
   "title": "Fix Chainlink section to clarify that Claude creates issues, not the user",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "created_by": "anon-13168fa2",
   "created_at": "2026-03-22T14:12:53.492719731Z",
-  "updated_at": "2026-03-22T14:12:56.403587072Z",
+  "updated_at": "2026-03-22T14:14:12.204688817Z",
+  "closed_at": "2026-03-22T14:14:12.204688817Z",
   "labels": [
     "fix"
   ]
