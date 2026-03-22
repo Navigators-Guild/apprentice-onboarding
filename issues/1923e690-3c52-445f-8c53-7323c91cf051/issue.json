@@ -1,0 +1,10 @@
+{
+  "uuid": "1923e690-3c52-445f-8c53-7323c91cf051",
+  "display_id": 17,
+  "title": "Fix missing mkdir step in Language Landscape Rust exercise",
+  "status": "open",
+  "priority": "low",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-03-22T17:23:15.810039885Z",
+  "updated_at": "2026-03-22T17:23:15.810039885Z"
+}
