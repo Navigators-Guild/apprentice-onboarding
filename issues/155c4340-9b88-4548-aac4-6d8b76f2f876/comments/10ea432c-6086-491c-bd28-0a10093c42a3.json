@@ -1,0 +1,8 @@
+{
+  "uuid": "10ea432c-6086-491c-bd28-0a10093c42a3",
+  "issue_uuid": "155c4340-9b88-4548-aac4-6d8b76f2f876",
+  "author": "anon-13168fa2",
+  "content": "Plan: Write 03-real-world-skills/03-project-architecture.md. Core problem: agents default to god files and will cram everything into one file unless directed otherwise. Chapter needs to teach: (1) why single-file projects break down (context window limits, readability, merge conflicts, testing), (2) the god file problem specific to agents, (3) how to think about modules/separation of concerns conceptually, (4) DRY as a principle and how to direct agents toward it, (5) how to give architectural direction in prompts, (6) Rust-specific module structure (mod.rs, lib.rs, crate organization), (7) when to split and when not to (don't over-engineer). Practical focus: what to say to your agent to get good architecture from the start.",
+  "created_at": "2026-03-22T16:09:58.502601419Z",
+  "kind": "plan"
+}
