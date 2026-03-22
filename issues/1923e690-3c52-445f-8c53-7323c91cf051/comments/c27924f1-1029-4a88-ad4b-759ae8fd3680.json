@@ -1,0 +1,8 @@
+{
+  "uuid": "c27924f1-1029-4a88-ad4b-759ae8fd3680",
+  "issue_uuid": "1923e690-3c52-445f-8c53-7323c91cf051",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Added mkdir -p ~/guild-projects/scratch before cd into it. Students reading chapters out of order or who skipped workspace setup won't hit a missing directory error.",
+  "created_at": "2026-03-22T17:23:44.704733975Z",
+  "kind": "result"
+}
