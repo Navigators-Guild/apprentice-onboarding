@@ -1,0 +1,8 @@
+{
+  "uuid": "5d1b4dcf-e743-45a2-98cb-8dbd27818d58",
+  "issue_uuid": "f0e131d0-2e9a-4800-ace8-079c27f51eed",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Created 03-real-world-skills/04-shipping-it.md. Two major sections:\n\nTESTING (~75% of chapter):\n- Unit tests: what they are, when to use, what they catch, how to direct agent\n- Integration tests: testing module composition, temporary test databases\n- Smoke tests: the 'does it even run' baseline\n- Property-based tests: proptest, random input generation, shrinking, what they find that hand-written tests miss\n- Formal verification: Kani, mathematical proof vs testing, when it matters\n- The tautological test problem: agents writing tests that mirror implementation instead of checking against spec, with before/after examples and specific prompts to fix it\n- Finding edge cases: systematic categories (empty inputs, boundaries, special chars, concurrency, state transitions, resource limits)\n- Cross-platform testing: VMs, WSL, GitHub Actions for multi-platform CI\n\nDELIVERY (~25% of chapter):\n- Clone and build (simplest)\n- GitHub releases with binaries\n- Cross-compilation via CI\n- cargo publish to crates.io\n- The packaging checklist (clean checkout, tests, clippy, README, secrets exclusion, fresh machine)\n\n5 exercises. Updated README to link chapter. All Phase 3 chapters are now complete.",
+  "created_at": "2026-03-22T16:17:59.255627976Z",
+  "kind": "result"
+}
