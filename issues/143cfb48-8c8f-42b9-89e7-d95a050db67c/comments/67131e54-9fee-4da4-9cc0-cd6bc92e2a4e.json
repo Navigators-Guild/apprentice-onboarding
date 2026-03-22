@@ -1,0 +1,8 @@
+{
+  "uuid": "67131e54-9fee-4da4-9cc0-cd6bc92e2a4e",
+  "issue_uuid": "143cfb48-8c8f-42b9-89e7-d95a050db67c",
+  "author": "anon-13168fa2",
+  "content": "Delivered: Added security habit callouts to two earlier chapters. Phase 1 first build: after the verification step, prompts students to test empty titles and bad URLs, directs them to tell the agent to add validation. Phase 2 issue tracker: after build layers, covers validating CLI input and handling missing/corrupted JSON files. Both forward-reference the Security chapter. Light touch - one paragraph each, not full sections.",
+  "created_at": "2026-03-22T17:26:35.796948849Z",
+  "kind": "result"
+}
