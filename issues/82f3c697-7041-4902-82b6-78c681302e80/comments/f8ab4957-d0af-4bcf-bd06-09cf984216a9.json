@@ -1,0 +1,8 @@
+{
+  "uuid": "f8ab4957-d0af-4bcf-bd06-09cf984216a9",
+  "issue_uuid": "82f3c697-7041-4902-82b6-78c681302e80",
+  "author": "anon-13168fa2",
+  "content": "Delivered: (a) Created 00-foundations/03-the-language-landscape.md covering systems/application/specialized language families, how to choose, why the guild uses Rust, all conceptual with zero syntax. (b) Renumbered workspace to 04, git to 05. Added Tool 4 (Rust toolchain) section to workspace chapter with install instructions for all platforms, cargo/rustc explanation, and verification step. (c) Rewrote issue tracker project in tracking chapter as Rust CLI: new design doc with CLI subcommands, new build layers using cargo, new learning outcomes covering Rust compilation, CLI design, and serialization. Added note about bookmark manager being the one HTML/JS exception. (d) Rewrote README with full 4-phase structure, Phase 3 placeholders, projects table showing progression, updated portfolio requirements to include workshop contributions.",
+  "created_at": "2026-03-22T14:37:45.128602010Z",
+  "kind": "result"
+}
