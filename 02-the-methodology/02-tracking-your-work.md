@@ -99,6 +99,8 @@ Here's one way to layer the build:
 
 Verify each layer before moving to the next. `cargo build` should compile without errors at every step. Use the adversarial thinking you learned: what happens if you create an issue with no title? What if you pass an ID that doesn't exist? What if the JSON file gets corrupted?
 
+**Security habit check:** This is your first project that reads and writes files. Tell your agent: "Validate all input from the command line. Reject empty titles. Handle the case where the JSON file is missing or contains invalid data without crashing." Data that comes from outside your program (user input, files on disk) should never be blindly trusted. This applies to every project you'll build from here on. We'll go deeper in the Security chapter, but the principle is simple: check before you use.
+
 ### What You'll Learn Building This
 
 This project teaches you several things the bookmark manager didn't:

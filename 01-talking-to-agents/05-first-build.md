@@ -108,6 +108,8 @@ If something doesn't work, tell the agent exactly what's happening:
 
 This is verification driven development in action. You defined what "working" means *before* building (the design doc), and now you're checking the result against that definition.
 
+**A habit to start now:** Try adding a bookmark with an empty title. Or a URL that's just nonsense. Does the app handle it, or does it silently store garbage? Input validation (checking that data is reasonable before you save it) is a security and quality habit worth building from your very first project. If your app stores whatever it's given without checking, tell the agent: "Add validation. Don't allow empty titles. Check that the URL starts with http:// or https://." You'll learn more about this in the Security chapter later, but the habit starts here.
+
 ## Step 5: Add Layers
 
 Once the core works, add features one at a time. Each layer follows the same loop: ask the agent, verify the result, fix any issues.
