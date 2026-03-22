@@ -2,11 +2,12 @@
   "uuid": "5793ff48-8c17-4d89-a0f5-9186e35a7912",
   "display_id": 15,
   "title": "Address adversarial review: soften education framing, strengthen beginner motivation, add recognition",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "created_by": "anon-13168fa2",
   "created_at": "2026-03-22T16:44:01.438653174Z",
-  "updated_at": "2026-03-22T16:44:05.229374525Z",
+  "updated_at": "2026-03-22T16:46:19.193066047Z",
+  "closed_at": "2026-03-22T16:46:19.193066047Z",
   "labels": [
     "fix"
   ]
