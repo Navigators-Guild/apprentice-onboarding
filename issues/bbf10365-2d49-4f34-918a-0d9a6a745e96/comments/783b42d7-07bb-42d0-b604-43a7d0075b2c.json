@@ -1,0 +1,8 @@
+{
+  "uuid": "783b42d7-07bb-42d0-b604-43a7d0075b2c",
+  "issue_uuid": "bbf10365-2d49-4f34-918a-0d9a6a745e96",
+  "author": "anon-13168fa2",
+  "content": "Plan: Rewrite the Chainlink section to reframe from 'you run these commands' to 'the agent runs these commands automatically.' Chainlink hooks tell Claude how to use it - the user just needs to install it and understand what's happening. The user's role is directing and reviewing, not typing chainlink commands.",
+  "created_at": "2026-03-22T14:13:07.528816022Z",
+  "kind": "plan"
+}
