@@ -51,3 +51,9 @@ This document goes in your portfolio. It's evidence of a skill that most people 
 The ability to explain technical concepts to people who don't share your context is one of the most valuable skills in any technical career. It's how you write good documentation. It's how you onboard new team members. It's how you communicate with non-technical stakeholders. It's how you lead.
 
 Most technical education completely ignores this. You learn to build things but not to explain them. The guild doesn't make that mistake. You build, and then you explain what you built, and then you help someone else build. The full cycle.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← On Your Own](01-on-your-own.md) | **Giving Back** | [The Portfolio Review →](03-the-portfolio-review.md) |

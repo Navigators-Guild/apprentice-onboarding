@@ -152,3 +152,9 @@ Skills this teaches that nothing else in the curriculum does:
 3. Review someone else's PR on the toolkit. Read their code, test it locally, and leave specific feedback. This is your first time being the reviewer rather than the reviewed. Be constructive and specific, just like the best roast feedback you've received.
 
 4. After your first PR is merged, find an issue on an intermediate tool. Notice how the process feels different when you already know the codebase.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Tracking Your Work](../02-the-methodology/02-tracking-your-work.md) | **The Workshop** | [Working with APIs →](02-working-with-apis.md) |

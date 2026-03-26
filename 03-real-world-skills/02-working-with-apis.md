@@ -153,3 +153,9 @@ This is adversarial thinking applied to external services. The happy path is eas
 3. Take the tool from exercise 2 and check if an MCP server exists for that same API. If it does, compare the two approaches: which was faster to build? Which is easier to maintain? Which would you choose for a tool you plan to distribute to others?
 
 4. Write a skill (a markdown file in `.claude/`) that packages up a common API workflow you find yourself repeating. For example, a skill that checks the status of your GitHub PRs, or one that looks up documentation for a library. Save it and use it with your agent. Notice how a good skill saves you from re-explaining context every time.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← The Workshop](01-the-workshop.md) | **Working with APIs** | [Project Architecture →](03-project-architecture.md) |

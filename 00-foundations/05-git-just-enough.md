@@ -189,3 +189,9 @@ The seven commands above are enough to track your work, share your portfolio, an
 Git is your project's memory and your portfolio's backbone. Seven commands handle everything you need: `init`, `clone`, `status`, `add`, `commit`, `push`, `pull`. Use them in the work-status-add-commit-push loop, and your entire journey gets recorded.
 
 You now have everything you need for Phase 0. You understand what code is (conceptually), your workspace is set up, and you can track and share your work. Time to learn how to actually talk to agents.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Your Workspace](04-your-workspace.md) | **Git: Just Enough** | [How Agents Think →](../01-talking-to-agents/01-how-agents-think.md) |

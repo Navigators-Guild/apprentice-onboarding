@@ -142,3 +142,9 @@ Now try one more thing. Tell the agent:
 Run it. Test it. Type a few names, then type "quit." Does it exit cleanly? What happens if you type nothing and just press enter? What happens if you type a very long string? You're already practicing verification and edge-case thinking, and you've only been writing Rust for five minutes.
 
 When you're done, this project lives in your `scratch/` folder. It's not a portfolio piece. It's just proof that you've touched the compiler and it didn't bite. When Phase 2 asks you to build a real CLI tool in Rust, you'll know the basics already: `cargo new`, `cargo run`, and directing an agent to write the code.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← What Code Actually Is](02-what-code-actually-is.md) | **The Language Landscape** | [Your Workspace →](04-your-workspace.md) |

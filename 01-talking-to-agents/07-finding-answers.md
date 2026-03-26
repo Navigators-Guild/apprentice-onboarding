@@ -93,3 +93,9 @@ This isn't adversarial. It's verification. The same principle from VDD applied t
 2. Introduce a version mismatch on purpose. Ask your agent to use an old pattern from a library (it will probably do this naturally if you just ask "use [library]" without specifying a version). When it breaks, find the changelog, identify what changed, and use the current documentation to fix it.
 
 3. Find a Rust error message you don't understand. Before asking the agent, search for the exact error text online. Read the first few results. Then ask the agent to explain it. Which explanation was more helpful? Which was faster? This builds your intuition for when to search vs when to ask.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← When Things Break](06-when-things-break.md) | **Finding Answers** | [How We Build →](../02-the-methodology/01-how-we-build.md) |

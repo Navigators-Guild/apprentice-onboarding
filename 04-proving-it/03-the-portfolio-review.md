@@ -143,3 +143,9 @@ So you have two things: a certificate that marks your achievement and a portfoli
 You started this path with the ability to think and communicate. You end it with a body of work that proves you can direct intelligent systems to build things that work, and the process discipline to do it reliably. Everything else you'll learn on the job, because you've proven you know how to learn.
 
 Welcome to the journeymanship.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Giving Back](02-giving-back.md) | **The Portfolio Review** | |

@@ -189,3 +189,9 @@ As an apprentice, you're not going to set up formal verification pipelines or ru
 4. Share your adversarial review experience in the guild channel. What was the most useful critique you received? What was the hardest to fix? What did you learn about your own blind spots?
 
 This methodology is the backbone of everything we do in the guild. The tools will change, the agents will get better, the specific techniques will evolve. But the core loop (build, verify, get roasted, fix, repeat) works because it's built on honest feedback and hard evidence. That doesn't go out of date.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Finding Answers](../01-talking-to-agents/07-finding-answers.md) | **How We Build** | [Tracking Your Work →](02-tracking-your-work.md) |

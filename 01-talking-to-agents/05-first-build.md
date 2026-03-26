@@ -222,3 +222,9 @@ Some ideas for self-directed projects:
 Choose things you'll actually use. The best portfolio projects solve your own real problems. They show not just technical ability but the judgment to identify problems worth solving.
 
 You have the methodology. You have the tools. Go build something.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Breaking Problems Down](04-breaking-problems-down.md) | **Your First Build** | [When Things Break →](06-when-things-break.md) |

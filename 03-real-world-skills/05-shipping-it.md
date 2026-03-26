@@ -313,3 +313,9 @@ Before you ship anything, run through this:
 4. Package one of your projects for distribution. Create a GitHub release with a built binary. Write a README that explains what it is, how to install it, and how to use it. Have someone else (another guild member, a friend) try to use it from just the README and release binary. Their experience will teach you more about shipping than any guide can.
 
 5. Set up a GitHub Actions workflow that runs your full test suite (tests, clippy, formatting) on every push. Make it test on at least two platforms. Watch it catch something you missed locally. This is the beginning of CI/CD, and it's how professional projects stay healthy.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Security](04-security.md) | **Shipping It** | [On Your Own →](../04-proving-it/01-on-your-own.md) |

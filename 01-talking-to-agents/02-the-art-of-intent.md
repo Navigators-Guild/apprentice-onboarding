@@ -159,3 +159,9 @@ Try writing prompts for each of these using the five questions and the template 
 Write these out and share them in the guild. Getting feedback on your prompts before building is great practice, and it's the earliest form of the adversarial refinement that defines our methodology.
 
 Next up: why context is the invisible factor that makes or breaks every interaction with an agent.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← How Agents Think](01-how-agents-think.md) | **The Art of Intent** | [Context Is Everything →](03-context-is-everything.md) |

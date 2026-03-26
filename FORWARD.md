@@ -67,3 +67,9 @@ Check your ego at the door. Accept that you'll be wrong more often than you're r
 In return, you'll develop real skill. Not memorized facts, not credentials, not the ability to pass a test. The ability to direct intelligent systems to build things that work, verified by evidence and hardened by honest critique. That's worth being wrong a few hundred times.
 
 Let's begin.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← README](README.md) | **Forward** | [The New Literacy →](00-foundations/01-the-new-literacy.md) |

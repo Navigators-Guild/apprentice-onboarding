@@ -173,3 +173,9 @@ Security isn't a phase you do at the end. It's a consideration at every stage:
 3. Review another guild member's code specifically for security. Use the security adversary checklist. Write up your findings with specific line references and suggested fixes. This is harder than it sounds because you need to read code you didn't write and reason about how it could be exploited.
 
 4. Build a security scanner CLI tool in Rust. It should take a project path as input and run a series of checks: cargo audit, cargo deny, clippy security lints, and then use an AI agent (via API or MCP) to do an automated security review of the source code. Aggregate the results into a report with severity levels. This is an advanced project: it involves file I/O, process spawning, API integration, and output formatting. It could become a tool in the guild toolkit.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Project Architecture](03-project-architecture.md) | **Security** | [Shipping It →](05-shipping-it.md) |

@@ -74,3 +74,9 @@ A simple tool that's beautifully designed, thoroughly tested, honestly documente
 There's no deadline. Some apprentices will finish their capstone in a few weeks. Some will take months. The guild doesn't rush this. What matters is that the work is solid when it's submitted, not that it was fast.
 
 That said, don't let it become the project that's never done. Scope it to something you can ship, ship it, and then improve it over time if you want. Shipped and imperfect beats unshipped and theoretical every time.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Shipping It](../03-real-world-skills/05-shipping-it.md) | **On Your Own** | [Giving Back →](02-giving-back.md) |

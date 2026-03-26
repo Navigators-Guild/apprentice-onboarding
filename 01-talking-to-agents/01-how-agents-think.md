@@ -79,3 +79,9 @@ Here's what all of this means for your day-to-day work:
 5. **Iterate.** Your first attempt will rarely be perfect. The power is in the speed of iteration: ask, review, refine, repeat. The agent can do this loop a hundred times in the time it would take to do it once by hand.
 
 Now that you understand how your collaborator works, let's learn how to talk to it.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Git: Just Enough](../00-foundations/05-git-just-enough.md) | **How Agents Think** | [The Art of Intent →](02-the-art-of-intent.md) |

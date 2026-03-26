@@ -151,3 +151,9 @@ A quick list of things that might seem like prerequisites but aren't:
 - **Prior experience.** If you've read this far, you have enough.
 
 You're set up. Next we'll cover just enough git to track your work, and then you're ready to start talking to agents.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← The Language Landscape](03-the-language-landscape.md) | **Your Workspace** | [Git: Just Enough →](05-git-just-enough.md) |

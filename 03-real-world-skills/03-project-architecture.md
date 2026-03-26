@@ -173,3 +173,9 @@ If the answer to any of these is no, push back before a single line of code exis
 3. Start a new project (anything you want) and begin with the architecture conversation. Before any code exists, have the agent help you plan the module structure. Save the plan as a section in your design doc. Then build, following the plan. Notice how much smoother the build process is when the structure is decided upfront.
 
 4. Deliberately ask your agent to add three features to a project without giving any architectural direction. Just say "add X," "add Y," "add Z." Then look at what happened. Where did the code end up? Is there duplication? Is anything hard to find? Now refactor with explicit architectural direction. Compare the two experiences.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Working with APIs](02-working-with-apis.md) | **Project Architecture** | [Security →](04-security.md) |

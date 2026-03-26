@@ -109,3 +109,9 @@ You won't go through this formally every time. With practice, it becomes instinc
 3. Write a one-paragraph "context summary" for a project idea you have, something you could paste at the start of any conversation to instantly ground the agent. Share it in the guild for feedback.
 
 Next: the most important skill in agentic development, breaking problems into manageable pieces.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← The Art of Intent](02-the-art-of-intent.md) | **Context Is Everything** | [Breaking Problems Down →](04-breaking-problems-down.md) |

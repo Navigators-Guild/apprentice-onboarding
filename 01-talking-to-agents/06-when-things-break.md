@@ -136,3 +136,9 @@ This loop handles 95% of problems. The other 5% are where you learn the most, an
 2. Ask your agent to build something slightly ambiguous on purpose: "make a timer." Don't specify what kind of timer, what it counts, or how it displays. Look at what you get. Identify every gap between what you wanted and what the agent assumed. Write the corrected prompt that would have gotten the right result the first time.
 
 3. Start a conversation with your agent and build something small (a unit converter, a tip calculator, whatever). When it works, break it by asking for a feature that conflicts with the existing code: "now make it work backwards too." Watch how the agent handles the conflict. If it introduces a bug, practice the debugging loop: read the error, share it back, iterate.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Your First Build](05-first-build.md) | **When Things Break** | [Finding Answers →](07-finding-answers.md) |

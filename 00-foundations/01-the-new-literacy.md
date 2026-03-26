@@ -69,3 +69,9 @@ Then in Phase 1, you'll start talking to agents and build your first project. By
 You already have everything you need to start. You can think. You can communicate. You can tell when something works and when it doesn't. Everything else is practice.
 
 Let's go.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Forward](../FORWARD.md) | **The New Literacy** | [What Code Actually Is →](02-what-code-actually-is.md) |

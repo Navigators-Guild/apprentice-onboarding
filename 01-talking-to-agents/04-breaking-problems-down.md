@@ -108,3 +108,9 @@ The agent will produce a breakdown. Review it critically. Does the order make se
 4. Share your decomposition in the guild channel and ask for feedback. Can other members spot dependencies you missed? Steps that could be broken down further? This is lightweight adversarial review, exactly the kind of thinking the guild develops.
 
 You've now covered the fundamentals of working with agents: understanding how they think, communicating your intent, providing context, and breaking problems down. Time to put it all together and build something real.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Context Is Everything](03-context-is-everything.md) | **Breaking Problems Down** | [Your First Build →](05-first-build.md) |

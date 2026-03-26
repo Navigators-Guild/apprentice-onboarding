@@ -65,3 +65,9 @@ Code is not magic. It's instructions that store information, make decisions, rep
 You now have enough understanding of what code *is* to direct an agent that writes it. You don't need to go deeper. Syntax, language-specific features, algorithmic optimization: that's the agent's job. Your job is to know what you want built and describe it in terms of what it stores, decides, repeats, and communicates.
 
 That's the mental model. Now let's set up your workspace.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← The New Literacy](01-the-new-literacy.md) | **What Code Actually Is** | [The Language Landscape →](03-the-language-landscape.md) |
