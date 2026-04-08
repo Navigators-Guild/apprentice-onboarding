@@ -1,0 +1,12 @@
+{
+  "uuid": "b3a8949c-20b7-44e5-bf0b-7cac7dc78529",
+  "display_id": 29,
+  "title": "Bridge git branching/PR gap before Phase 3 Workshop",
+  "description": "00-foundations/05-git-just-enough.md:179 explicitly tells the reader branching and merging are 'useful later, not now' and drops them from the 'seven commands' list. 03-real-world-skills/01-the-workshop.md:116-126 then requires the reader to 'submit a PR to the guild-toolkit repo' without any preparation: no definition of what a PR is, no teaching of branches (feature branches are required to create a PR on GitHub), no walkthrough of 'git checkout -b', 'git push -u origin branchname', or the GitHub web UI 'Compare & pull request' button. The reader is thrown into the deep end with the single most important workflow in professional development and zero scaffolding. Fix: Add a new chapter or section between Phase 2 and Phase 3 called 'Branches and Pull Requests' that teaches: what a branch is (parallel copy of the codebase), why PRs exist (reviewed changes before merging), the three essential commands (git checkout -b, git add/commit, git push -u origin HEAD), the GitHub web flow (open PR, fill title and description, request review), how to update a PR after review (new commits push to same branch), and how to merge. Update 00-foundations/05-git-just-enough.md to remove or soften the 'not now' guidance since it is actively harmful by Phase 3.",
+  "status": "open",
+  "priority": "high",
+  "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:29:44.713785380Z",
+  "updated_at": "2026-04-08T00:29:44.713785380Z"
+}
