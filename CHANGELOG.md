@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fix Chainlink section to clarify that Claude creates issues, not the user (#5)
 
 ### Changed
+- Wire new chapters into prev/next navigation tables (#44)
+- Commit novice-gap audit fixes (#43)
 - Audit apprentice onboarding for novice-level gaps (#23)
 - Explain what cargo install actually does and how to verify success (#42)
 - Seed a worked design doc example in Phase 1 before readers write one (#40)

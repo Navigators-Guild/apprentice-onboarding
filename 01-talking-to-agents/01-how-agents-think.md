@@ -84,4 +84,4 @@ Now that you understand how your collaborator works, let's learn how to talk to 
 
 | Previous | Current | Next |
 |:---|:---:|---:|
-| [← Git: Just Enough](../00-foundations/05-git-just-enough.md) | **How Agents Think** | [The Art of Intent →](02-the-art-of-intent.md) |
+| [← The Guild](../00-foundations/06-the-guild.md) | **How Agents Think** | [The Art of Intent →](02-the-art-of-intent.md) |

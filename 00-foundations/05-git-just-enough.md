@@ -236,4 +236,4 @@ You now have everything you need for Phase 0. You understand what code is (conce
 
 | Previous | Current | Next |
 |:---|:---:|---:|
-| [← Your Workspace](04-your-workspace.md) | **Git: Just Enough** | [How Agents Think →](../01-talking-to-agents/01-how-agents-think.md) |
+| [← Your Workspace](04-your-workspace.md) | **Git: Just Enough** | [The Guild →](06-the-guild.md) |

@@ -172,4 +172,4 @@ Skills this teaches that nothing else in the curriculum does:
 
 | Previous | Current | Next |
 |:---|:---:|---:|
-| [← Tracking Your Work](../02-the-methodology/02-tracking-your-work.md) | **The Workshop** | [Working with APIs →](02-working-with-apis.md) |
+| [← Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) | **The Workshop** | [Working with APIs →](02-working-with-apis.md) |

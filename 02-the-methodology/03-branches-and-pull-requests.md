@@ -192,3 +192,9 @@ You will use the branch-and-PR workflow throughout Phase 3 and Phase 4 — the W
 The command vocabulary from Phase 0 still holds. You'll use `git status`, `git add`, `git commit`, and `git push` constantly. `git checkout -b`, `git push -u origin HEAD`, and `git checkout main` are the additions that let you work the way professional teams do.
 
 Now you're ready for Phase 3.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Tracking Your Work](02-tracking-your-work.md) | **Branches and Pull Requests** | [The Workshop →](../03-real-world-skills/01-the-workshop.md) |

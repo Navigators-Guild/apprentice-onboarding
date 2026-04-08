@@ -79,3 +79,9 @@ That's it. The curriculum will tell you when there's a new channel to join or a 
 "The guild" in this curriculum refers to a community that is partially built. The methodology (design, verify, get roasted, iterate) works regardless of whether that community has 5 members or 5,000. Today you participate by building in public, using AI as your adversary, and letting your portfolio speak for itself. Every reference to "the guild channel" or "submit for review" in the rest of this curriculum maps to that workflow.
 
 You are not blocked on a community that doesn't exist yet. You're the early cohort. Build good work and it becomes the community's foundation.
+
+---
+
+| Previous | Current | Next |
+|:---|:---:|---:|
+| [← Git: Just Enough](05-git-just-enough.md) | **The Guild** | [How Agents Think →](../01-talking-to-agents/01-how-agents-think.md) |
