@@ -1,0 +1,8 @@
+{
+  "uuid": "073bde48-0213-48ba-9629-6ddcb7aeaf9a",
+  "issue_uuid": "a120d024-b5c5-41fe-9a43-b59be4c35c87",
+  "author": "anon-13168fa2",
+  "content": "Added Live Server to the Phase 0 recommended extensions list (now three instead of two). Rewrote the 01-talking-to-agents/05-first-build.md:97 Open the file line to make Live Server the primary instruction (right-click index.html, Open with Live Server, auto-reload behavior explained) with a fallback install hint for readers who skipped Phase 0. Both files are now consistent.",
+  "created_at": "2026-04-08T00:49:17.492738616Z",
+  "kind": "result"
+}
