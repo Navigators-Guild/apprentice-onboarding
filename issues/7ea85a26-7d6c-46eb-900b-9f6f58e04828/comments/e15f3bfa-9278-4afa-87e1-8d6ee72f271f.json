@@ -1,0 +1,8 @@
+{
+  "uuid": "e15f3bfa-9278-4afa-87e1-8d6ee72f271f",
+  "issue_uuid": "7ea85a26-7d6c-46eb-900b-9f6f58e04828",
+  "author": "anon-13168fa2",
+  "content": "Expanded the cargo publish section in 03-real-world-skills/05-shipping-it.md with the full 8-step walkthrough: crates.io account via GitHub OAuth, email verification gotcha, API token generation, cargo login to ~/.cargo/credentials.toml, Cargo.toml metadata fields with a real example, cargo publish --dry-run with common warnings, cargo publish, git tag. Added explicit 'Publishing is optional' callout at the top and 'cannot unpublish, only yank' warning with the yank command semantics. Added a follow-up versions subsection for the ongoing loop.",
+  "created_at": "2026-04-08T00:53:07.414214817Z",
+  "kind": "result"
+}
