@@ -1,0 +1,10 @@
+{
+  "uuid": "c6a9bd29-b1ed-4110-9002-f1e7b0283181",
+  "issue_uuid": "7d5fd297-0789-41af-ba93-53b74f910adf",
+  "author": "TLk9",
+  "content": "[action] Edit plan finalized: (1) Rewrite 06-the-guild.md with current Discord section, (2) Update README glossary, (3) Point 11 scattered 'guild channel' references at specific Discord channels, (4) CHANGELOG entry. Preserving user spelling #adverserial-review exactly.",
+  "created_at": "2026-04-08T02:07:24.937837871Z",
+  "kind": "note",
+  "signed_by": "SHA256:FrTpZkPPyxMjp8NlOXpRLGJTM/H7aGTgSUgXECyvIqo",
+  "signature": "U1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgikeYAULDRh/Q55Gxuj/XUmL1gmllioaCsvWeu5j3YpcAAAARY3Jvc3NsaW5rLWNvbW1lbnQAAAAAAAAABnNoYTUxMgAAAFMAAAALc3NoLWVkMjU1MTkAAABAd1K34UVVgDypb5t1DUJaL7JJuDJe4UZoZsMvhtQhf6eO0BZagIoQHC+hzYPSuXDNIehr1KR/vqPnjfJVx2zYCg=="
+}
