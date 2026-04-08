@@ -3,12 +3,13 @@
   "display_id": 35,
   "title": "Teach environment variables and API keys before Phase 3 APIs",
   "description": "03-real-world-skills/02-working-with-apis.md:95-103 introduces API keys ('a long string of characters that identifies you to the service') and then at 03-real-world-skills/02-working-with-apis.md:137 instructs: 'Use the GitHub personal access token from the GITHUB_TOKEN environment variable.' A complete novice does not know: (1) what an environment variable is, (2) how to set one on their OS (export on bash/zsh, $env on PowerShell, persistent vs session-scoped), (3) how to get a GitHub personal access token (Settings > Developer Settings > Personal access tokens > Generate new token > scopes > copy before leaving the page), (4) the security rule: never paste keys into source files or commit them. The Security chapter (03-real-world-skills/04-security.md:35) warns 'API keys in source code. Tokens in config files that get committed to git.' but the warning comes after the reader has already been told to use GITHUB_TOKEN without being taught how to get or store one safely. Fix: Add a new section early in 03-real-world-skills/02-working-with-apis.md titled 'Environment Variables and Secrets' that teaches: what an env var is, how to set one temporarily (shell command) and persistently (shell profile file or OS env UI), how to create a GitHub PAT with step-by-step clicks, why keys go in env vars and .env files (gitignored) not source, and a tiny walkthrough of reading an env var from Rust (std::env::var).",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:31:16.729309623Z",
-  "updated_at": "2026-04-08T00:31:18.940420542Z",
+  "updated_at": "2026-04-08T00:51:09.118446361Z",
+  "closed_at": "2026-04-08T00:51:09.118446361Z",
   "labels": [
     "docs"
   ]
