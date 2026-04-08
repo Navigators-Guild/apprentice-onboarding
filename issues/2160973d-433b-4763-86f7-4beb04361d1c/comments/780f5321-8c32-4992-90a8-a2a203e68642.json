@@ -1,0 +1,8 @@
+{
+  "uuid": "780f5321-8c32-4992-90a8-a2a203e68642",
+  "issue_uuid": "2160973d-433b-4763-86f7-4beb04361d1c",
+  "author": "anon-13168fa2",
+  "content": "Expanded git push section in 00-foundations/05-git-just-enough.md with a dedicated 'One-Time Setup: Authenticating with GitHub' subsection. Walks through the Personal Access Token path step by step: where to click in GitHub Settings, what scopes to check (repo only), that the token is shown once and must be copied immediately, how to paste it at the git push prompt, and that credential helpers remember it after the first success. Lists the three most common error messages verbatim with explanations, plus the 'paste is silent' gotcha. SSH keys mentioned briefly as a later alternative without a full walkthrough to keep the focus clear.",
+  "created_at": "2026-04-08T00:40:44.236505482Z",
+  "kind": "result"
+}
