@@ -1,0 +1,12 @@
+{
+  "uuid": "dc0efd77-55bc-4904-a79d-31f64030c555",
+  "display_id": 24,
+  "title": "Fix Chainlink/crosslink naming mismatch across curriculum",
+  "description": "The curriculum consistently refers to the issue tracker as 'Chainlink' with install command 'cargo install chainlink-tracker' and a '.chainlink/' folder (02-the-methodology/02-tracking-your-work.md lines 118-170, 03-real-world-skills/01-the-workshop.md:102, 04-proving-it/01-on-your-own.md:37, 04-proving-it/03-the-portfolio-review.md:73). The actual tool is 'crosslink' — binary name 'crosslink', folder '.crosslink/', commands 'crosslink quick', 'crosslink session start', etc. A novice following the docs will run 'cargo install chainlink-tracker' and either install the wrong crate or fail. Fix: global find-and-replace Chainlink→crosslink throughout curriculum, update install command to match the real binary, update folder references to .crosslink/, verify all example commands match the real CLI.",
+  "status": "open",
+  "priority": "high",
+  "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:28:33.871032995Z",
+  "updated_at": "2026-04-08T00:28:33.871032995Z"
+}
