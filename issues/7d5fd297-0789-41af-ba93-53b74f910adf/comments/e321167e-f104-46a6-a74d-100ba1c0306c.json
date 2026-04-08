@@ -1,0 +1,10 @@
+{
+  "uuid": "e321167e-f104-46a6-a74d-100ba1c0306c",
+  "issue_uuid": "7d5fd297-0789-41af-ba93-53b74f910adf",
+  "author": "TLk9",
+  "content": "[action] Examining all docs for references to the guild community/chat, then integrating the real Discord server https://discord.gg/kfM6Q4UBbM with channels #apprentice-level, #adverserial-review, #mastering-ai-development, #claude-skills, #prompt-magic",
+  "created_at": "2026-04-08T02:05:18.183746171Z",
+  "kind": "note",
+  "signed_by": "SHA256:FrTpZkPPyxMjp8NlOXpRLGJTM/H7aGTgSUgXECyvIqo",
+  "signature": "U1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgikeYAULDRh/Q55Gxuj/XUmL1gmllioaCsvWeu5j3YpcAAAARY3Jvc3NsaW5rLWNvbW1lbnQAAAAAAAAABnNoYTUxMgAAAFMAAAALc3NoLWVkMjU1MTkAAABAJnvQbSABqlRpLvcKMaLVHrIoiwlrH0Qe0cuiUV8LHwYgrPu1SLo/LP0+oVsK8IfMndeqLs0jd3id6Otr7u85CA=="
+}
