@@ -1,0 +1,12 @@
+{
+  "uuid": "ba79c720-521b-4ff4-810f-b4c43c3e2176",
+  "display_id": 32,
+  "title": "Add browser developer tools mini-guide for debugging",
+  "description": "01-talking-to-agents/05-first-build.md:193 tells the reader to 'Open your browser developer tools (right-click the page, click Inspect, then click the Console tab). If there are red error messages, copy them.' That single sentence is the only exposure a novice gets to devtools, and the first build project is an HTML/JS app that will fail silently without them. A novice has probably never opened Inspect in their life. They will not know the Console tab from the Elements tab, they will not know red text from warnings, they will not know that an error on line N of index.html means the N-th line of the file, they will not know that refresh is required after edits. Fix: Add a short subsection to 00-foundations/04-your-workspace.md (or 01-talking-to-agents/05-first-build.md before Step 4) titled 'Opening the Browser Console' with: (1) how to open on Chrome, Firefox, Edge, Safari (keyboard shortcut F12 or Ctrl+Shift+I / Cmd+Option+I), (2) a screenshot or ASCII diagram of the devtools panel showing where the Console tab is, (3) what red vs yellow vs gray messages mean, (4) how to clear the console, (5) the reload-and-retry habit. One-page max.",
+  "status": "open",
+  "priority": "medium",
+  "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:30:28.550589348Z",
+  "updated_at": "2026-04-08T00:30:28.550589348Z"
+}
