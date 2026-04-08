@@ -1,0 +1,11 @@
+{
+  "uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "display_id": 23,
+  "title": "Audit apprentice onboarding for novice-level gaps",
+  "description": "Curriculum audit assuming the reader is a complete computer novice (can log into websites and check email, nothing more). Identifies places where the text assumes prerequisite knowledge, undefined community infrastructure, missing setup steps, or jargon introduced without explanation. Each gap becomes a sub-issue.",
+  "status": "open",
+  "priority": "high",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:28:20.307619798Z",
+  "updated_at": "2026-04-08T00:28:20.307619798Z"
+}
