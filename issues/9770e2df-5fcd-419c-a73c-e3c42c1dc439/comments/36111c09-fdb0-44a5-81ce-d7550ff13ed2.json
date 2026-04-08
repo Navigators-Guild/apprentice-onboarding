@@ -1,0 +1,8 @@
+{
+  "uuid": "36111c09-fdb0-44a5-81ce-d7550ff13ed2",
+  "issue_uuid": "9770e2df-5fcd-419c-a73c-e3c42c1dc439",
+  "author": "anon-13168fa2",
+  "content": "Added 'What a Design Doc Actually Looks Like' subsection to 01-talking-to-agents/03-context-is-everything.md with a complete worked example for a habit tracker project. The example uses all the sections a novice will encounter in later chapters (Purpose, Features, Technology, Interface, Constraints, Out of Scope, Success Criteria) and is followed by annotation explaining what each section accomplishes. This gives readers a concrete template to imitate before 04-breaking-problems-down and 05-first-build ask them to write one, and matches the spec called out in #40.",
+  "created_at": "2026-04-08T00:56:34.169487688Z",
+  "kind": "result"
+}
