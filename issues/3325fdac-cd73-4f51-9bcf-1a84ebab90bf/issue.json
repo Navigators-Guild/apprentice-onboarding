@@ -3,12 +3,13 @@
   "display_id": 39,
   "title": "Define jargon on first use: VDD, IAR, CLI, PR, MCP, MSRV",
   "description": "Several acronyms and terms are used before or without definition. VDD and IAR appear in README.md:9 and elsewhere; they are spelled out but then treated as familiar. 'CLI' is used repeatedly (e.g. 02-the-methodology/02-tracking-your-work.md:124, the project table in README.md) without the expansion 'command-line interface' ever appearing. 'PR' first appears in 03-real-world-skills/01-the-workshop.md:116-124 as part of a bullet list of steps, never expanded to 'pull request'. 'MCP' is finally defined in 03-real-world-skills/02-working-with-apis.md but 'MCP servers' shows up in README.md:65 first. 'Epic', 'subissue', 'bead-string' are used in 02-the-methodology/02-tracking-your-work.md without clear first-use definition. A complete novice pattern-matches on jargon and bails. Fix: Audit every acronym and guild-specific term. For each, (a) expand on first use in every chapter where it first appears, or (b) add a glossary at the end of README.md or as a small 00-foundations/06-glossary.md that every chapter can link to. Prefer spelling out on first use because glossaries are rarely consulted by beginners.",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:32:19.226233149Z",
-  "updated_at": "2026-04-08T00:32:22.319569274Z",
+  "updated_at": "2026-04-08T00:55:39.915053913Z",
+  "closed_at": "2026-04-08T00:55:39.915053913Z",
   "labels": [
     "docs"
   ]
