@@ -1,0 +1,8 @@
+{
+  "uuid": "fdf19ed8-b218-4414-8d75-81b913fb18c4",
+  "issue_uuid": "a07bef61-9f27-4cac-8211-61acdff3a3e0",
+  "author": "anon-13168fa2",
+  "content": "Expanded the API Keys and Secrets section in 03-real-world-skills/02-working-with-apis.md into a proper walkthrough. New subsections: (1) What an env var is with printenv/Get-ChildItem Env: commands to inspect current state, (2) Setting session-only vs persistent vars with OS-specific commands for bash/zsh/PowerShell and the shell config file to edit, (3) Getting a GitHub Personal Access Token with the 7-step click path including how to reuse the Phase 0 token vs create a separate one, (4) Telling the agent to read from env with explicit prompt example, (5) .env files and dotenvy/dotenv with the critical .gitignore rule and .env.example convention. Cross-references the Phase 0 PAT section and the upcoming Security chapter.",
+  "created_at": "2026-04-08T00:51:07.454886976Z",
+  "kind": "result"
+}
