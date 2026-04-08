@@ -3,12 +3,13 @@
   "display_id": 42,
   "title": "Explain what cargo install actually does and how to verify success",
   "description": "02-the-methodology/02-tracking-your-work.md:134-137 tells the reader to run 'cargo install chainlink-tracker' (see issue #24 for the naming fix) with no context. Similarly cargo is referenced throughout Phase 2 and Phase 3 with commands like 'cargo audit', 'cargo deny check', 'cargo publish', 'cargo build --release' without the reader being told: (1) where cargo install puts the resulting binary (~/.cargo/bin), (2) that ~/.cargo/bin must be on PATH (rustup does this automatically but a novice may have skipped the shell restart), (3) how to check the install actually produced a working binary (run the new command with --version or --help), (4) what 'command not found' means and how to fix it (close and reopen terminal, or restart shell). A novice who runs cargo install, sees a wall of green compile output, closes the terminal, then cannot find the command in a fresh terminal will conclude the install failed. Fix: Add a short section to 00-foundations/04-your-workspace.md under the Rust install section titled 'Installing Rust Tools Later' covering cargo install semantics, the ~/.cargo/bin PATH detail, the 'close and reopen terminal after rustup' habit, and the 'toolname --version' verification step.",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:33:02.749220594Z",
-  "updated_at": "2026-04-08T00:33:04.230514493Z",
+  "updated_at": "2026-04-08T00:58:31.074810259Z",
+  "closed_at": "2026-04-08T00:58:31.074810259Z",
   "labels": [
     "docs"
   ]
