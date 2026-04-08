@@ -1,0 +1,12 @@
+{
+  "uuid": "5b248177-ed85-4e2f-a5ef-745c826fd6ce",
+  "display_id": 27,
+  "title": "Teach basic file operations in VS Code before Phase 1",
+  "description": "00-foundations/04-your-workspace.md covers VS Code installation and the Extensions panel but never teaches the most basic operation: creating and saving a file. 01-talking-to-agents/05-first-build.md:79 tells the reader to 'create it yourself in VS Code by making a new file called DESIGN.md and pasting the content' with zero instructions on how. A novice needs to learn: (1) File > Open Folder to open a project as a workspace (not just opening single files), (2) right-click in the Explorer sidebar > New File, (3) typing a filename with extension (including dotfiles like .mcp.json and .gitignore which most OSes hide), (4) Ctrl+S / Cmd+S to save, (5) the difference between 'file is modified' dot indicator and a saved file, (6) how to find files in the sidebar. Also cover the specific quirk that on some OSes (Windows Explorer, macOS Finder) creating a filename that starts with a dot will fail — VS Code does allow it. Add this as a section at the end of 00-foundations/04-your-workspace.md titled 'Creating and Editing Files' before the 'Verifying Your Setup' section.",
+  "status": "open",
+  "priority": "high",
+  "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:29:18.206105534Z",
+  "updated_at": "2026-04-08T00:29:18.206105534Z"
+}
