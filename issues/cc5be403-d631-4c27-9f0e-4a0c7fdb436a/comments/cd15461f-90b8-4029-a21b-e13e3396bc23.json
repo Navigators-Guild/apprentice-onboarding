@@ -1,0 +1,8 @@
+{
+  "uuid": "cd15461f-90b8-4029-a21b-e13e3396bc23",
+  "issue_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "author": "anon-13168fa2",
+  "content": "All 19 subissues (#24-#42) completed in a single sweep. Curriculum is now consistent on 'crosslink' not 'Chainlink'; has a dedicated guild chapter explaining what exists today; walks novices through GitHub auth, VS Code file ops, Node.js install, branching+PR, fork-based contribution, adversarial review submission, browser devtools, Live Server, JSON and YAML primers, env vars and PAT generation, GitHub Actions workflow structure, crates.io publishing with yank semantics, Windows MSVC build tools, jargon glossary, a worked design doc example, flatter folder structure, and cargo install mechanics. Verified Navigators-Guild/guild-toolkit exists with the described 9-crate workspace and 60 open apprentice-sized issues.",
+  "created_at": "2026-04-08T00:58:46.019407635Z",
+  "kind": "result"
+}
