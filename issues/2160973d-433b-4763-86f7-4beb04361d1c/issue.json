@@ -3,12 +3,13 @@
   "display_id": 26,
   "title": "Walk novice through first git push authentication",
   "description": "00-foundations/05-git-just-enough.md:123 handwaves the single most common beginner failure: 'The first time you push a new project, git might ask you to set up the connection to GitHub. It will give you instructions. Follow them, or ask your agent for help.' A complete novice will hit this on their very first push and be stuck. The modern options are HTTPS + Personal Access Token (with git credential manager), or SSH keys. Both require multi-step setup on GitHub settings pages that a novice has never seen. Fix: Add a dedicated section in 00-foundations/05-git-just-enough.md walking through either (a) creating a Personal Access Token under GitHub Settings > Developer Settings > PATs, selecting the 'repo' scope, pasting it as the password on first push, and explaining the credential manager will remember it; or (b) generating an SSH key with ssh-keygen, copying the public key, pasting it into GitHub Settings > SSH keys, and switching the remote URL from https:// to git@github.com:. Include screenshots or exact click-paths. Include the common error messages ('remote: Support for password authentication was removed', 'Permission denied (publickey)') and what each means.",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:29:03.960570109Z",
-  "updated_at": "2026-04-08T00:29:05.492893685Z",
+  "updated_at": "2026-04-08T00:40:45.809678423Z",
+  "closed_at": "2026-04-08T00:40:45.809678423Z",
   "labels": [
     "docs"
   ]
