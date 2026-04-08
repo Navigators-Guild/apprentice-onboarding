@@ -1,2 +1,4 @@
 # Crosslink trusted signers
 # Format: <principal> <key-type> <base64-key> [comment]
+# approved by doll at 2026-04-08 02:02:39 UTC
+TLk9@crosslink ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIpHmAFCw0Yf0OeRsbo/11Ji9YJpZYqGgrL1nruY92KX crosslink-agent:TLk9@dollspace
