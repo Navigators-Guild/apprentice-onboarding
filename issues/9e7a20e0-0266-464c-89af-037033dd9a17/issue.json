@@ -3,11 +3,12 @@
   "display_id": 43,
   "title": "Commit novice-gap audit fixes",
   "description": "Single commit rolling up all 19 issue fixes from the curriculum audit: crosslink rename, guild chapter, PR bridge chapter, Phase 0 walkthroughs (VS Code file ops, browser devtools, Node.js, Windows Rust MSVC, PAT auth, cargo install mechanics), JSON primer, design doc example, env vars walkthrough, CI primer, crates.io publish walkthrough, glossary, folder structure flattening.",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T01:47:41.430774709Z",
-  "updated_at": "2026-04-08T01:47:44.959346311Z",
+  "updated_at": "2026-04-08T01:48:32.870293340Z",
+  "closed_at": "2026-04-08T01:48:32.870293340Z",
   "labels": [
     "docs"
   ]
