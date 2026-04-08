@@ -3,12 +3,13 @@
   "display_id": 37,
   "title": "Document crates.io account setup for cargo publish",
   "description": "03-real-world-skills/05-shipping-it.md:289 says 'You will need a crates.io account linked to your GitHub. The first time you run cargo publish, it will walk you through the authentication.' That is not enough for a novice. The actual steps: (1) sign in to crates.io with GitHub OAuth, (2) confirm email address from the email crates.io sends (must be verified before publishing), (3) go to Account Settings > API Tokens > New Token, (4) run 'cargo login <token>' which stores it in ~/.cargo/credentials.toml, (5) then 'cargo publish' works. Also important context a novice will not know: crate names are first-come-first-served globally, you cannot unpublish a version (only yank), version numbers must increment, published crates are public forever. Fix: Expand the crates.io section in 03-real-world-skills/05-shipping-it.md with the numbered walkthrough and the 'forever public' warning. Add a note that publishing is optional for the curriculum and most apprentice projects should stay unpublished.",
-  "status": "open",
+  "status": "closed",
   "priority": "low",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:31:48.862048186Z",
-  "updated_at": "2026-04-08T00:31:50.256220761Z",
+  "updated_at": "2026-04-08T00:53:09.028121428Z",
+  "closed_at": "2026-04-08T00:53:09.028121428Z",
   "labels": [
     "docs"
   ]
