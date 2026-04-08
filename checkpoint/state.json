@@ -6,12 +6,16 @@
     "46": {
       "agent_id": "TLk9",
       "claimed_at": "2026-04-08T02:12:31.668735568Z"
+    },
+    "47": {
+      "agent_id": "TLk9",
+      "claimed_at": "2026-04-08T02:13:45.429765319Z"
     }
   },
   "issues": {},
   "watermark": {
-    "timestamp": "2026-04-08T02:12:31.668735568Z",
+    "timestamp": "2026-04-08T02:13:45.429765319Z",
     "agent_id": "TLk9",
-    "agent_seq": 3
+    "agent_seq": 4
   }
 }
