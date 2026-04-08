@@ -1,0 +1,8 @@
+{
+  "uuid": "8a1a6b16-06ad-4029-a763-595ad45c3fb8",
+  "issue_uuid": "b1cd4902-7202-4d8b-aa23-bd3f7322bf3f",
+  "author": "anon-13168fa2",
+  "content": "Rewrote Tool 4 Rust install section in 00-foundations/04-your-workspace.md with a numbered 8-step Windows walkthrough that covers: rustup-init.exe download, MSVC build tools detection, Visual Studio Installer Desktop development with C++ workload (with multi-gig download warning), the critical 'close and reopen terminal' step, and the common linker 'link.exe' not found error message for search-engine findability. Also added WSL2 as a valid alternative for Windows users who prefer the Linux experience. Mac/Linux path preserved with the option-1 prompt and terminal-restart habit added.",
+  "created_at": "2026-04-08T00:54:04.990029893Z",
+  "kind": "result"
+}
