@@ -1,0 +1,10 @@
+{
+  "uuid": "f2ec7ef5-5eb5-43d1-b4aa-b773f316f7ad",
+  "issue_uuid": "7d5fd297-0789-41af-ba93-53b74f910adf",
+  "author": "TLk9",
+  "content": "Completed. Integrated the live Discord (https://discord.gg/kfM6Q4UBbM) across the curriculum. Changes:\n- 00-foundations/06-the-guild.md: major rewrite. New 'The Guild Discord' section with channel descriptions. Updated Current State, What You Use Today, What the Guild Will Be, and The Takeaway. Discord is now framed as live infrastructure; AI adversary remains the always-available immediate-feedback workflow.\n- 00-foundations/01-the-new-literacy.md: heads-up paragraph now mentions the live Discord.\n- README.md: updated glossary entry for 'The Guild' and portfolio requirements bullet for adversarial review history.\n- Phase 1: 02-the-art-of-intent (#prompt-magic), 04-breaking-problems-down (#apprentice-level), 05-first-build (Step 8h rewritten — #adverserial-review), 06-when-things-break (#apprentice-level), 07-finding-answers (#apprentice-level + #mastering-ai-development).\n- Phase 2: 01-how-we-build (#adverserial-review), 02-tracking-your-work (#adverserial-review).\n- Phase 3: 01-the-workshop (#apprentice-level), 02-working-with-apis (added #claude-skills in two spots), 03-project-architecture (#mastering-ai-development).\n- Phase 4: 01-on-your-own (#mastering-ai-development, two spots).\n- CHANGELOG.md: entry added.\nPreserved user's exact channel spelling #adverserial-review throughout (note the 'e' — that's how the channel is actually named in the Discord).",
+  "created_at": "2026-04-08T02:11:23.877842672Z",
+  "kind": "note",
+  "signed_by": "SHA256:FrTpZkPPyxMjp8NlOXpRLGJTM/H7aGTgSUgXECyvIqo",
+  "signature": "U1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgikeYAULDRh/Q55Gxuj/XUmL1gmllioaCsvWeu5j3YpcAAAARY3Jvc3NsaW5rLWNvbW1lbnQAAAAAAAAABnNoYTUxMgAAAFMAAAALc3NoLWVkMjU1MTkAAABA43sBs/Cjk3tT3QNPYwGpXQ7pXywPII5bORAfBZEhHAViihMFuGtjT68kLkbvpLpOr7ddvZ47Pe2kerXz3BJdAg=="
+}
