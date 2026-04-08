@@ -3,12 +3,13 @@
   "display_id": 34,
   "title": "Add JSON primer before first JSON reference in Phase 2",
   "description": "JSON is used as a first-class concept in 02-the-methodology/02-tracking-your-work.md:68,92,100 ('Data stored in a local JSON file', 'Save to a JSON file', 'What if the JSON file gets corrupted?') and in 01-talking-to-agents/06-when-things-break.md:112 ('we are storing data as JSON in a local file'), and again in 03-real-world-skills/02-working-with-apis.md where the reader creates a .mcp.json file. But nothing in the curriculum has ever shown the reader what JSON looks like, what the braces and quotes mean, how to read nested structure, how to spot a syntax error (trailing comma, unquoted key), or how to open a .json file in VS Code. A novice will hit 'corrupted JSON' and have no mental model to repair it. Fix: Add a short primer (~half page) in 00-foundations/02-what-code-actually-is.md under the 'Files and Folders' section, or as a small new section called 'Data Formats You Will See'. Show a minimal JSON example with keys, strings, numbers, lists, nesting; show one valid file and one invalid file (trailing comma) side-by-side with a callout. Also mention YAML briefly since 03-real-world-skills/05-shipping-it.md:244 uses .yml files for CI.",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:31:00.548090164Z",
-  "updated_at": "2026-04-08T00:31:01.971187595Z",
+  "updated_at": "2026-04-08T00:50:06.636239856Z",
+  "closed_at": "2026-04-08T00:50:06.636239856Z",
   "labels": [
     "docs"
   ]
