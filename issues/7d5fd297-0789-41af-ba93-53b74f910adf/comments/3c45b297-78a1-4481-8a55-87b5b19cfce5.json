@@ -1,0 +1,10 @@
+{
+  "uuid": "3c45b297-78a1-4481-8a55-87b5b19cfce5",
+  "issue_uuid": "7d5fd297-0789-41af-ba93-53b74f910adf",
+  "author": "TLk9",
+  "content": "Discord integration (#46) complete. 15 files updated to reference https://discord.gg/kfM6Q4UBbM and specific channels. No commit created — leaving that for the user to run /commit when they're ready. The Guild chapter (00-foundations/06-the-guild.md) got the biggest rewrite; other files mostly replaced 'guild channel' with links to specific Discord channels matched to topic. User's #adverserial-review spelling (with 'e') preserved exactly.",
+  "created_at": "2026-04-08T02:11:28.615591352Z",
+  "kind": "handoff",
+  "signed_by": "SHA256:FrTpZkPPyxMjp8NlOXpRLGJTM/H7aGTgSUgXECyvIqo",
+  "signature": "U1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgikeYAULDRh/Q55Gxuj/XUmL1gmllioaCsvWeu5j3YpcAAAARY3Jvc3NsaW5rLWNvbW1lbnQAAAAAAAAABnNoYTUxMgAAAFMAAAALc3NoLWVkMjU1MTkAAABALIT50hwkRo/H5nbVjpM5qiTcPXrSigRCqC8MbqSaFZ8mDCl6bIRwmFIKQzG9JIrORmIJXkYkjlKUY05Rg/ujCQ=="
+}
