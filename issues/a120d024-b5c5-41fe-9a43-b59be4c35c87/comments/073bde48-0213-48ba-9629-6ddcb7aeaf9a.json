@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Added Live Server to the Phase 0 recommended extensions list (now three instead of two). Rewrote the 01-talking-to-agents/05-first-build.md:97 Open the file line to make Live Server the primary instruction (right-click index.html, Open with Live Server, auto-reload behavior explained) with a fallback install hint for readers who skipped Phase 0. Both files are now consistent.",
   "created_at": "2026-04-08T00:49:17.492738616Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAhAOi1TQyTg49UMcZczstW3/0kWS14/8VmtFt8XYfTca9RAAAAIAqkFT2224kouRtow17TC6/3iludt338YTV8+J83p6Vp"
 }

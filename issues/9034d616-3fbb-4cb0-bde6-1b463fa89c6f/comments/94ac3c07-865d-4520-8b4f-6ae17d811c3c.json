@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Delivered: Created 02-the-methodology/02-tracking-your-work.md. Four sections: (1) 'When Your Head Runs Out of Room' - why memory fails, why agents need tracking even more than humans; (2) 'Build One' - guided issue tracker project as portfolio piece #2 with full design doc and 7 build layers; (3) 'Now Use a Real One: Chainlink' - maps built concepts to Chainlink features, covers sessions/breadcrumbs/subissues/dependencies/smart suggestions/daily workflow; (4) 'The Bigger Picture' - ties tracking back to VDD bead-string and adversarial review. 5 exercises including the meta exercise of tracking the tracker's own remaining work. Updated README.md.",
   "created_at": "2026-03-22T14:05:25.991201028Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAgespkGFSigxKV+h4NWSOh1l/GAUcmNTBtqzueLLzDfmQAAAAhALZs4DBfjQHXegYmdnPHyYw0Guv1n5/XDkxhoauyBg4y"
 }

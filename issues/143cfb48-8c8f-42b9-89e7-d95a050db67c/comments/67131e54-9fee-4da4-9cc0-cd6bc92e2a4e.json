@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Delivered: Added security habit callouts to two earlier chapters. Phase 1 first build: after the verification step, prompts students to test empty titles and bad URLs, directs them to tell the agent to add validation. Phase 2 issue tracker: after build layers, covers validating CLI input and handling missing/corrupted JSON files. Both forward-reference the Security chapter. Light touch - one paragraph each, not full sections.",
   "created_at": "2026-03-22T17:26:35.796948849Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAgOaCogV0a3hMzkyBeRkMN4PzFUaD7S5B1XfibUq9AidkAAAAhANh8knCPo8vCCc9jYGZkw1Bf2YDWln9F3rtY8Zca1l3x"
 }

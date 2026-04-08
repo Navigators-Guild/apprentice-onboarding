@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Plan: Rewrite the Chainlink section to reframe from 'you run these commands' to 'the agent runs these commands automatically.' Chainlink hooks tell Claude how to use it - the user just needs to install it and understand what's happening. The user's role is directing and reviewing, not typing chainlink commands.",
   "created_at": "2026-03-22T14:13:07.528816022Z",
-  "kind": "plan"
+  "kind": "plan",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEgAAAAgONEQKZ3DeWG4/olXanNs6//xj4u1qtqKi5GgGpy3LtAAAAAgcy+vBg4Cm2YpgVnPB4kpc24hKYYDlhbWEBXzLE+6JbI="
 }

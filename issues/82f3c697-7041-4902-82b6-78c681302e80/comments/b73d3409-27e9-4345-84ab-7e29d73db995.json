@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Subissues: (a) Write language landscape chapter, (b) Renumber + update workspace for Rust, (c) Update issue tracker project to Rust CLI, (d) Rewrite README for full path. Working in this order.",
   "created_at": "2026-03-22T14:34:54.987910261Z",
-  "kind": "plan"
+  "kind": "plan",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEgAAAAge65J0J9eq5BvSgRTkzZjduXD+njkwUpJI6VFxrLswSgAAAAgWG3RxFbxRX+FDM2SYw03T0nzG3IXWRjJhFGZ7X5J+24="
 }

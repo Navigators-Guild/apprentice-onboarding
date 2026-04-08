@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Plan: Add brief security callouts to earlier chapters so the habits are seeded before the full Security chapter in Phase 3. Targets: (1) Phase 1 first build - when setting up local storage, mention validating input before storing it and not trusting data you read back without checking. (2) Phase 2 issue tracker - when building the Rust CLI, mention never hardcoding secrets and validating CLI input. (3) Phase 3 APIs chapter - already covers secrets well, just needs a forward reference to the security chapter. Light touch in each - a paragraph or a callout box, not a full section. The Security chapter stays as the deep dive.",
   "created_at": "2026-03-22T17:25:48.210455342Z",
-  "kind": "plan"
+  "kind": "plan",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAgXqchLReOWepGwipLtU/maUCAh5L79uOEdzpYotdlbeEAAAAhAJSHa7oIFF6Xif4xD6MJ3JxY+baZIK8n9Z8Bf8pfKxs6"
 }

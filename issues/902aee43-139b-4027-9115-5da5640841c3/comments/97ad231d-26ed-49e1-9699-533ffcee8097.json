@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Delivered: Created 03-real-world-skills/02-working-with-apis.md. Three approaches covered in priority order: (1) MCP servers as the preferred agentic approach - agent gets tools it can call directly, with pointers to mcp.so, modelcontextprotocol.io, and .mcp.json config. (2) Claude skills as pre-packaged workflows, how they differ from MCPs, where to find them, how to write your own. (3) Writing API code directly when no MCP exists, with the agent generating HTTP integration code. Also covers: API keys/secrets (never hardcode, environment variables), rate limiting, error handling for unreliable services, using API documentation. Practical example walking through building a GitHub CI status checker via both MCP and direct code approaches. 4 exercises. Updated README to link chapter. Also added HTML/JS exception note to Phase 1 first build chapter.",
   "created_at": "2026-03-22T15:57:33.420856615Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEoAAAAhALwraOxXguTPCLls3EEcpS0tpdeC9axtE7R3Dhv0wbbJAAAAIQCb5pXiQ99QmI3p2ubGcCJuvXLQPfDD0Lkixahdy9ZSVA=="
 }

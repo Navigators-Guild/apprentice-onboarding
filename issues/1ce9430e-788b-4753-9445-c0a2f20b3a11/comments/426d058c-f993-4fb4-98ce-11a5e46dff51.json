@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Rewrote the Continuous Integration section in 03-real-world-skills/05-shipping-it.md to teach CI from first principles before the yml reference. New coverage: what CI is (fresh VM runs your commands on every push), why it exists (OS differences, clean env testing, etc.), the .github/workflows/ magic folder convention, a minimal working Rust workflow example with line-by-line annotation of name/on/jobs/steps/uses/run, indentation-matters warning, the Actions tab web UI walkthrough with yellow/green/red semantics, and the debug loop. Also fixed 03-real-world-skills/04-security.md:95 which said 'add to our workflow' with no context — now explicitly references the .github/workflows/ci.yml file and links back to the Shipping chapter.",
   "created_at": "2026-04-08T00:52:10.468485950Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEoAAAAhAOrTeXEUIC4/M93sPdSzVf9gaoIkiNs8m/gAjegZ9VuPAAAAIQDNBBUomE14LT3A7+HNfiROCRJy1XV0Za0AZJmi0JFuoQ=="
 }

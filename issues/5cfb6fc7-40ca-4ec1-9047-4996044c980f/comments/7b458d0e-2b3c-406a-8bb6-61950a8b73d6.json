@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Plan: Write 03-real-world-skills/05-security.md (renumber Shipping It to 06, or insert before it... actually Security should come before Shipping since you need to secure before you ship). Renumber shipping-it to 05, security becomes 04. Wait — shipping-it is already 04. I'll make security 05 and leave shipping as 04 since shipping covers testing which is a prerequisite concept. Actually no — security should come before shipping. You should secure your code before you ship it. Renumber: current 04-shipping-it becomes 05-shipping-it, new 04-security.md. Security covers: (1) Why agent code is often insecure — agents take shortcuts, use deprecated patterns, skip input validation, hardcode things, use unsafe defaults. (2) Common vulnerability categories in conceptual terms (OWASP-style but accessible: injection, broken auth, exposed data, etc). (3) Static security scanning tools — cargo audit, cargo deny, clippy security lints. (4) Adversarial security review — prompting a separate agent specifically for security. (5) Dependency security — supply chain concerns. (6) Exercise: build a security scanner CLI with AI integration.",
   "created_at": "2026-03-22T16:25:20.440516952Z",
-  "kind": "plan"
+  "kind": "plan",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAgC3zHGDQ5Ut0uZCoEYSHhoV9F/sj7qo6Z9aa9vu2CHmMAAAAhAO4R9EN9qTH1cH2QDgWDS3c3Auft+Zl9VWlUMm9srQnt"
 }

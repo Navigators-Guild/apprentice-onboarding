@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Removed the redundant portfolio/ wrapper. 00-foundations/04-your-workspace.md no longer creates ~/guild-projects/portfolio/; the novice creates only ~/guild-projects/scratch/ and the portfolio repo gets cloned directly into ~/guild-projects/guild-portfolio/ in chapter 05. Updated the verification checklist in ch 04 to match. Updated 00-foundations/05-git-just-enough.md clone command (cd ~/guild-projects before git clone) and the git init example (uses scratch/ instead of the now-nonexistent portfolio/). Updated 01-talking-to-agents/05-first-build.md (two cd commands) and 02-the-methodology/02-tracking-your-work.md (one cd command) to use the flatter path. Verified no remaining 'guild-projects/portfolio' references.",
   "created_at": "2026-04-08T00:57:53.896590712Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAgFaMSAo1inLsL2N/ROpX1xBo2HGSNEEoFnyZQOcOp894AAAAhALRtgw4Hbkg6dR03AJYcU/lhAPoyth/9iVtgS2U5D6GZ"
 }

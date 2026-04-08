@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Added Glossary section to the end of README.md with first-use definitions for: VDD, IAR, CLI, PR, MCP, CI, PAT, MSRV, JSON, YAML, The Guild, The Adversary, Design doc, Epic/bead-string/subissue. Also added first-use expansion of CLI in 00-foundations/03-the-language-landscape.md:69 (before Phase 2 issue tracker project references it), and VDD expansion in 01-talking-to-agents/01-how-agents-think.md:51 (the first chapter that uses VDD without spelling it out). PR was already expanded inline during #29 work and MCP is defined inline in 03-real-world-skills/02-working-with-apis.md:17.",
   "created_at": "2026-04-08T00:55:38.285755143Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEgAAAAgT5Y5JcyWA8by0D6SxQgnkf1/u/cTqJPKd0blGSpV954AAAAgfFjBnvIbq6s+OrGyzxHfvMdoGtLjvGpeNA/CDNDrIQI="
 }

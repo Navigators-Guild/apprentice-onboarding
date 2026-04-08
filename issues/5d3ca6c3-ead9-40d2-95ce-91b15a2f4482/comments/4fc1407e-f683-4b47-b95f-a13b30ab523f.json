@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Delivered: Created 00-foundations/ and 01-talking-to-agents/ directories. Moved 4 Phase 0 files and 5 Phase 1 files into correct subdirectories matching README.md links. Deleted 6 Zone.Identifier artifacts.",
   "created_at": "2026-03-22T13:11:06.223732461Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEkAAAAhAI7TonNH1AIHOGGtVQWT/N5o9Dt9J9p/QkyWOASNCV7ZAAAAIDAfMXoZjSck/+XMR59KxUWy19vJvkALVWTpRdrEbTH1"
 }

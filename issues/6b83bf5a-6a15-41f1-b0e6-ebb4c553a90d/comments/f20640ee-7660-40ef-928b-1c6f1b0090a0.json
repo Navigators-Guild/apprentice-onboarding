@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Added navigation tables to the two new chapters (06-the-guild.md and 03-branches-and-pull-requests.md) matching the brocw PR #2 convention. Updated four adjacent pointers so reading order now threads: Your Workspace → Git: Just Enough → The Guild → How Agents Think (Phase 0/1 boundary), and How We Build → Tracking Your Work → Branches and Pull Requests → The Workshop (Phase 2/3 boundary).",
   "created_at": "2026-04-08T01:51:48.488522734Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEgAAAAgZqElvWPEoD+tg+2WptEnkYbIlAomE7RD0Vf7kg48IisAAAAgOdStdwCnGugR/VulbCyCUixDIxGtSECRSm5cdtLlmPQ="
 }

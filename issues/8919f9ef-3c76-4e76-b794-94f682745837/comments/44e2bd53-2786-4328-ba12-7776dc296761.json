@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Delivered: Three changes across two files.\n\n(1) README projects table: Replaced numbered list with phase-mapped table. Each row now shows which phase it belongs to and has a 'Why This Project' column explaining the pedagogical purpose. Added intro text explaining why guided projects use consistent targets (fair comparison across apprentices) while self-directed projects are for personal expression.\n\n(2) Portfolio Review - review process: Added 'The Review Process' section. Two journeymen or masters review independently, compare notes, takes about a week. Three defined outcomes: Ready (advance), Almost there (specific feedback, resubmit), More time needed (guidance on what to revisit). No numerical scores.\n\n(3) Portfolio Review - credential reframing: Replaced the aspirational credential section with an honest timeline. Acknowledges: HR hasn't heard of the guild, the cert won't pass keyword filters today. The portfolio works NOW for anyone who looks at the work directly. The cert builds reputation over time as guild members prove themselves. Draws explicit parallel to how CompTIA/AWS/Cisco certs started with zero recognition and built it.",
   "created_at": "2026-03-22T17:53:54.957602489Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEgAAAAgDuZwgOlR/fgATCV7y+DXDV30XFKYHZKrNZQXr0oFU7EAAAAgAg2gHTsBTl0D8lAmsXWzS2OR5kuw00PYmXyX4J9UCbg="
 }

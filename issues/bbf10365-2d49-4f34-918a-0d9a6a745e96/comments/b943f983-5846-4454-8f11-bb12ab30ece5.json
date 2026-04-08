@@ -4,5 +4,7 @@
   "author": "anon-13168fa2",
   "content": "Delivered: Rewrote the entire Chainlink section. Key changes: (1) Added 'The Key Insight: The Agent Does the Tracking' section explaining that hooks teach the agent to use Chainlink automatically, (2) Reframed all command examples as 'what the agent does behind the scenes' not 'what you type', (3) Replaced concept mapping table to show agent actions not user commands, (4) Rewrote feature descriptions (sessions/breadcrumbs/subissues/dependencies) to say 'the agent tracks this' not 'you run this', (5) Replaced 'Daily Workflow' with 'What You Actually Do' - 4 steps focused on directing and reviewing, (6) Updated exercises 3 and 4 to match the agent-driven model.",
   "created_at": "2026-03-22T14:14:10.492920608Z",
-  "kind": "result"
+  "kind": "result",
+  "signed_by": "SHA256:eHpbrpU/tOUroPHQwwGZTQKY+0tU0E2rZw5zFEs1jHE",
+  "signature": "U1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAEEEe0KY4l/Z7G/vfkx00kFwZtY3FjD8lde6VcPNSNT06kyL5ZUnzQGbJUMzOdlFd65s/RCzZhVJQVonLQ3yKzipGAAAABJjcm9zc2xpbmstYmFja2ZpbGwAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAEgAAAAgXXuWIynSfNy0J/nnw49hXfl0wEFlkM0nVJdU1mvMu+sAAAAgVmAFQGjBNl88AjttzG8bENPOPfvKGbg3q8bA7Wn37vI="
 }
