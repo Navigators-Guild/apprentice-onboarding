@@ -1,0 +1,8 @@
+{
+  "uuid": "8a541483-2940-4fd6-9c32-e8ede23f4f1f",
+  "issue_uuid": "d02f8078-dd6b-42c9-b39e-0f7c0abc118b",
+  "author": "anon-13168fa2",
+  "content": "Added Tool 5: Node.js and npm section to 00-foundations/04-your-workspace.md between Rust and Folder Structure. Covers LTS install from nodejs.org, verification commands, the -g flag explanation, and why it is needed (MCP servers in Phase 3). Added node/npm verification to the Verifying Your Setup checklist. Also updated 03-real-world-skills/02-working-with-apis.md:36 to reference Phase 0 install and explain -g inline, so a reader who skipped or forgot Phase 0 gets the pointer at the point of confusion.",
+  "created_at": "2026-04-08T00:42:23.888178748Z",
+  "kind": "result"
+}
