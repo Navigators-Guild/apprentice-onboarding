@@ -1,0 +1,8 @@
+{
+  "uuid": "cfe852e2-17d1-427b-9e75-850bc7ae6318",
+  "issue_uuid": "9e7a20e0-0266-464c-89af-037033dd9a17",
+  "author": "anon-13168fa2",
+  "content": "Committed as 32940f0: 19 files changed, 875 insertions, 97 deletions. 17 modified + 2 new (00-foundations/06-the-guild.md and 02-the-methodology/03-branches-and-pull-requests.md). Left .claude/, .crosslink/, and .mcp.json untracked intentionally — those are workspace state, not curriculum content. Push is a manual step for the human.",
+  "created_at": "2026-04-08T01:48:29.613086231Z",
+  "kind": "result"
+}
