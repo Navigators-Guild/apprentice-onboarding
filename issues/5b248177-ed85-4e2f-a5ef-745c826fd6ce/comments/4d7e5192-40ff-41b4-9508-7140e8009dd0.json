@@ -1,0 +1,8 @@
+{
+  "uuid": "4d7e5192-40ff-41b4-9508-7140e8009dd0",
+  "issue_uuid": "5b248177-ed85-4e2f-a5ef-745c826fd6ce",
+  "author": "anon-13168fa2",
+  "content": "Added 'Creating and Editing Files in VS Code' subsection to 00-foundations/04-your-workspace.md covering: Open Folder as workspace, New File with extension, save shortcut + dirty-dot indicator, the dotfile trick for filenames like .gitignore and .mcp.json, opening, renaming, and deleting. Kept it strictly to operations used later in the curriculum to avoid VS Code rabbit hole.",
+  "created_at": "2026-04-08T00:41:22.503754057Z",
+  "kind": "result"
+}
