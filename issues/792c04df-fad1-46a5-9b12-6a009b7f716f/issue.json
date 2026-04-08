@@ -3,12 +3,13 @@
   "display_id": 31,
   "title": "Document how to submit work for adversarial review",
   "description": "01-talking-to-agents/05-first-build.md:178 is the first place the reader is told to submit for review: 'Post your project in the guild adversarial review channel. Include: a link to your GitHub repository, a brief description of what you built, an invitation for honest feedback. Then wait. The roasts will come.' This is the first build of the curriculum and the reader has no idea where the channel is, what format the post should take, whether there is a template, how long to wait, or what to do when no feedback arrives. FORWARD.md describes what a review will feel like emotionally but never covers the mechanics. Fix: Add a short section somewhere in 00-foundations or at the end of 01-talking-to-agents/05-first-build.md titled 'How to Submit for Review' that answers: (1) where to post (specific channel name + URL, depends on #25 being resolved), (2) a minimal post template (project title, repo link, what you built, what you specifically want roasted), (3) expected response window, (4) fallback if no one responds (ping, or request an AI adversary via prompt), (5) how to log the roast and your responses in your portfolio PROCESS.md. Depends on #25.",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:30:14.060710109Z",
-  "updated_at": "2026-04-08T00:30:15.961725117Z",
+  "updated_at": "2026-04-08T00:47:28.200639777Z",
+  "closed_at": "2026-04-08T00:47:28.200639777Z",
   "labels": [
     "docs"
   ]
