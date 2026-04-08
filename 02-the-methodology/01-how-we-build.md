@@ -186,7 +186,7 @@ As an apprentice, you're not going to set up formal verification pipelines or ru
 
 3. Pick one feature from your bookmark manager and write down every way it could break. Not just "the button doesn't work" level stuff. Think about: what if the data is corrupted in local storage? What if someone pastes a URL that's 10,000 characters long? What if tags contain special characters? Make a list, then check how many of these your current code handles.
 
-4. Share your adversarial review experience in the guild channel. What was the most useful critique you received? What was the hardest to fix? What did you learn about your own blind spots?
+4. Share your adversarial review experience in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adverserial-review** channel. What was the most useful critique you received? What was the hardest to fix? What did you learn about your own blind spots? Reading other apprentices' review reports in that channel is almost as valuable as running your own.
 
 This methodology is the backbone of everything we do in the guild. The tools will change, the agents will get better, the specific techniques will evolve. But the core loop (build, verify, get roasted, fix, repeat) works because it's built on honest feedback and hard evidence. That doesn't go out of date.
 

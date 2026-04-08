@@ -127,7 +127,7 @@ Your process:
 4. **Apply the fix and test.** If there's a new error, repeat from step 1.
 5. **If you're lost, ask the agent to explain.** "Walk me through what this code does step by step."
 
-This loop handles 95% of problems. The other 5% are where you learn the most, and the guild community is there for those.
+This loop handles 95% of problems. The other 5% are where you learn the most, and the guild community is there for those — drop the question (with the exact error, what you tried, and a link to the code) in the **#apprentice-level** channel of the [Discord](https://discord.gg/kfM6Q4UBbM).
 
 ## Exercises
 

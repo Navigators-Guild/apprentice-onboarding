@@ -160,7 +160,7 @@ Skills this teaches that nothing else in the curriculum does:
 
 ## Exercises
 
-1. Clone the guild-toolkit repo and build the workspace. Explore the structure. Read guild-core's source. Don't change anything yet. Just read. Then write a paragraph describing how the shared data model works and how tools are expected to use it. Share it in the guild channel for feedback on your understanding.
+1. Clone the guild-toolkit repo and build the workspace. Explore the structure. Read guild-core's source. Don't change anything yet. Just read. Then write a paragraph describing how the shared data model works and how tools are expected to use it. Share it in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#apprentice-level** channel for feedback on your understanding.
 
 2. Pick a beginner tool and implement its first feature. Follow the full process: claim the work, design before building, build in layers, submit a PR.
 

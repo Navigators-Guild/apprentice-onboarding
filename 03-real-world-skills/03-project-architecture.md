@@ -168,7 +168,7 @@ If the answer to any of these is no, push back before a single line of code exis
 
 1. Look back at your issue tracker from Phase 2. Is it a god file? If most of the logic lives in one or two files, refactor it. Tell your agent to split it into modules: models, storage, commands, output. Verify that it still works after the refactoring. This is the most common real-world task: not building something new, but improving the structure of something that works.
 
-2. Clone a tool from the guild-toolkit and read its structure. How is it organized? Does each file have a clear purpose? Write a paragraph describing the architecture. Share it in the guild channel.
+2. Clone a tool from the guild-toolkit and read its structure. How is it organized? Does each file have a clear purpose? Write a paragraph describing the architecture. Share it in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#mastering-ai-development** channel — architecture discussion is exactly what that channel is for.
 
 3. Start a new project (anything you want) and begin with the architecture conversation. Before any code exists, have the agent help you plan the module structure. Save the plan as a section in your design doc. Then build, following the plan. Notice how much smoother the build process is when the structure is decided upfront.
 

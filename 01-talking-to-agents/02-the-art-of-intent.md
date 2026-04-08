@@ -156,7 +156,7 @@ Try writing prompts for each of these using the five questions and the template 
 2. A simple timer app that lets you create named timers (like "Laundry" or "Meeting in 30 min")
 3. A reading list tracker where you can add books, mark them as read, and rate them
 
-Write these out and share them in the guild. Getting feedback on your prompts before building is great practice, and it's the earliest form of the adversarial refinement that defines our methodology.
+Write these out and share them in the guild [Discord](https://discord.gg/kfM6Q4UBbM) — **#prompt-magic** is the right channel for critique on the prompts themselves, **#apprentice-level** if you'd rather get general feedback on the whole exercise. Getting feedback on your prompts before building is great practice, and it's the earliest form of the adversarial refinement that defines our methodology.
 
 Next up: why context is the invisible factor that makes or breaks every interaction with an agent.
 

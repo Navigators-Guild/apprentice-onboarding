@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- Integrate the live guild Discord (https://discord.gg/kfM6Q4UBbM) across the curriculum: new Discord section in The Guild chapter, channel-specific pointers (#apprentice-level, #adverserial-review, #mastering-ai-development, #claude-skills, #prompt-magic) replacing generic "guild channel" references, README glossary update (#46)
 - Add forward on ego, failure, and growth mindset (#22)
 - Add depth across curriculum: troubleshooting, worked examples, debugging chapter, docs chapter (#21)
 - Seed security habits earlier in Phase 1 and Phase 2 chapters (#18)
@@ -36,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fix Chainlink section to clarify that Claude creates issues, not the user (#5)
 
 ### Changed
+- Commit navigation-table wiring for new chapters (#45)
 - Wire new chapters into prev/next navigation tables (#44)
 - Commit novice-gap audit fixes (#43)
 - Audit apprentice onboarding for novice-level gaps (#23)

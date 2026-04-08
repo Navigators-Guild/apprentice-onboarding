@@ -38,7 +38,7 @@ Not everything you find online is correct or current. A few rules of thumb:
 
 **Check if it compiles.** When in doubt, try the code. If the agent gives you something based on old docs and it doesn't compile, that's your signal to find current information.
 
-**Multiple sources for important decisions.** If you're choosing between two libraries or two architectural approaches, don't rely on a single source. Ask the agent, but also check download counts on crates.io, look at the repo's recent activity (is it maintained?), and see if the guild community has opinions.
+**Multiple sources for important decisions.** If you're choosing between two libraries or two architectural approaches, don't rely on a single source. Ask the agent, but also check download counts on crates.io, look at the repo's recent activity (is it maintained?), and ask in the guild [Discord](https://discord.gg/kfM6Q4UBbM) — **#apprentice-level** for beginner-level comparisons, **#mastering-ai-development** when the trade-off is more about architecture than library choice.
 
 ## Searching Effectively
 

@@ -261,7 +261,7 @@ This is the tracking layer of VDD. The beads on the string. Every piece of work 
 
 4. Start a new conversation with your agent in a crosslink-enabled project. Don't give it any context. Just say "check where we left off and let's keep going." See how quickly it picks up the thread from the handoff notes and issue list. Compare this to the old approach of typing a paragraph of context every time.
 
-5. Submit your issue tracker for adversarial review. The roast for this one will be interesting, because your reviewers are people who *use* issue trackers every day. They'll have opinions.
+5. Submit your issue tracker to the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adverserial-review** channel. The roast for this one will be interesting, because your reviewers are people who *use* issue trackers every day. They'll have opinions.
 
 ---
 

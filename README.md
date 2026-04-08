@@ -100,7 +100,7 @@ At the end of the Apprentice path, you should have:
 - **Completed projects** demonstrating increasing complexity, tracked in git with full history
 - **Design documents** for each project (generated with the agent)
 - **Process documentation** showing how you directed the agent, what went wrong, and how you fixed it
-- **Adversarial review history**: your submissions to the roast channel, the feedback you received, and how you responded to it
+- **Adversarial review history**: your submissions to the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adverserial-review** channel (and your AI-adversary reviews), the feedback you received, and how you responded to it
 - **Workshop contributions**: PRs to the shared codebase, reviewed and merged
 - **3-5 self-directed projects**: things you chose to build for yourself, designed and executed on your own. These don't need to be large. They need to be yours: your idea, your design doc, your process. This is where you prove you can work without a guide telling you what to build next
 
@@ -140,7 +140,7 @@ A one-stop reference for acronyms and guild-specific terms you'll see throughout
 - **MSRV** — **Minimum Supported Rust Version.** The oldest version of Rust a given crate or project is tested against. You'll see this in Cargo.toml files.
 - **JSON** — **JavaScript Object Notation.** A plain-text format for structured data (objects, lists, numbers, strings). Introduced in [What Code Actually Is](00-foundations/02-what-code-actually-is.md).
 - **YAML** — A sibling format to JSON used for configuration files (like GitHub Actions workflows). Same kind of data, different punctuation.
-- **The Guild** — The community of apprentices, journeymen, and masters using this curriculum. Some of its infrastructure (a chat server, mentor matching, the toolkit) is in progress; see [The Guild](00-foundations/06-the-guild.md) for the current state.
+- **The Guild** — The community of apprentices, journeymen, and masters using this curriculum. The [Discord server](https://discord.gg/kfM6Q4UBbM) is live with channels for apprentice discussion, adversarial review, methodology, Claude skills, and prompt engineering. Mentor matching and the toolkit are still being built. See [The Guild](00-foundations/06-the-guild.md) for the current state and how each channel maps to the curriculum.
 - **The Adversary** — A reviewer (human or AI) whose job is to find every weakness in your work. Central to the IAR half of the methodology.
 - **Design doc** — A short document you write (usually with agent help) that defines what you're building before any code exists. Shows up in nearly every project in the curriculum.
 - **Epic / bead-string / subissue** — Issue-tracking terms from Phase 2. An epic is a large parent issue, subissues are smaller pieces of work that roll up to it, and "bead-string" is the guild's name for the decomposition pattern where you chain small verified pieces into a larger working whole.

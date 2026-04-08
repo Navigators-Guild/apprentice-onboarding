@@ -105,7 +105,7 @@ The agent will produce a breakdown. Review it critically. Does the order make se
 
 3. Open a conversation with an agent and describe a project idea you're interested in. Ask the agent to help you decompose it. Review the agent's breakdown critically. Is anything too big? Too small? In the wrong order? Revise it.
 
-4. Share your decomposition in the guild channel and ask for feedback. Can other members spot dependencies you missed? Steps that could be broken down further? This is lightweight adversarial review, exactly the kind of thinking the guild develops.
+4. Share your decomposition in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#apprentice-level** channel and ask for feedback. Can other members spot dependencies you missed? Steps that could be broken down further? This is lightweight adversarial review, exactly the kind of thinking the guild develops.
 
 You've now covered the fundamentals of working with agents: understanding how they think, communicating your intent, providing context, and breaking problems down. Time to put it all together and build something real.
 

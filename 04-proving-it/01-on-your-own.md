@@ -16,7 +16,7 @@ Your capstone project must meet these criteria:
 
 **It follows the full VDD cycle.** Design doc before code. Decomposition into tracked issues. Build in layers with verification at each step. Adversarial review (both general and security-focused). Testing at every level appropriate to the project. This is non-negotiable. The process is the point.
 
-**It's scoped appropriately.** This should be the most ambitious thing you've built, but it still needs to be completeable. A tool with 5-8 well-implemented features is better than a tool with 20 half-finished ones. Scope it honestly. If you're not sure, discuss it with a mentor or in the guild channel before you start.
+**It's scoped appropriately.** This should be the most ambitious thing you've built, but it still needs to be completeable. A tool with 5-8 well-implemented features is better than a tool with 20 half-finished ones. Scope it honestly. If you're not sure, discuss it with a mentor or in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#mastering-ai-development** channel before you start.
 
 **It ships.** Not "it works on my machine." It has a README, release binaries or a crate publication, and someone other than you has successfully installed and used it. The gap between building and shipping is real, and your capstone must cross it.
 
@@ -30,7 +30,7 @@ Talk to people. Other guild members, friends, colleagues. "What's something you 
 
 ### 2. Write the Design Doc
 
-On your own. You've seen enough design docs at this point to know the format. Define the problem, the solution, the features, the technology, the constraints, the out-of-scope items. Share it in the guild channel for feedback before you build. This is your last check before committing to a direction.
+On your own. You've seen enough design docs at this point to know the format. Define the problem, the solution, the features, the technology, the constraints, the out-of-scope items. Share it in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#mastering-ai-development** channel for feedback before you build. This is your last check before committing to a direction.
 
 ### 3. Decompose and Track
 
