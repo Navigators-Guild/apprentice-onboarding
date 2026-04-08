@@ -1,0 +1,8 @@
+{
+  "uuid": "b0760a41-77e0-49ef-a736-90be4167300d",
+  "issue_uuid": "6da0061a-1a36-40bb-9128-ec13367aa6ec",
+  "author": "anon-13168fa2",
+  "content": "Resolved as part of #38 Windows Rust install work. The new 'Installing Rust Tools Later' subsection in 00-foundations/04-your-workspace.md between the Rust install and Node.js sections covers: where cargo install puts binaries (~/.cargo/bin with Windows equivalent), PATH semantics after install, the 'close and reopen terminal' fix for command not found, verify-with-version habit, and compile time patience. All four bullets from the original issue are addressed.",
+  "created_at": "2026-04-08T00:58:29.480070181Z",
+  "kind": "result"
+}
