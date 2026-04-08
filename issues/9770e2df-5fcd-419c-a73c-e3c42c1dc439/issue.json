@@ -3,12 +3,13 @@
   "display_id": 40,
   "title": "Seed a worked design doc example in Phase 1 before readers write one",
   "description": "01-talking-to-agents/03-context-is-everything.md:67 introduces design docs as central to the methodology. 01-talking-to-agents/02-the-art-of-intent.md:159 and 01-talking-to-agents/03-context-is-everything.md:109 both ask the reader to write design-doc-style prompts before the reader has seen a full example. The first real design doc example is in 01-talking-to-agents/05-first-build.md:32-65. 04-proving-it/01-on-your-own.md:33 later says 'You have seen enough design docs at this point' but a reader who did not build extras has seen exactly one. Fix: Either move the design doc example from 05-first-build.md earlier into 03-context-is-everything.md as a concrete template the reader can imitate, or add a short 'worked design doc' sidebar in 02-the-art-of-intent.md. Also add a second example for a Rust CLI project somewhere in Phase 2 so the reader sees a non-web example before the capstone.",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:32:35.527590355Z",
-  "updated_at": "2026-04-08T00:32:37.199150837Z",
+  "updated_at": "2026-04-08T00:56:35.874965792Z",
+  "closed_at": "2026-04-08T00:56:35.874965792Z",
   "labels": [
     "docs"
   ]
