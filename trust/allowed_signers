@@ -1,0 +1,2 @@
+# Crosslink trusted signers
+# Format: <principal> <key-type> <base64-key> [comment]
