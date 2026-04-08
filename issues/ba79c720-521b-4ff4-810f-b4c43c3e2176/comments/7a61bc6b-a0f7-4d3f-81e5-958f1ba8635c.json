@@ -1,0 +1,8 @@
+{
+  "uuid": "7a61bc6b-a0f7-4d3f-81e5-958f1ba8635c",
+  "issue_uuid": "ba79c720-521b-4ff4-810f-b4c43c3e2176",
+  "author": "anon-13168fa2",
+  "content": "Added 'Opening the Browser Developer Tools' subsection to 00-foundations/04-your-workspace.md between agent setup and Rust toolchain. Covers: keyboard shortcuts per browser (Chrome/Edge/Brave, Firefox, Safari including the Show features for web developers toggle), what Elements vs Console vs Sources tabs are (focus on Console for Phase 1), red vs yellow vs gray message meaning, the 8-step debugging loop including the reload-page-after-edit gotcha and clearing console between attempts. Updated the one-liner in 01-talking-to-agents/05-first-build.md:193 to point back at the new Phase 0 section so a reader who skipped it gets the link at the point of need.",
+  "created_at": "2026-04-08T00:48:27.273111542Z",
+  "kind": "result"
+}
