@@ -3,12 +3,13 @@
   "display_id": 36,
   "title": "Add GitHub Actions/CI primer before Phase 3 Shipping chapter",
   "description": "03-real-world-skills/05-shipping-it.md:244-254 tells the reader to create '.github/workflows/ci.yml' and says the agent will generate the YAML file, then 'commit it, push, and check the Actions tab on your GitHub repo'. A novice who has never seen CI has no idea: (1) what GitHub Actions is (free CI service built into github.com), (2) why '.github/workflows/' is a magic folder, (3) what a workflow file does (triggers on push/PR, runs jobs in containers, reports green/red), (4) how to find the Actions tab on a repo, (5) how to read a failing log, (6) that workflow.yml is YAML which has never been introduced either. 03-real-world-skills/04-security.md:80 compounds the problem by saying 'add a security check target to our workflow' with no explanation of 'workflow'. Fix: Add a short section to 03-real-world-skills/05-shipping-it.md (before the yml reference) titled 'Continuous Integration with GitHub Actions' covering: what CI is, why it exists (catch bugs before users do), the folder convention, the three parts of a workflow (on, jobs, steps), a minimal Rust workflow example with annotation, and how to click into a failing run on github.com/your/repo/actions. Brief YAML orientation (indentation matters, keys and values, lists with dashes) included or cross-linked to the JSON primer issue #34.",
-  "status": "open",
+  "status": "closed",
   "priority": "medium",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:31:36.366579404Z",
-  "updated_at": "2026-04-08T00:31:37.924592516Z",
+  "updated_at": "2026-04-08T00:52:12.225977801Z",
+  "closed_at": "2026-04-08T00:52:12.225977801Z",
   "labels": [
     "docs"
   ]
