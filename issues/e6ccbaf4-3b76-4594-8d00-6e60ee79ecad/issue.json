@@ -1,0 +1,12 @@
+{
+  "uuid": "e6ccbaf4-3b76-4594-8d00-6e60ee79ecad",
+  "display_id": 41,
+  "title": "Clarify Phase 0 folder structure vs GitHub portfolio clone",
+  "description": "00-foundations/04-your-workspace.md:113-121 has the reader create ~/guild-projects/portfolio and ~/guild-projects/scratch. Then 00-foundations/05-git-just-enough.md:158-163 has the reader clone guild-portfolio from GitHub into ~/guild-projects/portfolio/, which produces a nested ~/guild-projects/portfolio/guild-portfolio/ — the outer portfolio folder becomes a redundant wrapper. Phase 1 then uses 'cd ~/guild-projects/portfolio/guild-portfolio' as the working directory. A novice will wonder why there are two 'portfolio' folders and whether they put their project in the wrong one. Fix: Either (a) remove the 'mkdir portfolio' step from 04-your-workspace.md so the clone in the next chapter produces ~/guild-projects/guild-portfolio/ with no wrapper, or (b) rename the created folders to make the distinction obvious (workspace vs your-portfolio), or (c) add an explicit explanation in 05-git-just-enough.md about why there is nesting and what each level is for. Option (a) is cleanest.",
+  "status": "open",
+  "priority": "low",
+  "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:32:48.175381355Z",
+  "updated_at": "2026-04-08T00:32:48.175381355Z"
+}
