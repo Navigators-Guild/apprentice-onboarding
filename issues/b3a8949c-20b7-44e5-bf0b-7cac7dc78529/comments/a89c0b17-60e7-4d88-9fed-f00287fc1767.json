@@ -1,0 +1,8 @@
+{
+  "uuid": "a89c0b17-60e7-4d88-9fed-f00287fc1767",
+  "issue_uuid": "b3a8949c-20b7-44e5-bf0b-7cac7dc78529",
+  "author": "anon-13168fa2",
+  "content": "Created 02-the-methodology/03-branches-and-pull-requests.md as the bridge chapter. Covers: what a branch is (book-printing analogy), what a PR is, the three new commands (git checkout -b, git push -u origin HEAD, git checkout main), the full 9-step workflow from refresh main to cleanup after merge, common problems (merge conflicts, CI failing, wrong branch, behind main, undo pushed commit with force-with-lease), and how to review someone else's PR. Updated 00-foundations/05-git-just-enough.md:221 to forward-link to this chapter instead of saying branching is not needed. Added chapter to README Phase 2 index. Updated 03-real-world-skills/01-the-workshop.md PR step to link back to the bridge chapter and spell out PR as pull request on first use.",
+  "created_at": "2026-04-08T00:44:46.931007088Z",
+  "kind": "result"
+}
