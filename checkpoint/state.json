@@ -2,11 +2,16 @@
   "next_display_id": 1,
   "next_comment_id": 1,
   "display_id_map": {},
-  "locks": {},
+  "locks": {
+    "46": {
+      "agent_id": "TLk9",
+      "claimed_at": "2026-04-08T02:12:31.668735568Z"
+    }
+  },
   "issues": {},
   "watermark": {
-    "timestamp": "2026-04-08T02:11:27.164170048Z",
+    "timestamp": "2026-04-08T02:12:31.668735568Z",
     "agent_id": "TLk9",
-    "agent_seq": 2
+    "agent_seq": 3
   }
 }
