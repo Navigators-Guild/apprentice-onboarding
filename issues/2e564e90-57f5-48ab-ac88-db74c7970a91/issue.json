@@ -1,0 +1,12 @@
+{
+  "uuid": "2e564e90-57f5-48ab-ac88-db74c7970a91",
+  "display_id": 25,
+  "title": "Define the guild: where it lives and how to reach it",
+  "description": "The phrase 'the guild' appears 20+ times across the curriculum without ever being defined as a place a novice can actually access. Examples: FORWARD.md references 'the guild community'; 00-foundations/01:23 'the adversarial review channel exists'; 01-talking-to-agents/02:159, 03:109, 04:108, 05:178, 06:130 all reference 'the guild channel' or 'the guild community'; 02-the-methodology/01:55-76 describes 'the Adversary' reviewing work but never says where; 04-proving-it/02:15 'Look in the guild for apprentices'; 04-proving-it/03:71 'two guild journeymen or masters'. A complete novice has no way to answer: Is the guild a Discord server? A Slack? A website? A forum? A mailing list? How do I create an account? How do I find the adversarial review channel? How do I find mentors? Fix: Add an explicit section (probably in README.md or a new 00-foundations chapter called 'Joining the Guild') that names the platform(s), gives the actual URL/invite link, explains channel structure, and shows how to introduce yourself on arrival. If the guild infrastructure does not yet exist, mark the curriculum as pre-alpha and add a top-level note explaining which parts require external community that is still being built.",
+  "status": "open",
+  "priority": "high",
+  "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
+  "created_by": "anon-13168fa2",
+  "created_at": "2026-04-08T00:28:49.742546328Z",
+  "updated_at": "2026-04-08T00:28:49.742546328Z"
+}
