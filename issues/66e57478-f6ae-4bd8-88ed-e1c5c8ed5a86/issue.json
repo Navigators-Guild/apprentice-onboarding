@@ -3,12 +3,13 @@
   "display_id": 30,
   "title": "Verify or replace guild-toolkit repository references",
   "description": "03-real-world-skills/01-the-workshop.md:11 points to github.com/Navigators-Guild/guild-toolkit and builds the entire Phase 3 Workshop chapter on the assumption that a populated Rust workspace exists there with named crates (guild-core, guild-progress, etc.) and open issues to claim. If that repository does not actually exist, or does not contain the described structure, Phase 3 Workshop is uncompletable — a novice will clone nothing (or a 404) and have no way to progress. Same concern for 03-real-world-skills/03-project-architecture.md:171 and 04-proving-it/02-giving-back.md:27 which reference reviewing PRs on the guild-toolkit. Fix: (1) Verify the repo exists and is public; (2) Verify it contains the crates the chapter describes and has onboarding-appropriate issues labeled for apprentices; (3) If it does not exist, either create a minimal seed repo with one or two starter tools and a CONTRIBUTING.md, or mark Phase 3 Workshop chapter as 'pending guild infrastructure' and provide a substitute exercise (e.g. contribute to any existing open-source Rust project of the apprentice's choice).",
-  "status": "open",
+  "status": "closed",
   "priority": "high",
   "parent_uuid": "cc5be403-d631-4c27-9f0e-4a0c7fdb436a",
   "created_by": "anon-13168fa2",
   "created_at": "2026-04-08T00:29:59.721772344Z",
-  "updated_at": "2026-04-08T00:30:01.359847125Z",
+  "updated_at": "2026-04-08T00:46:32.060846915Z",
+  "closed_at": "2026-04-08T00:46:32.060846915Z",
   "labels": [
     "bug"
   ]
