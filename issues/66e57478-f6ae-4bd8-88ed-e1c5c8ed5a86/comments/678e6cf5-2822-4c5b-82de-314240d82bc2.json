@@ -1,0 +1,8 @@
+{
+  "uuid": "678e6cf5-2822-4c5b-82de-314240d82bc2",
+  "issue_uuid": "66e57478-f6ae-4bd8-88ed-e1c5c8ed5a86",
+  "author": "anon-13168fa2",
+  "content": "Verified via gh api: github.com/Navigators-Guild/guild-toolkit exists, is public, Rust workspace with 9 crates (guild-core, guild-scaffold, guild-review, guild-progress, guild-portfolio, guild-search, guild-roast, guild-deps, guild-stats — all matching curriculum references), 60 open issues organized as an apprentice-friendly roadmap. The repo itself already uses .crosslink/ and .mcp.json, consistent with the curriculum. No need to replace references. However I did find one adjacent gap: the Workshop chapter told readers to clone the upstream directly, which does not work for non-collaborators — the correct flow is fork, clone your fork, add upstream remote, PR across. Fixed 03-real-world-skills/01-the-workshop.md Clone the repo section with the fork-and-PR walkthrough, and added a Forks Versus Collaborator Access section to 02-the-methodology/03-branches-and-pull-requests.md explaining both flows.",
+  "created_at": "2026-04-08T00:46:30.478486850Z",
+  "kind": "result"
+}
