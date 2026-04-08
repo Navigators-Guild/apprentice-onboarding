@@ -1,0 +1,8 @@
+{
+  "uuid": "006f2866-4112-44ab-af01-368f97001c0d",
+  "issue_uuid": "760b2a5f-f94b-41d0-b802-682a35e46dfb",
+  "author": "anon-13168fa2",
+  "content": "Added 'Data Formats You Will See: JSON' section to 00-foundations/02-what-code-actually-is.md between Files and Folders and The Takeaway. Shows a valid JSON example with line-by-line annotations (curly braces = object, square brackets = array, keys always quoted, commas separate, no trailing comma), then a broken example with a trailing comma and the exact error parser text it produces, then the three other common JSON errors. Includes a brief YAML mention so the reader recognizes it later when CI files appear in Phase 3.",
+  "created_at": "2026-04-08T00:50:03.468552764Z",
+  "kind": "result"
+}
