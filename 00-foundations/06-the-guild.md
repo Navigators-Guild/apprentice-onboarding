@@ -21,7 +21,7 @@ The guild's real-time home is a Discord server. You join it the same way you joi
 Once you're in, the channels that matter for an apprentice are:
 
 - **#apprentice-level** — General discussion for people working through this curriculum. Ask questions, share what you're stuck on, post your design docs for feedback before you build, celebrate when something finally compiles. This is the first channel to check each day and the first one to post in when you're not sure which channel fits.
-- **#adverserial-review** — Where you submit finished work for the roast. Post a link to your repo, say what you want reviewed, link your AI-adversary review history so reviewers can skip past the obvious issues. Expect specific, harsh, useful critique. This is the human counterpart to the AI-adversary workflow described below, not a replacement for it.
+- **#adversarial-review** — Where you submit finished work for the roast. Post a link to your repo, say what you want reviewed, link your AI-adversary review history so reviewers can skip past the obvious issues. Expect specific, harsh, useful critique. This is the human counterpart to the AI-adversary workflow described below, not a replacement for it.
 - **#mastering-ai-development** — Deeper conversation about the VDD/IAR methodology itself: technique, trade-offs, patterns that work and ones that don't. Architecture discussions, capstone scoping, anything that's more than a beginner's question belongs here.
 - **#claude-skills** — Sharing and discussing Claude Code skills: custom workflows packaged as skill files in `.claude/`. Post skills you've written, ask for help improving one, grab skills other people have shared. Most useful once you've reached Phase 3's Working with APIs chapter.
 - **#prompt-magic** — Prompt engineering. Techniques for intent, context, decomposition, and adversarial framing. Share prompts that worked unusually well and ask for help on ones that didn't. Pairs directly with Phase 1.
@@ -32,11 +32,11 @@ When a chapter in this curriculum tells you to "share it in the guild channel," 
 
 Here is how you participate in each piece of the guild *right now*, using only tools you already have or will set up in this phase.
 
-### Your "adversarial review channel" today: the AI adversary (plus #adverserial-review)
+### Your "adversarial review channel" today: the AI adversary (plus #adversarial-review)
 
-Adversarial review is the core of the methodology. The curriculum describes submitting your work to the community channel where experienced members will roast it — and that channel now exists at **#adverserial-review** in the Discord. Post there as soon as you have something finished.
+Adversarial review is the core of the methodology. The curriculum describes submitting your work to the community channel where experienced members will roast it — and that channel now exists at **#adversarial-review** in the Discord. Post there as soon as you have something finished.
 
-That said, the community is still growing, so you will often want faster feedback than the queue in #adverserial-review can provide. For that, your default reviewer is **a second AI conversation configured to be hostile**.
+That said, the community is still growing, so you will often want faster feedback than the queue in #adversarial-review can provide. For that, your default reviewer is **a second AI conversation configured to be hostile**.
 
 This actually works very well. The AI adversary is patient, available at 3am, doesn't get tired, and will produce pages of specific critique on demand. The workflow:
 
@@ -52,13 +52,13 @@ This actually works very well. The AI adversary is patient, available at 3am, do
 
 You can stack this with a second, differently-framed adversary — one prompt focused on security, another on user experience, another on code organization — and aggregate their feedback. The AI adversary is free and scales to as many reviews as you want to run.
 
-Once you've run your AI passes and addressed the valid critiques, post the result to **#adverserial-review** with a link to your repo and to the AI review history. Human reviewers in the channel can then skip past the obvious and go deeper than the AI could.
+Once you've run your AI passes and addressed the valid critiques, post the result to **#adversarial-review** with a link to your repo and to the AI review history. Human reviewers in the channel can then skip past the obvious and go deeper than the AI could.
 
 ### Your "guild community" today: the Discord plus the public GitHub portfolio
 
 The community has two entry points, and they reinforce each other.
 
-The **Discord** is where conversation happens in real time. Questions in #apprentice-level, methodology discussion in #mastering-ai-development, work submitted for critique in #adverserial-review. If you have a question or want a quick second opinion, this is where to go.
+The **Discord** is where conversation happens in real time. Questions in #apprentice-level, methodology discussion in #mastering-ai-development, work submitted for critique in #adversarial-review. If you have a question or want a quick second opinion, this is where to go.
 
 The **public GitHub portfolio** is the durable artifact. Every project you build is tracked in git and pushed to a public GitHub repository. When someone finds your `guild-portfolio` repo, they can read your design docs, your commits, your process notes, and your AI-adversary review history. That visibility is how peers find your work outside the chat window, and how future employers or collaborators evaluate what you can actually do.
 
@@ -101,7 +101,7 @@ That's it. The curriculum will tell you when there's a new channel to join or a 
 
 ## The Takeaway
 
-"The guild" in this curriculum refers to a community that is partially built. The Discord is live — that is where the conversation happens now — and the methodology (design, verify, get roasted, iterate) works regardless of whether that community has 50 members or 5,000. Today you participate by joining the Discord, building in public, using AI as your adversary for fast feedback, submitting finished work to #adverserial-review, and letting your portfolio speak for itself over time. Every reference to "the guild channel" or "submit for review" in the rest of this curriculum maps to one of the Discord channels listed above.
+"The guild" in this curriculum refers to a community that is partially built. The Discord is live — that is where the conversation happens now — and the methodology (design, verify, get roasted, iterate) works regardless of whether that community has 50 members or 5,000. Today you participate by joining the Discord, building in public, using AI as your adversary for fast feedback, submitting finished work to #adversarial-review, and letting your portfolio speak for itself over time. Every reference to "the guild channel" or "submit for review" in the rest of this curriculum maps to one of the Discord channels listed above.
 
 You are not blocked. You're the early cohort. Build good work and it becomes the community's foundation.
 

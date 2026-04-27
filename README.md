@@ -100,7 +100,7 @@ At the end of the Apprentice path, you should have:
 - **Completed projects** demonstrating increasing complexity, tracked in git with full history
 - **Design documents** for each project (generated with the agent)
 - **Process documentation** showing how you directed the agent, what went wrong, and how you fixed it
-- **Adversarial review history**: your submissions to the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adverserial-review** channel (and your AI-adversary reviews), the feedback you received, and how you responded to it
+- **Adversarial review history**: your submissions to the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adversarial-review** channel (and your AI-adversary reviews), the feedback you received, and how you responded to it
 - **Workshop contributions**: PRs to the shared codebase, reviewed and merged
 - **3-5 self-directed projects**: things you chose to build for yourself, designed and executed on your own. These don't need to be large. They need to be yours: your idea, your design doc, your process. This is where you prove you can work without a guide telling you what to build next
 
