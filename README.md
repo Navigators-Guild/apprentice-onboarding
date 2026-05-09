@@ -10,7 +10,7 @@ This learning path is built on a methodology called **Verification Driven Develo
 
 The guild's default language is **Rust**. Not because it's the easiest, but because its compiler enforces correctness in ways that align with our methodology. The agent handles the syntax. You handle the thinking.
 
-**Before you start, read the [Forward](FORWARD.md).** It's about ego, failure, and why being wrong is how you learn to be right.
+**Before you start, read the [Foreword](FORWARD.md).** It's about ego, failure, and why being wrong is how you learn to be right.
 
 ---
 
