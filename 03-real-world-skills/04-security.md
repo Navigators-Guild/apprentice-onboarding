@@ -1,10 +1,10 @@
 # Security
 
-## The Code Your Agent Writes Is Probably Insecure
+## Treat Agent-Assisted Code as Untrusted Until Verified
 
-This isn't a knock on agents. It's a fact about how they work. Agents optimize for getting things working. Security is almost never the thing that makes something work. It's the thing that stops it from being exploited. Those are different goals, and when they conflict, the agent will default to the one you asked for: working code.
+No percentage justifies declaring all agent-generated code secure or insecure. The useful operating rule is simpler: generated code has not earned trust until it has passed the same threat modeling, review, testing, dependency checks, and operational controls you would require from human-written code. OWASP's current [Secure Coding with AI guidance](https://cheatsheetseries.owasp.org/cheatsheets/Secure_Coding_with_AI_Cheat_Sheet.html) recommends independent verification and warns that coding agents can also run commands, install packages, and modify repositories.
 
-This means agent-generated code tends to:
+Common failure modes worth checking include:
 
 - Skip input validation because the code works without it
 - Use default configurations that are convenient but insecure
@@ -13,7 +13,7 @@ This means agent-generated code tends to:
 - Trust data that comes from outside the program
 - Ignore error cases that could leak information
 
-VDD catches some of this. The adversarial review will flag obvious issues. But security review is a specific discipline, and a general-purpose adversary will miss things that a security-focused review would catch. This chapter is about adding that security layer.
+VDD can organize the evidence, but a general-purpose agent review is neither independent proof nor a substitute for security expertise. This chapter adds a threat-focused layer and shows where automated tools stop.
 
 ## The Vulnerabilities You Need to Know About
 
@@ -25,7 +25,7 @@ Injection happens when user input gets treated as instructions. The most common 
 
 It's not just SQL. Command injection (user input passed to a shell command), path traversal (user input used to construct a file path, allowing `../../etc/passwd`), and template injection all follow the same pattern: untrusted data crosses a boundary where it gets interpreted as code.
 
-**The fix is always the same:** Never build commands by concatenating strings with user input. Use parameterized queries for SQL, safe path construction APIs for file paths, and proper escaping for shell commands.
+**The fix depends on the interpreter boundary:** Use parameterized queries for SQL. Avoid invoking a shell when a process API can pass arguments directly. For file access, normalize and constrain paths, then enforce authorization on the resolved target. Output encoding is context-specific; one generic "sanitize" function does not make every sink safe.
 
 **What to tell your agent:**
 > "Use parameterized queries for all database operations. Never construct SQL by string concatenation. For file paths, use Rust's Path API and validate that the resolved path stays within the expected directory."
@@ -34,43 +34,49 @@ It's not just SQL. Command injection (user input passed to a shell command), pat
 
 API keys in source code. Tokens in config files that get committed to git. Database passwords in error messages. Debug output that includes authentication headers.
 
-Agents are particularly bad about this because they write examples with placeholder values that look like real credentials (`sk-1234567890abcdef`), and sometimes those placeholders become the real values when you paste in your actual key and forget to move it to an environment variable.
+Generated examples sometimes contain credential-shaped placeholders. Keep placeholders obviously fake, and never replace them with real values inside source, prompts, or tracked files.
 
 **What to tell your agent:**
-> "All secrets come from environment variables. Never log, print, or include secrets in error messages. Add a .gitignore that excludes .env files. If a secret is needed, fail with a message that says which environment variable to set, without revealing any value."
+> "Use the provider's credential helper or secret manager when available. Otherwise read the named environment variable at runtime. Never log, print, commit, or include the value in an error. Add `.env` to `.gitignore` before creating it and provide only fake values in `.env.example`."
 
 ### Insecure Defaults
 
-An agent will pick the easiest way to make something work. For a web server, that might mean binding to `0.0.0.0` (accessible from any network) instead of `127.0.0.1` (localhost only). For cryptography, it might mean using an outdated algorithm that's still available in the library. For permissions, it might mean making everything public because that's simpler than thinking about access control.
+Generated code may choose a permissive or convenient default unless the requirement names the boundary. A development server might bind to `0.0.0.0` (all interfaces) instead of `127.0.0.1` (loopback only), or an authorization rule might grant more access than the use case needs.
 
 **What to tell your agent:**
-> "Use secure defaults. Bind servers to localhost unless explicitly configured otherwise. Use current cryptographic standards (AES-256-GCM, SHA-256 minimum, no MD5, no SHA-1 for security purposes). Set the most restrictive permissions that still allow the program to function."
+> "Use secure defaults. Bind development servers to localhost unless remote access is an explicit requirement. Use a maintained, high-level cryptography library and the protocol's current recommended construction; do not invent cryptographic primitives or choose algorithms without the use-case requirements. Set the most restrictive permissions that still allow the program to function."
 
 ### Missing Validation
 
 The agent builds a function that takes a username and looks it up. It works when you pass it "alice". But what about an empty string? A string with 10 million characters? A string with null bytes? A string containing shell metacharacters?
 
-Every boundary where data enters your program from the outside world (user input, API responses, file contents, environment variables) is a place where validation should happen. Agents skip this because it's not part of "making it work."
+Every boundary where data enters your program from the outside world—user input, API responses, file contents, or environment variables—needs an explicit trust decision. Generated implementations may omit that decision when the requirement names only the happy path.
 
 **What to tell your agent:**
-> "Validate all external input at the point where it enters the program. Set reasonable length limits. Reject or sanitize unexpected characters. Don't trust data from files, network responses, or user input. Treat all external data as potentially malicious."
+> "Validate all external input at the boundary against the domain's allowed shape and size. Parse into typed values, reject invalid input clearly, and encode output for its specific destination. Do not silently strip characters unless the product requirements define that normalization."
 
 ### Dependency Vulnerabilities
 
-Your code might be secure, but what about the libraries it uses? A vulnerability in a dependency is a vulnerability in your project. This is called a **supply chain** risk: you didn't write the problem, but you shipped it.
+Your code also inherits risk from libraries, build tools, and distribution channels. A dependency advisory may or may not affect the features and paths you use, so trace reachability and exposure instead of either ignoring it or assuming automatic exploitability. This is part of **software supply-chain** risk.
 
 Rust has good tooling for this, which we'll cover below.
 
+### Agent-Specific Supply Chain and Prompt Injection
+
+A coding agent may read instructions from repository files, issues, dependency documentation, webpages, or tool output. Malicious or irrelevant instructions in those sources can try to redirect the agent, expose credentials, install a package, or expand its scope. A compromised MCP server or package can also misuse the permissions you granted it.
+
+Mitigate this by treating external content as data, granting least privilege, using a sandbox for unfamiliar code, reviewing install scripts and diffs, pinning dependencies where practical, and requiring confirmation before destructive, publishing, credential, or external-write actions. OWASP's [AI Agent Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html) covers prompt injection, tool abuse, memory poisoning, and excessive autonomy.
+
 ## Static Security Scanning
 
-Static scanning means checking code for security issues without running it. These tools read your source code (and your dependencies) and flag known problems. They're automated, fast, and should be part of your regular workflow.
+Automated checks cover different surfaces. The tools below inspect dependency advisories and project policy; Clippy analyzes Rust patterns. None is a complete application-security scanner, so keep their outputs separate.
 
 ### cargo audit
 
-Checks your dependencies against the RustSec advisory database. If a library you use has a known vulnerability, cargo audit tells you.
+Checks dependency versions in `Cargo.lock` against the RustSec advisory database. It can report known advisories; a clean result does not mean the dependency or your code is vulnerability-free.
 
 ```
-cargo install cargo-audit
+cargo install --locked cargo-audit
 cargo audit
 ```
 
@@ -78,21 +84,21 @@ Run this regularly. Run it before shipping. Add it to your CI pipeline. If it fl
 
 ### cargo deny
 
-Goes further than cargo audit. Checks for vulnerabilities, but also for license compliance (is this dependency's license compatible with yours?), duplicate dependencies (multiple versions of the same crate, which increases attack surface), and banned crates (ones your project has decided not to use).
+Adds configurable checks for advisories, licenses, sources, duplicate versions, and banned crates. You must review `deny.toml`: license compatibility and acceptable duplicates depend on project policy, and duplicate versions are a maintenance signal rather than automatic vulnerabilities.
 
 ```
-cargo install cargo-deny
+cargo install --locked cargo-deny
 cargo deny init     # creates a deny.toml config
 cargo deny check
 ```
 
-### clippy security lints
+### Clippy is not a security scanner
 
-You already use clippy for code quality. Some clippy lints are security-relevant. Running `cargo clippy -- -D warnings` catches things like using `unwrap()` on user input (which can panic and crash), or using string formatting where parameterized queries should be used.
+You already use Clippy for correctness, style, and suspicious Rust patterns. Some findings may reduce crash or misuse risk, but Clippy does not understand your trust boundaries and does not generally detect SQL injection or prove that user input is safe. Keep `cargo clippy -- -D warnings` in CI as a separate quality signal, not as a security verdict.
 
 ### Putting it together
 
-> "Add a security check job to our GitHub Actions workflow (the `.github/workflows/ci.yml` file — see the Shipping It chapter if you haven't set one up yet). It should run cargo audit, cargo deny check, and cargo clippy -- -D warnings. All three must pass before we consider the code ready to ship."
+> "Add CI jobs for `cargo audit`, our configured `cargo deny check`, and `cargo clippy -- -D warnings`. Pin or deliberately update the workflow dependencies. Explain what each check covers, and do not describe a green run as proof that the release is secure."
 
 ## Adversarial Security Review
 
@@ -100,9 +106,9 @@ Static tools catch known patterns. They don't reason about your specific code's 
 
 ### The Security Roast
 
-Open a separate conversation with an agent. Give it a fresh context (no relationship drift). Prompt it specifically for security:
+Use an independent review context or reviewer and prompt it specifically for security. Do not paste proprietary code, personal data, or secrets into a service that is not authorized to receive them:
 
-> "You are a security auditor reviewing this code. Your job is to find every security vulnerability, every place where untrusted input is handled unsafely, every hardcoded secret, every insecure default, every missing validation. Be thorough and assume the attacker is sophisticated. Here is the code: [paste]"
+> "Act as a security reviewer. Identify trust boundaries, assets, attacker-controlled inputs, dangerous sinks, authorization decisions, secrets, dependencies, and denial-of-service risks. For each finding, cite the file and line, show the exploit precondition, assign confidence, and propose a verification test. Say when evidence is insufficient. Do not modify code."
 
 This is different from a general adversarial review. A general review might say "this function is too long." A security review says "this function reads a file path from user input and passes it to std::fs::read without checking for path traversal."
 
@@ -111,6 +117,7 @@ This is different from a general adversarial review. A general review might say 
 Direct it with specifics:
 
 > "Specifically check for:
+>
 > - SQL injection or command injection opportunities
 > - Path traversal vulnerabilities
 > - Hardcoded secrets or credentials
@@ -121,19 +128,20 @@ Direct it with specifics:
 > - Race conditions in file or resource access
 > - Dependencies with known vulnerabilities"
 
-### Fresh Context Matters
+### Independence Matters
 
-Just like VDD's general adversarial review, do the security review in a fresh context every time. An agent that's been helping you build the code for hours has absorbed your assumptions. It "understands" why you made certain choices. A fresh agent doesn't. It questions everything, which is exactly what you want for security.
+The builder can review its own output, but a second context, model, human, or specialized tool reduces shared assumptions. Fresh context alone does not create expertise or independence: provide the requirements, threat model, supported environment, and relevant code, then verify each reported finding yourself.
 
 ### Iterate
 
-Fix what the security review finds. Then run the review again. Fresh context again. Just like VDD: repeat until the adversary is inventing problems instead of finding real ones.
+Triage findings by evidence and impact, reproduce them where safe, fix confirmed issues, and add regression tests. Stop when the defined security acceptance criteria pass and residual risks are documented—not when a model becomes repetitive or starts inventing problems.
 
 ## Thinking Like an Attacker
 
 Beyond tools and reviews, develop the habit of asking "how could this be abused?" about your own code. This is adversarial thinking applied specifically to security.
 
 For every input your program accepts, ask:
+
 - What if this is empty?
 - What if this is enormous?
 - What if this contains characters I didn't expect?
@@ -141,16 +149,18 @@ For every input your program accepts, ask:
 - What if someone sends a million of these?
 
 For every output your program produces, ask:
+
 - Does this reveal anything an attacker could use?
 - Does this error message tell someone how to exploit the failure?
 - Does this log contain data that should be private?
 
 For every dependency you add, ask:
+
 - Is this actively maintained?
 - Does it have known vulnerabilities?
-- Do I need all of this library, or just one function? (Smaller dependency = smaller attack surface)
+- Do I need this dependency, and are its publisher, maintenance, features, and transitive dependencies acceptable?
 
-This isn't paranoia. It's engineering discipline. The same way you verify that features work, you verify that they can't be abused.
+This is engineering discipline. Alongside functional checks, gather evidence about plausible abuse cases and document the security limits you have not established.
 
 ## Security as Part of the Process
 
@@ -162,17 +172,17 @@ Security isn't a phase you do at the end. It's a consideration at every stage:
 
 **Review phase:** Include security in every adversarial review, not just a dedicated security review at the end. The earlier you catch a vulnerability, the cheaper it is to fix.
 
-**Ship phase:** Run cargo audit and cargo deny before every release. Not occasionally. Every time.
+**Ship phase:** Run the configured dependency, policy, test, and static checks for every release. Record exceptions with an owner and expiration instead of ignoring failures informally.
 
 ## Exercises
 
-1. Take one of your existing projects and run cargo audit and cargo deny on it. Are there any flagged dependencies? If so, update or replace them. If not, good. Now run the security roast: paste your code into a fresh agent conversation with the security auditor prompt above. How many issues does it find? Fix them and run the roast again.
+1. Take one existing project and run `cargo audit` plus a configured `cargo deny check`. Triage every finding rather than updating blindly: confirm the affected path, patched version, compatibility impact, and whether the advisory applies. Then run the security review prompt above in an authorized environment. Verify findings before fixing them and add regression tests for confirmed vulnerabilities.
 
-2. Build a deliberate vulnerability and then detect it. Ask your agent to build a simple tool that takes a filename as a command-line argument and displays the file's contents. Don't mention security. Then review the code: does it prevent path traversal? Can you read `/etc/passwd` with it? Now fix it and write a test that proves the vulnerability is closed.
+2. Build a deliberate path-traversal vulnerability inside a disposable directory with a harmless `outside.txt` fixture. Ask the tool to serve files only from a `public/` subdirectory, then test whether `../outside.txt` escapes it. Do not probe real credential or system files. Fix the boundary and add regression tests, including symlink behavior on the platforms you support.
 
 3. Review another guild member's code specifically for security. Use the security adversary checklist. Write up your findings with specific line references and suggested fixes. This is harder than it sounds because you need to read code you didn't write and reason about how it could be exploited.
 
-4. Build a security scanner CLI tool in Rust. It should take a project path as input and run a series of checks: cargo audit, cargo deny, clippy security lints, and then use an AI agent (via API or MCP) to do an automated security review of the source code. Aggregate the results into a report with severity levels. This is an advanced project: it involves file I/O, process spawning, API integration, and output formatting. It could become a tool in the guild toolkit.
+4. Build a security-check orchestrator in Rust. It should run `cargo audit`, configured `cargo deny`, Clippy, and tests, then aggregate their outputs while preserving each tool's scope and confidence. Make any external AI review explicit opt-in, show exactly which files would leave the machine, redact secrets, and require authorization before upload. This is an advanced project involving process isolation, untrusted output parsing, and privacy—not just report formatting.
 
 ---
 

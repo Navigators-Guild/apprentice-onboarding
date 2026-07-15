@@ -2,7 +2,7 @@
 
 ## Setting Up Without Overthinking It
 
-You need three things on your computer to start building with agents. That's it. Not twelve tools, not a complex development environment, not a specific operating system. Three things.
+This chapter sets up five essentials: an editor, a terminal, a coding agent, Rust, and Node.js. The next chapter adds Git. You do not need a complex development environment or a specific operating system.
 
 This guide walks you through setting up each one. If you already have any of these installed, skip ahead.
 
@@ -94,15 +94,15 @@ You just checked where you were, looked at what was there, created a folder, mov
 
 This is the tool you'll spend most of your time with. There are several options, and this guild is tool-agnostic. The skills you learn here work across all of them. But you need at least one to start.
 
-**Claude** (by Anthropic) - Available at [claude.ai](https://claude.ai) in your browser, or as **Claude Code** which runs in your terminal. Claude is the primary agent used in this guild's examples. The free tier is enough to get started. Claude Code requires a paid API plan but is more powerful for building software because it can directly create and edit files on your computer.
+**Claude and Claude Code** (by Anthropic) - [Claude](https://claude.ai) is the browser chat; [Claude Code](https://docs.anthropic.com/en/docs/claude-code/getting-started) is the terminal coding agent. Claude Code can use either an eligible Claude subscription or Anthropic API billing; check [current plan details](https://claude.com/pricing) rather than assuming a particular tier includes it.
 
-**Cursor** - A code editor (based on VS Code) with an AI agent built in. Available at [cursor.com](https://cursor.com). Good option if you want the agent and editor in one place. Has a free tier.
+**Codex and ChatGPT** (by OpenAI) - [ChatGPT](https://chatgpt.com) is the general interface. [Codex](https://developers.openai.com/codex/) is the coding agent available through dedicated app, CLI, IDE, and cloud workflows. It can work directly in a folder you authorize.
 
-**Windsurf** - Another AI-powered editor, similar to Cursor. Available at [codeium.com/windsurf](https://codeium.com/windsurf).
+**Cursor** - A code editor with an agent built in, available at [cursor.com](https://cursor.com). Its [current plans](https://cursor.com/pricing) include a limited free option.
 
-**ChatGPT** - Available at [chat.openai.com](https://chat.openai.com). Widely available, good for conversational work, but less integrated with your file system than the other options.
+**Devin Desktop** (formerly the Windsurf editor) - An IDE and command center for local and cloud coding agents, available at [devin.ai/desktop](https://devin.ai/desktop). Follow the [current setup guide](https://docs.devin.ai/desktop/getting-started). The old Windsurf setup URL now redirects there, but older installations and documentation may still use the Windsurf name.
 
-**Our recommendation for starting out:** Begin with Claude at claude.ai. It's free, it's in your browser, and the examples in these guides are written with Claude in mind. As you progress and start building more complex things, you'll likely move to Claude Code or Cursor, but you don't need them yet.
+**Our recommendation for starting out:** Use whichever supported tool you can access, but distinguish chat from a coding agent. Browser chat is enough for explanations and for Phase 1 if you paste or upload the relevant file. For the Rust exercise below and later repository work, use a coding agent that can read and edit only the project folder you authorize. Product features, limits, and prices change; check the linked official pages before choosing.
 
 ### Opening the Browser's Developer Tools
 
@@ -139,7 +139,7 @@ You'll come back to devtools many times throughout the curriculum. The Console t
 
 ## Tool 4: The Rust Toolchain
 
-The guild's default language is Rust. You don't need to learn Rust (the agent handles the syntax), but you do need it installed so you can compile and run the projects you build.
+The guild's default language is Rust. You do not need to memorize Rust syntax before beginning, but you do need the toolchain installed so you can compile and run the projects you build. The agent can help write syntax; you still need to read diffs, understand behavior, and interpret compiler and test output.
 
 **To install it:**
 
@@ -158,7 +158,7 @@ When the installer asks which option you want, press **1** for the default insta
 1. Download **rustup-init.exe** from [rustup.rs](https://rustup.rs) and double-click it.
 2. The installer opens in a terminal window and checks whether the MSVC build tools are present. If they are, skip to step 6.
 3. If they're missing, the installer shows a message pointing you to the Visual Studio download page. Install **Visual Studio Installer** from that link.
-4. When the Visual Studio Installer opens, check the **Desktop development with C++** workload in the left pane. (Just that one — you don't need any other workloads for Rust.) This is a multi-gigabyte download and can take 15-30 minutes depending on your connection. Click **Install**.
+4. When the Visual Studio Installer opens, check the **Desktop development with C++** workload in the left pane. (Just that one — you don't need any other workloads for Rust.) This is a large download. Click **Install**.
 5. Once the C++ build tools are installed, return to the rustup-init window (or re-run rustup-init.exe if you closed it).
 6. Press **1** for the default installation.
 7. Wait for rustup to finish downloading and installing (another minute or two).
@@ -182,15 +182,15 @@ You should see version numbers for both. `rustc` is the Rust compiler (it turns 
 Throughout the curriculum you'll occasionally install extra Rust command-line tools with `cargo install <tool-name>` — the crosslink issue tracker in Phase 2, security scanners like `cargo-audit` and `cargo-deny` in Phase 3. A few things to know so those installs don't confuse you:
 
 - **Where the binary goes.** `cargo install` drops the new binary into `~/.cargo/bin/` (Mac/Linux) or `%USERPROFILE%\.cargo\bin\` (Windows). Rustup adds that folder to your PATH automatically during the initial install, so the new command is available everywhere — but only in shells you open **after** the install.
-- **"Command not found" after a successful install.** The #1 cause is that you're still in the terminal you ran `cargo install` in, and the PATH hasn't been re-read. Close and reopen your terminal. If it still doesn't work, check that `~/.cargo/bin` is on your PATH with `echo $PATH` (Mac/Linux) or `echo $env:PATH` (PowerShell).
+- **"Command not found" after a successful install.** If `cargo` already works and its binary directory is on `PATH`, a newly installed command should normally be available immediately. Confirm installation with `cargo install --list`, inspect the final install output, and check whether `~/.cargo/bin` (or `%USERPROFILE%\.cargo\bin`) is on `PATH`. Reopen the shell only if the install or PATH setup changed it.
 - **Verifying the install worked.** After any `cargo install`, immediately run the new command with `--version` or `--help`. If it prints something, the install succeeded. If it errors or isn't found, troubleshoot before moving on.
-- **Compile times.** `cargo install` compiles the tool from source, which can take anywhere from seconds to several minutes depending on the tool's size. Wait for the final `Installing ~/.cargo/bin/foo` line. Don't ctrl-C out early.
+- **Compile times.** `cargo install` usually compiles from source and may take a while depending on dependencies and hardware. Wait for a successful final `Installing ...` message; if you interrupt it, rerun the command.
 
-**You don't need to understand Rust yet.** Your first project (the bookmark manager) uses HTML and JavaScript, not Rust. Rust comes in starting with Phase 2. By then you'll be comfortable directing an agent, and the transition will be about the tool, not the workflow.
+**You don't need to understand Rust yet.** The short exercise below introduces the build-and-test loop. Your first portfolio project (the bookmark manager) uses HTML and JavaScript; the Rust portfolio projects begin in Phase 2.
 
 ## Tool 5: Node.js and npm
 
-Node.js is a second language runtime you'll need starting in Phase 3, when the curriculum covers APIs and MCP servers. Several of the tools you'll install later — MCP servers in particular — are distributed through npm, Node.js's package manager. Install it once now so you're not interrupted later.
+Node.js is a JavaScript runtime you'll need starting in Phase 3, when the curriculum covers APIs and MCP servers. Some optional tools and reference MCP servers are distributed through npm, Node.js's package manager. Install it once now so you're not interrupted later.
 
 **To install it:**
 
@@ -205,9 +205,9 @@ npm --version
 
 You should see version numbers for both. `node` runs JavaScript programs. `npm` is the package manager that installs tools and libraries (similar to how `cargo` works for Rust).
 
-**What `-g` means.** Later in the curriculum you'll see commands like `npm install -g some-package-name`. The `-g` flag means "global": it installs the package system-wide so you can run it as a terminal command from anywhere. Without `-g`, npm installs into the current folder only, which is the right default for project dependencies but wrong for tools you want to run as commands. When a tool's installation instructions include `-g`, use `-g`.
+Prefer project-local packages or a one-off runner such as `npx` when the official instructions support them. A global install (`npm install -g <package>`) changes a user- or system-level tool and can become stale independently of a project, so use it only when the tool's current official instructions call for it.
 
-**You don't need to learn JavaScript.** Just like with Rust, the curriculum is language-agnostic and your agent handles syntax. Node.js is a prerequisite for a few specific tools, not a language you'll study.
+You do not need to memorize JavaScript syntax before starting. You will still practice reading the small HTML and JavaScript project in Phase 1, while Node.js mainly serves as a prerequisite for later tools.
 
 ## Your Folder Structure
 
@@ -229,6 +229,29 @@ Your portfolio repository itself will be created in the next chapter (Git: Just 
 
 This structure isn't mandatory, but having a consistent place to work prevents the chaos of files scattered across your Desktop, Downloads, and random folders.
 
+## Try It: Your First Rust Program
+
+You now have the three things this exercise needs: an agent that can edit local project files, the Rust toolchain, and a scratch folder. From `~/guild-projects`, run:
+
+```
+cd scratch
+cargo new hello-guild
+cd hello-guild
+cargo run
+```
+
+On Windows PowerShell, the same commands work. You should see `Hello, world!`. Cargo created the project, compiled it, and ran it.
+
+Open the `hello-guild` folder in your coding agent. Ask:
+
+> "Change `src/main.rs` so it asks the user for their name, then prints `Welcome to the guild, [name]!`. Use standard input, trim the newline, and handle input errors without panicking. Tell me which file you changed."
+
+Review the diff, then run `cargo run` and type your name. Ask the agent to add a loop that exits when the user enters `quit`; run it again and test a name, an empty line, and `quit`. A successful compile is one piece of evidence. The observed behavior and edge-case checks are the rest.
+
+Before asking for an explanation, write a short prediction of how input reaches the output and which branch exits the loop. Then ask the agent to explain the code and compare its explanation with the source. Change the welcome text manually, rerun it, and record any part you still cannot explain. Task completion and skill formation are different outcomes; the [evidence audit](../RESEARCH.md#what-the-evidence-supports) explains why this small comprehension check matters.
+
+This project stays in `scratch/`; it is practice, not a portfolio requirement.
+
 ## Verifying Your Setup
 
 Let's make sure everything works. Do each of these:
@@ -238,7 +261,7 @@ Let's make sure everything works. Do each of these:
 3. **Check Rust.** Type `cargo --version`. You should see a version number. You're good.
 4. **Check Node.js.** Type `node --version` and then `npm --version`. You should see a version number for each. You're good.
 5. **Navigate to your workspace.** Type `cd ~/guild-projects` and then `ls`. You should see `scratch` listed (your portfolio folder gets created in the next chapter). You're good.
-6. **Open your agent.** Go to claude.ai (or whichever agent you chose) and type "Hello, I'm setting up my workspace for learning agentic AI development. Can you confirm you can help me build software?" You should get a coherent, helpful response. You're good.
+6. **Open your agent.** For a coding agent, authorize only `~/guild-projects/scratch/hello-guild`, ask it to explain `src/main.rs` without changing anything, and confirm that it names the file correctly. For browser chat, ask the same question after pasting the file contents.
 
 If any of these steps didn't work, ask your agent to help you troubleshoot. Describe exactly what happened: what you typed, what you expected, and what you got instead. This is your first practice at communicating with an agent. Be specific about the problem.
 
@@ -246,10 +269,10 @@ If any of these steps didn't work, ask your agent to help you troubleshoot. Desc
 
 A quick list of things that might seem like prerequisites but aren't:
 
-- **A powerful computer.** If it runs a web browser, it's enough to start. The agents run on remote servers, not on your machine.
+- **A powerful computer.** If it can run the editor and Rust toolchain, it is enough for these exercises. Model inference usually runs remotely, while local coding agents may also run commands and tools on your machine.
 - **A second monitor.** Nice to have, not necessary.
 - **Specific operating system.** Mac, Windows, and Linux all work fine.
-- **Any paid tools.** Everything in Phase 0 and Phase 1 can be done with free tiers.
+- **A specific paid plan.** Limited free access may be enough for the early exercises, but availability and quotas change. Use the official plan pages above and do not buy a plan solely because this curriculum names a product.
 - **Prior experience.** If you've read this far, you have enough.
 
 You're set up. Next we'll cover just enough git to track your work, and then you're ready to start talking to agents.

@@ -10,7 +10,7 @@ This is where knowing how to find and evaluate information yourself becomes impo
 
 Documentation comes in a few forms, and knowing which one you need saves time.
 
-**API reference docs** are the technical specification. Every function, every parameter, every return type. These are exhaustive and precise. In Rust, you'll see these on [docs.rs](https://docs.rs), which hosts documentation for every crate published to crates.io. They look dense, but you're not reading them cover to cover. You're searching for a specific function or type.
+**API reference docs** describe public functions, parameters, types, and contracts for a particular version. They may still omit operational behavior or contain mistakes. In Rust, [docs.rs](https://docs.rs) builds documentation for published crates when their documentation build succeeds. Match the page version to `Cargo.lock` or `Cargo.toml`.
 
 When you need to check whether a function exists or what arguments it takes:
 
@@ -18,7 +18,7 @@ When you need to check whether a function exists or what arguments it takes:
 
 Sharing the docs URL with the agent (or asking it to check) prevents it from guessing about an API that might have changed.
 
-**Guides and tutorials** explain concepts and walk through common tasks. These are written for humans, not for completeness. The official Rust book ([doc.rust-lang.org/book](https://doc.rust-lang.org/book)) is one of the best programming guides ever written. You don't need to read it, but knowing it exists means you can point your agent at specific chapters when you need deeper understanding:
+**Guides and tutorials** explain concepts and common tasks. These are written for humans, not for completeness. The official [Rust book](https://doc.rust-lang.org/book/) is the primary learning guide for the language and can ground both your understanding and the agent's explanation:
 
 > "I keep getting borrow checker errors and I don't understand why. Read chapter 4 of the Rust book (on ownership) and explain the concept to me in simple terms, then fix my code."
 
@@ -38,26 +38,26 @@ Not everything you find online is correct or current. A few rules of thumb:
 
 **Check if it compiles.** When in doubt, try the code. If the agent gives you something based on old docs and it doesn't compile, that's your signal to find current information.
 
-**Multiple sources for important decisions.** If you're choosing between two libraries or two architectural approaches, don't rely on a single source. Ask the agent, but also check download counts on crates.io, look at the repo's recent activity (is it maintained?), and ask in the guild [Discord](https://discord.gg/kfM6Q4UBbM) — **#apprentice-level** for beginner-level comparisons, **#mastering-ai-development** when the trade-off is more about architecture than library choice.
+**Multiple signals for important decisions.** If you're choosing between libraries or architectures, do not rely on a single source or download count. Check the official docs, release cadence, issue and advisory history, ownership, license, transitive dependencies, MSRV, API fit, and maintenance policy. Ask the agent to compare evidence, then inspect the sources yourself.
 
 ## Searching Effectively
 
 When you need to find something specific, how you search matters.
 
-**For Rust crates:** Start with [crates.io](https://crates.io). Search by keyword. Sort by downloads or recent activity. Read the crate description and check when it was last updated. A crate with 10 million downloads that was updated last month is a safer bet than one with 50 downloads from two years ago.
+**For Rust crates:** Start with [crates.io](https://crates.io), then follow the repository and documentation links. Popularity and recent activity are useful signals, not proof of safety or suitability. Prefer the smallest maintained dependency that satisfies the requirements and whose provenance and license you can explain.
 
-**For error messages:** Paste the exact error text into a search engine (with quotes). Someone else has almost certainly hit the same error. The Rust community is particularly good about this. The Rust Users Forum and r/rust on Reddit often have solutions.
+**For error messages:** Search for the stable, non-sensitive part of the exact error in quotes. Remove tokens, usernames, private paths, customer data, and proprietary identifiers first. Favor official issue trackers, documentation, and maintainer discussions over copied answers.
 
-**For "how do I" questions:** Ask your agent first. If the answer doesn't work, search with specific terms: "rust read csv file" rather than "how to process data in rust." Include the library name if you know it: "serde deserialize optional field."
+**For "how do I" questions:** For versioned or security-sensitive behavior, start with current official documentation and ask the agent to use it. Search with specific terms and the version: "serde deserialize optional field" is better than "how to process data in rust."
 
-**For understanding concepts:** The Rust book for language concepts. The Rustonomicon for unsafe/advanced topics (you won't need this as an apprentice, but know it exists). For general programming concepts, your agent is usually the best teacher: "explain what a trait is in Rust, like I've never programmed before."
+**For understanding concepts:** Use the Rust book for language concepts and the Rustonomicon for unsafe/advanced topics. An agent can adapt an explanation to you; verify its examples against the official source and compiler.
 
 ## Sharing Documentation with Your Agent
 
 One of the most effective patterns in agentic development is feeding documentation directly to your agent. Instead of hoping the agent's training data includes the library version you're using, give it the current source of truth.
 
-**Share a URL:**
-> "Here's the documentation for the API I want to use: [URL]. Read it and build a function that fetches the latest data."
+**Share a URL with a browsing-capable agent:**
+> "Open this official documentation for the API version we use: [URL]. Cite the relevant section, then build a function that fetches the requested data. If you cannot access the page, stop and tell me."
 
 **Share a README:**
 > "Here's the README for the library we're using: [paste]. Follow their recommended patterns."

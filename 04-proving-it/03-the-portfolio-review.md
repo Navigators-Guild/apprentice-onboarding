@@ -24,6 +24,7 @@ Your PRs to the guild toolkit. The code you contributed, the reviews you receive
 ### Self-Directed Projects
 
 The 3-5 projects you built on your own. Each should have:
+
 - A design doc
 - The code in a git repo with meaningful commit history
 - Tests
@@ -66,13 +67,13 @@ guild-portfolio/
 
 Your portfolio README should tell your story. Not a resume. A narrative. When you started, what you knew (or didn't), what was hard, what clicked, what you're proud of, where you want to go next. Two to three paragraphs. Reviewers read dozens of these. The ones that are honest and specific stand out. The ones that are generic and polished don't.
 
-## The Review Process
+## The Review Process: Current and Target State
 
-Your portfolio is reviewed by **two guild journeymen or masters** who have completed the path themselves. They review independently, then compare notes. This isn't a faceless committee. You'll know who your reviewers are, and they'll know you from the guild community.
+The formal two-reviewer board described below is the guild's **target process**, not a currently guaranteed service. Until the Guild chapter links to a live application and reviewer roster, submit your portfolio to the Discord **#adversarial-review** channel, request feedback from specific peers, and record who reviewed what. Do not claim formal certification from an informal review.
 
-The review takes about a week. Reviewers read your design docs, look at your code and commit history, check your test coverage, read your retrospectives, and look at your crosslink issue history. They write up feedback covering strengths, areas for improvement, and a recommendation.
+The target board would use two qualified reviewers who independently examine design docs, code and commit history, test evidence, retrospectives, and issue history before comparing notes. No turnaround time should be promised until maintainers publish one.
 
-There's no numerical score or letter grade. The recommendation is one of three outcomes:
+The proposed outcomes are:
 
 - **Ready.** Your work demonstrates journeyman-level competence. You advance.
 - **Almost there.** Your work is strong in most areas but has specific gaps. You get detailed feedback on what to strengthen and can resubmit.
@@ -104,7 +105,7 @@ Your mentoring reflection and your PR reviews on other people's work show whethe
 
 ## After the Review
 
-If the evaluation goes well, you're a journeyman. What changes:
+Once a formal board exists, an accepted evaluation may grant Journeyman status. Until then, completion means you have assembled the evidence and addressed available peer feedback; it does not grant the following planned benefits:
 
 - You receive your **Journeyman certificate** from the guild
 - You're trusted to run full VDD cycles on real guild projects independently
@@ -116,7 +117,7 @@ If the evaluation suggests you need more work, you'll get specific feedback abou
 
 ## Recognition
 
-The guild recognizes your progress at every stage. You earn badges for completing each phase:
+Use these labels as self-tracked portfolio milestones. They are not issued credentials until the guild publishes a badge system and verification mechanism:
 
 - **Phase 0: Foundation Set** - You've set up your tools and understand the landscape
 - **Phase 1: First Build** - You've built working software with an agent
@@ -124,25 +125,25 @@ The guild recognizes your progress at every stage. You earn badges for completin
 - **Phase 3: Real-World Ready** - You've contributed to a shared codebase, handled APIs, security, and shipping
 - **Phase 4: Journeyman** - You've completed the capstone, mentored someone, and submitted your portfolio
 
-These are real markers of real accomplishment. Display them, share them, be proud of them. You earned each one by doing the work.
+The underlying work is real. Describe the milestone accurately—for example, "completed Phase 3 requirements on 2026-07-15"—without implying third-party verification that did not occur.
 
 ## What Your Credential Is (and Isn't)
 
 Let's be honest about where this stands.
 
-**Right now,** the guild is new. An HR recruiter at a large company has never heard of it. Your Journeyman certificate won't get past a keyword-scanning resume filter. That's the reality of any new credential, and pretending otherwise would be dishonest.
+**Right now,** the guild is new and its formal certificate process is not live. Do not list a Journeyman certificate unless an authorized issuer and verification process exist and you have actually received it.
 
-**What your portfolio does right now** is prove your skills to anyone who actually looks at the work. A technical hiring manager, a potential collaborator, an open source maintainer, anyone who clicks through your repos and reads your process documentation will see evidence of real capability that can't be faked. That's immediately valuable in contexts where people evaluate your work directly.
+**What your portfolio does right now** is present inspectable evidence to anyone who looks at the work. A reviewer can examine repositories, decisions, tests, and feedback. Evidence can still be incomplete or misrepresented, so make claims traceable rather than saying the portfolio "can't be faked."
 
-**What the certificate does** is mark your achievement within the guild. It says you completed a rigorous process, were reviewed by peers, and met the standard. As more guild members enter the workforce and perform well, that marker builds external reputation.
+**What a future certificate could do** is mark an achievement within the guild if it has published criteria, qualified reviewers, an appeals or correction process, and a verifiable issuer. Those governance details should exist before the credential is marketed.
 
-**Over time,** credentials gain recognition the same way they always have: the people who hold them turn out to be consistently good at their jobs. CompTIA, AWS, and Cisco certifications weren't prestigious when they started either. They built credibility over years because certified people performed. The guild is on the same path, and you're part of building that reputation.
+External recognition is not guaranteed. It would have to be earned through transparent standards, reliable assessment, graduate outcomes, and time; comparisons with established certification bodies are premature.
 
-So you have two things: a certificate that marks your achievement and a portfolio that proves it. The certificate will gain recognition as the guild grows. The portfolio works right now, for anyone willing to look. Together, they're stronger than either alone.
+Today you have the portfolio. If a formal credential system launches later, evaluate its standards and represent it accurately.
 
-You started this path with the ability to think and communicate. You end it with a body of work that proves you can direct intelligent systems to build things that work, and the process discipline to do it reliably. Everything else you'll learn on the job, because you've proven you know how to learn.
+You started this path with the ability to think and communicate. You can end it with a body of work that lets others inspect how you direct coding agents, verify results, respond to critique, and learn. Keep each conclusion proportional to the evidence rather than treating the portfolio as proof of every future task.
 
-Welcome to the journeymanship.
+Keep building, measuring, and giving back.
 
 ---
 

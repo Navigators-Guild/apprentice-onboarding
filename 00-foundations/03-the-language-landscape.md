@@ -10,7 +10,7 @@ That's what this chapter does. No syntax. No code. Just a map of the landscape s
 
 Every programming language is a set of trade-offs. Some prioritize speed (the program runs fast). Some prioritize safety (the program is hard to break). Some prioritize ease of writing (you get something working quickly). Some prioritize readability (other people can understand what you wrote). No language wins on all fronts. Picking a language is picking which trade-offs matter most for your situation.
 
-The good news: because you're directing an agent rather than memorizing syntax, switching languages is cheap. The agent knows them all. Your prompting skills, your decomposition skills, your verification skills, all of it transfers across languages completely. The concepts don't change. Only the tool does.
+The good news: directing an agent reduces some of the syntax cost of switching languages. Your decomposition and verification skills transfer, but ecosystems, build tools, runtime behavior, and language-specific failure modes do not. Treat the agent as a guide, then check its advice against the project's toolchain and current documentation.
 
 ## The Families
 
@@ -22,9 +22,9 @@ Programming languages cluster into families based on what they're designed to do
 
 **The main ones:**
 
-**Rust** - The guild's language of choice. Rust's defining feature is that it catches entire categories of bugs at compile time, before your code ever runs. Memory errors, data races, null pointer crashes: Rust makes these structurally impossible rather than leaving you to catch them through testing. It's harder to learn (well, harder for the agent to get right on the first try) but the code that comes out is exceptionally reliable. This is why we use it: it pairs well with VDD because the compiler itself is an adversary. It will reject code that isn't correct.
+**Rust** - The guild's language of choice. Rust catches many type, ownership, and borrowing mistakes at compile time. Safe Rust prevents undefined behavior and data races, but it does not prevent logic bugs, deadlocks, all race conditions, panics, or mistakes inside `unsafe` code and foreign interfaces. See the official explanations of [safe and unsafe Rust](https://doc.rust-lang.org/nomicon/safe-unsafe-meaning.html) and [data races versus general race conditions](https://doc.rust-lang.org/nomicon/races.html). This makes the compiler a valuable verifier, not a proof that a program is correct.
 
-**C** - The grandfather of systems programming. Nearly every operating system in existence is written in C. It gives you total control over the hardware, which also means total responsibility. It won't stop you from making mistakes. Hugely important historically, still widely used, but Rust is increasingly replacing it for new projects.
+**C** - The grandfather of systems programming. C is foundational to many operating systems, embedded systems, and infrastructure projects. It gives you direct control over memory and hardware, which also means more manual responsibility for safety. It remains widely used; Rust is one newer option for projects that want stronger compile-time checks.
 
 **C++** - C with more features bolted on over decades. Game engines (Unreal), browsers (Chrome), high-frequency trading systems. Powerful but complex. The language itself has grown so large that even expert programmers only know subsets of it.
 
@@ -38,7 +38,7 @@ Programming languages cluster into families based on what they're designed to do
 
 **Python** - The Swiss army knife. Data science, web backends, automation, scripting, AI/ML. Reads almost like English. Enormous ecosystem of libraries for nearly anything you can think of. Slower than systems languages, but for most applications the speed difference doesn't matter.
 
-**JavaScript/TypeScript** - The language of the web. Every browser runs JavaScript natively, which makes it the default for anything that runs in a browser. TypeScript is JavaScript with added type safety (the language checks more of your work for you). Also used for server-side code via Node.js. You can build an entire application, frontend and backend, in one language.
+**JavaScript/TypeScript** - JavaScript is the standard scripting language implemented by modern web browsers and is also used outside the browser through runtimes such as Node.js. TypeScript adds static type checking and compiles to JavaScript. A team can use this ecosystem for both frontend and backend code, though browser and server environments expose different APIs.
 
 **Go** - Built by Google for backend services. Simple on purpose. Fast to compile, easy to read, good at handling many things happening at once (like a web server handling thousands of requests). Less expressive than some languages, but that's the trade-off: it's hard to write confusing Go code.
 
@@ -58,7 +58,7 @@ Some languages are built for specific problem areas:
 
 **R** - Built for statistics and data visualization. If you're doing heavy statistical analysis, R has specialized tools that other languages don't.
 
-**SQL** - Not a programming language in the traditional sense, but the universal language for talking to databases. Every application that stores data in a database uses SQL somewhere. Your agent will write plenty of it.
+**SQL** - A declarative language used by relational database systems. Many applications use SQL directly or through a library, while document, key-value, graph, and other data stores may use different query interfaces.
 
 **HTML/CSS** - The building blocks of everything you see in a web browser. HTML structures the content, CSS styles it. Your first project in Phase 1 uses these.
 
@@ -80,13 +80,13 @@ In the real world, language choice is driven by a few factors:
 
 We chose Rust as the guild's default language for specific reasons:
 
-**The compiler is an adversary.** Rust's compiler rejects code that has entire categories of bugs, before you ever run it. This aligns perfectly with VDD. The compiler is a free, tireless, zero-tolerance reviewer that catches things even a good adversarial AI might miss. It forces correct code rather than just testing for it.
+**The compiler is a verifier.** Rust's compiler rejects code that violates its type, ownership, borrowing, and safe-Rust rules before the program runs. This aligns with VDD because it gives repeatable evidence. It cannot determine whether the program meets the user's intent, so tests and human review still matter.
 
-**It teaches discipline.** Rust is strict. It won't let you cut corners. Code that compiles in Rust tends to be well-structured because the language demands it. This makes you a better director of agents, because you learn to think about ownership, lifetimes, and error handling as first-class concerns.
+**It makes some constraints explicit.** Rust requires developers to address ownership, borrowing, types, and many error paths in the code. You can still write poorly structured or logically wrong Rust, but the compiler makes several important assumptions visible during development.
 
-**It produces reliable software.** The trade-off of Rust being harder is that the output is more robust. For the guild's philosophy of "prove it works, don't just hope it works," Rust is a natural fit.
+**It supports reliable software.** Strong tooling and safe-Rust guarantees can reduce some defect classes. Reliability still depends on design, dependencies, tests, operations, and review.
 
-**The agent handles the hard parts.** The main argument against Rust has always been its learning curve. But you're not memorizing the borrow checker rules. The agent knows them. Your job is to describe what you want, verify the output, and understand the compiler's feedback when something is rejected. The curve is real for people writing Rust by hand. It's much flatter when you're directing an agent.
+**The agent can help with the hard parts.** An agent can explain borrow-checker messages, propose code, and help navigate unfamiliar libraries. It can also invent APIs or repeat outdated patterns. Your job is to understand enough of the compiler feedback and tests to verify the result.
 
 This does not mean Rust is the right choice for everything. Your first project (a bookmark manager in Phase 1) will use HTML, CSS, and JavaScript, and that's the right call for a first build. A data analysis project might be Python. A mobile app might be Swift. Part of being a good practitioner is knowing when to reach for a different tool. But for the projects in this curriculum, Rust is our default, and the skills you develop working with it will transfer to any language.
 
@@ -102,46 +102,7 @@ The agent will recommend something sensible. You'll have enough context from thi
 
 The language is the agent's problem. The thinking is yours.
 
-## Try It: Your First Rust Program
-
-You won't start building real Rust projects until Phase 2. But there's no reason to wait that long to meet the compiler. Let's do something small right now so Rust isn't a mystery when you get there.
-
-Open your terminal and run:
-
-```
-mkdir -p ~/guild-projects/scratch
-cd ~/guild-projects/scratch
-cargo new hello-guild
-cd hello-guild
-```
-
-`cargo new` just created a Rust project for you. Take a look at what's inside:
-
-```
-ls src/
-```
-
-There's one file: `main.rs`. That's your program. Now run it:
-
-```
-cargo run
-```
-
-You should see `Hello, world!` in your terminal. Cargo compiled your program and ran it. That's the loop you'll use for every Rust project: write code, `cargo run`, see the result.
-
-Now open a conversation with your agent and say:
-
-> "I have a Rust project at ~/guild-projects/scratch/hello-guild. Change main.rs so it asks the user for their name, then prints 'Welcome to the guild, [name]!' Use standard input to read the name."
-
-The agent will modify `main.rs`. Run `cargo run` again. Type your name when prompted. You just directed an agent to write Rust and verified the result. That's the entire workflow.
-
-Now try one more thing. Tell the agent:
-
-> "Add a loop so it keeps asking for names and greeting people until someone types 'quit'."
-
-Run it. Test it. Type a few names, then type "quit." Does it exit cleanly? What happens if you type nothing and just press enter? What happens if you type a very long string? You're already practicing verification and edge-case thinking, and you've only been writing Rust for five minutes.
-
-When you're done, this project lives in your `scratch/` folder. It's not a portfolio piece. It's just proof that you've touched the compiler and it didn't bite. When Phase 2 asks you to build a real CLI tool in Rust, you'll know the basics already: `cargo new`, `cargo run`, and directing an agent to write the code.
+Next, set up your workspace and install the agent and Rust toolchain. Your first Rust exercise follows those prerequisites in the next chapter.
 
 ---
 
