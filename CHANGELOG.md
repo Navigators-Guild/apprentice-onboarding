@@ -7,11 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
-- Integrate the live guild Discord (https://discord.gg/kfM6Q4UBbM) across the curriculum: new Discord section in The Guild chapter, channel-specific pointers (#apprentice-level, #adversarial-review, #mastering-ai-development, #claude-skills, #prompt-magic) replacing generic "guild channel" references, README glossary update (#46)
-- Add forward on ego, failure, and growth mindset (#22)
+
+- Add an evidence and accuracy audit covering current productivity, maintainability, security, and skill-formation research; add an apprentice learning log and mutation-testing guidance (#1, #10)
+- Add a Markdown lint baseline and verify internal and external documentation links
+- Refresh the former Windsurf editor entry to the current Devin Desktop product and documentation
+- Integrate the live guild Discord (<https://discord.gg/kfM6Q4UBbM>) across the curriculum: new Discord section in The Guild chapter, channel-specific pointers (#apprentice-level, #adversarial-review, #mastering-ai-development, #claude-skills, #prompt-magic) replacing generic "guild channel" references, README glossary update (#46)
+- Add foreword on ego, failure, and growth mindset (#22)
 - Add depth across curriculum: troubleshooting, worked examples, debugging chapter, docs chapter (#21)
 - Seed security habits earlier in Phase 1 and Phase 2 chapters (#18)
-- Add hands-on Rust mini-project exercise to Language Landscape chapter (#16)
+- Add hands-on Rust mini-project exercise after agent and Rust setup (#16)
 - Write Phase 4: Proving It - capstone, mentoring, and portfolio review (#13)
 - Write Security chapter for Phase 3 covering agent code vulnerabilities and scanning (#12)
 - Write Shipping It chapter covering testing, verification, and delivery (#11)
@@ -19,24 +23,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Write Working with APIs chapter covering MCPs and Claude skills (#9)
 - Add Workshop chapter and update docs with guild-toolkit reference (#8)
 - Restructure apprentice path: add language chapter, update for Rust, expand README (#6)
-- Add issue tracking chapter with guided project and Chainlink introduction (#4)
+- Add issue tracking chapter with guided project and crosslink introduction (#4)
 - Add VDD methodology chapter teaching verification-driven development principles (#3)
 - Edit all curriculum documents to remove AI voice and improve natural tone (#2)
 - Organize files into folder structure and clean up Zone.Identifier artifacts (#1)
 
 ### Fixed
+
+- Correct the Rust exercise prerequisites and sequence (#3, #4)
+- Rename the foreword file to the standard `FOREWORD.md` and update every link and label (#7)
+- Replace the issue tracker's incorrect browser-localStorage comparison with its actual local-JSON limitations (#8)
+- Normalize remaining historical crosslink naming references (#9)
+- Remove remaining absolute claims about reviewers, tests, teaching, and project quality uncovered by the QA pass
 - Clarify Phase 0 folder structure vs GitHub portfolio clone (#41)
 - Fix Live Server extension inconsistency in Phase 0/1 (#33)
 - Verify or replace guild-toolkit repository references (#30)
-- Fix Chainlink/crosslink naming mismatch across curriculum (#24)
+- Fix crosslink naming mismatch across curriculum (#24)
 - Fix timeline references and duplicate mkdir in Phase 0 chapters (#20)
 - Address critique: fix project numbering, clarify project rationale, reframe portfolio audience (#19)
 - Fix missing mkdir step in Language Landscape Rust exercise (#17)
 - Address adversarial review: soften education framing, strengthen beginner motivation, add recognition (#15)
 - Add self-directed projects requirement to portfolio section (#7)
-- Fix Chainlink section to clarify that Claude creates issues, not the user (#5)
+- Fix crosslink section to clarify that the agent creates issues, not the user (#5)
 
 ### Changed
+
 - Commit navigation-table wiring for new chapters (#45)
 - Wire new chapters into prev/next navigation tables (#44)
 - Commit novice-gap audit fixes (#43)

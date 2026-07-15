@@ -4,7 +4,7 @@
 
 If you only master one skill from this entire learning path, make it this one. Taking a big, complex, ambiguous problem and breaking it into small, clear, actionable pieces is the most valuable skill in agentic development. It's also the most valuable skill in *thinking*, period, but that's a broader conversation.
 
-Here's why this matters so much with agents: an agent given a small, well-defined task will almost always produce good output. An agent given a large, vague task will almost always produce mediocre output. The difference isn't the agent's capability. It's the clarity of the input. Decomposition is how you turn overwhelming projects into a sequence of things an agent can nail one at a time.
+Here's why this matters with agents: smaller, well-defined tasks are easier to inspect, retry, and test than large ambiguous ones. They are not automatically successful, and over-fragmentation can hide integration failures. Decomposition turns a large project into coherent, dependency-aware slices with observable outcomes. Current agent evaluations also show that reliability generally declines as tasks require more human-expert time, while remaining highly uneven by domain ([METR time horizons](https://metr.org/time-horizons/)).
 
 ## The Problem with Big Asks
 
@@ -23,12 +23,14 @@ There are many ways to break problems down. Here's one that works well for begin
 **Start with the core.** Ask yourself: what is the absolute simplest version of this project that would still be useful? Strip away every nice-to-have. What's left?
 
 For a recipe collection app:
+
 - Core: display a list of recipes, let me add a new recipe with a name and ingredients.
 - That's it. That's the core. A searchable, categorized, photo-equipped recipe database is not the core. That's the finished product. The core is a list you can add to.
 
 **Add layers one at a time.** Once the core works, add the next most important feature. Then the next. Each addition is a separate, focused task for the agent.
 
 For the recipe app, the layers might be:
+
 1. Core: display recipes and add new ones
 2. Layer: add categories (dinner, dessert, snack) and filter by category
 3. Layer: add a search bar that filters as you type
@@ -36,7 +38,7 @@ For the recipe app, the layers might be:
 5. Layer: add a photo for each recipe
 6. Layer: make it look polished. Better layout, colors, typography
 
-Notice that each layer is a single, testable feature. After each one, you can verify it works before moving on. If layer 3 breaks something from layer 1, you catch it immediately instead of discovering it after you've built six more features on top.
+Notice that each layer is a testable vertical slice of user behavior, not merely a tiny code edit. After each one, run both its new checks and the existing suite. That makes a regression from layer 3 visible before six more layers depend on it.
 
 ## How to Decompose: The User Story Approach
 
@@ -45,6 +47,7 @@ Another approach is to think about what a person actually *does* with your softw
 **Write out the user's journey.** For each thing a user might do, describe it as a simple story:
 
 For a habit tracker:
+
 - "I open the app and see today's habits."
 - "I tap a habit to mark it complete."
 - "I want to add a new habit, so I tap an 'add' button and type the name."
@@ -69,6 +72,7 @@ When you have a list of pieces to build, order matters. Some pieces depend on ot
 A simple way to figure out the order: for each piece, ask "does this require anything else to exist first?" If yes, build that thing first.
 
 For the recipe app:
+
 - Display recipes → no dependencies, build first
 - Add new recipes → needs display to exist (otherwise you add recipes into the void)
 - Add categories → needs recipes to exist

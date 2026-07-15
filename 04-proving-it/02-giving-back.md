@@ -4,7 +4,7 @@
 
 There's a saying in teaching: you learn something once when you study it, and again when you teach it. The second time is deeper. When you explain something to someone who doesn't understand it yet, you find every gap in your own understanding. The parts you glossed over, the parts you memorized without really getting, the parts that seemed obvious until someone asked "why?"
 
-In the traditional guild, late-stage apprentices helped train newer ones. Not because it was charity, but because it was the final stage of learning. If you can transfer a skill to someone else, you actually own it. If you can't, you were just following instructions.
+In the traditional guild, late-stage apprentices helped train newer ones. Explaining a skill and responding to another learner's questions can expose gaps that private practice hides. It is useful evidence of understanding, though teaching performance is not a perfect test of technical ability.
 
 ## What This Looks Like
 

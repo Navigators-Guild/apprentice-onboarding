@@ -6,7 +6,7 @@ You can write the most specific prompt in the world and still get bad results if
 
 Think of it this way: if you tell a chef "make me pasta," the result depends entirely on context the chef knows or doesn't know. Are you in Italy or a hospital cafeteria? Is it for a romantic dinner or a child's birthday? Are you allergic to anything? Do you have twenty minutes or two hours? The word "pasta" is the same, but the right answer is completely different depending on context.
 
-Agents have zero context unless you provide it. Every conversation starts as a blank slate. The agent doesn't know what you built yesterday, what project you're working on, what technologies you've already chosen, or what your goals are. You have to establish all of that, every time.
+Agents act on context available to the current run: the prompt, selected history or memory, files they inspect, project instructions, and tool results. Product memory varies and can be partial, so begin by pointing the agent to durable project sources and the current goal instead of assuming it remembers yesterday correctly.
 
 ## The Four Types of Context
 
@@ -28,13 +28,13 @@ Same request, completely different result. The agent now knows the technology, t
 
 This is information about the tools, languages, and setup you're working with. If you've been building a project, the agent needs to know what's already there.
 
-The most effective way to provide technical context is to share the actual files. If you're using Claude Code or Cursor, the agent can see your project files directly. If you're using a chat interface like claude.ai, you can paste relevant code or file contents into the conversation.
+The most effective way to provide technical context is to share the actual files. A coding agent such as Claude Code, Codex, Cursor, or Devin Desktop can inspect an authorized project folder. In a chat interface, paste or upload only the relevant, non-sensitive contents.
 
 **Good technical context looks like:**
 > "Here's my current index.html file: [paste file]. I'm using vanilla JavaScript, no frameworks. The styles are in a separate styles.css file. I need to add a feature to this existing page."
 
 **Missing technical context causes problems like:**
-The agent creates a React component when your project uses plain HTML. Or it writes code that conflicts with code that already exists. Or it suggests installing a tool that's incompatible with your operating system. These aren't the agent's fault. It literally didn't know.
+The agent creates a React component when your project uses plain HTML. Or it writes code that conflicts with code that already exists. Or it suggests installing a tool that's incompatible with your operating system. These failures often indicate missing or uninspected context, but the agent also shares responsibility when it could have inspected the repository or asked before making a consequential assumption.
 
 ### 3. Constraint Context
 
@@ -71,7 +71,7 @@ In the guild's methodology, every project starts with a **design document** (als
 - **Constraint context:** What the boundaries are
 - **Preference context:** How you want it to look and feel
 
-When you start a new conversation with an agent (or when the conversation gets long and you need to reset), you paste the design doc and say "here's the project I'm working on." The agent instantly has everything it needs. No twenty-message back-and-forth to re-establish what's going on.
+When you start a new session, point the agent to the design doc and ask it to compare the document with the current repository. The design doc supplies intent; it may be stale or incomplete, so it does not replace reading the code, tracker, tests, and recent changes.
 
 This is why the first step in our workflow is generating a design doc with the agent. It forces you to articulate context before you start building, and it creates a reusable artifact that keeps every subsequent conversation grounded.
 
@@ -161,7 +161,7 @@ You won't go through this formally every time. With practice, it becomes instinc
 
 1. Take one of the prompts you wrote in the previous chapter's exercises. Now write the context you would need to provide alongside it. What project context, technical context, constraints, and preferences would the agent need?
 
-2. Start a conversation with an agent. Give it zero context and ask it to "add a dark mode toggle." Note what it produces. Then start a new conversation, provide full context about a specific project, and make the same request. Compare the results. This exercise shows the impact of context better than any explanation can.
+2. Start a conversation with an agent. Give it only "add a dark mode toggle" and note which assumptions it makes. Then start a new session, provide a specific project's relevant context, and make the same request. Compare the assumptions, questions, and result.
 
 3. Write a one-paragraph "context summary" for a project idea you have, something you could paste at the start of any conversation to instantly ground the agent. Share it in the guild for feedback.
 

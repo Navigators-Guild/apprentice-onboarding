@@ -2,7 +2,7 @@
 
 ## From "I Want a Thing" to "Build Me This"
 
-The single biggest factor in whether an agent builds what you want is how well you communicate what you want. This sounds obvious. It's not easy. Most people overestimate how clear their ideas are, not because they're bad communicators, but because they've never had to explain their vision to something that takes every word literally and fills in gaps with guesses.
+One major factor you control is how clearly you communicate the goal, relevant context, constraints, and evidence of completion. The agent will infer missing details, so make important choices explicit without burying a simple task in a giant template.
 
 This chapter is about turning the fuzzy picture in your head into a precise description an agent can execute.
 
@@ -52,11 +52,11 @@ Now the agent knows the tone, the timing, the limits, and even has example text 
 
 ## The "Imagine You're Explaining to a Contractor" Test
 
-Here's a useful test for whether your instructions are clear enough: imagine you're hiring a contractor to renovate your kitchen, and you'll be out of the country while they do the work. You can't answer follow-up questions. Whatever you write down is all they have to go on.
+Here's a useful test for whether your instructions are clear enough: imagine you're hiring a contractor to renovate your kitchen. What would they need before starting, and which decisions should make them stop and ask you rather than guess?
 
 Would you write "make the kitchen nice"? Of course not. You'd specify the layout, the materials, the colors, where the appliances go, what kind of countertops, what to keep and what to tear out.
 
-Apply the same standard to your agent instructions. You won't always be this detailed. Sometimes a quick, short prompt is fine for small tasks. But for anything that matters, treat your instructions like they need to survive without follow-up.
+Apply the same standard to agent instructions. A short prompt is often enough for a small task. For higher-risk work, capture the goal, context, constraints, and "done" checks durably, and tell the agent which ambiguity requires your input.
 
 ## Writing Good Prompts: A Template
 
@@ -116,7 +116,7 @@ This should work in a web browser. I don't need a native phone app,
 just a website that works well on a phone screen.
 ```
 
-An agent receiving this prompt has everything it needs to build something useful on the first try. Will it be perfect? Probably not. But it'll be close enough that your feedback can be specific ("the streak counter resets even though I completed yesterday, can you fix that?") instead of vague ("this isn't what I wanted").
+This prompt gives the agent a useful starting brief. It may still need clarification, current files, or platform details. The advantage is that your first review can compare the result with explicit requirements instead of relying on "this isn't what I wanted."
 
 ## Common Mistakes
 

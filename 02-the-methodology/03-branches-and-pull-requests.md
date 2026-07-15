@@ -2,11 +2,11 @@
 
 ## Why You Need This Now
 
-Back in Phase 0, the git chapter explicitly said branching and merging were "useful later, not now." That was true: for your own portfolio projects you can live on the main branch and push straight to GitHub, and the seven commands in that chapter handle 95% of your daily git needs.
+Back in Phase 0, the git chapter explicitly said branching and merging were "useful later, not now." For your own portfolio projects you can use a simple main-branch workflow, while shared repositories usually add branches and review.
 
-Phase 3 is "later." Starting with the Workshop chapter, you'll contribute to codebases other people also work in, and that changes the rules. You can't push straight to main in a shared repository — your changes need to be proposed, reviewed, and merged. The mechanism for that is the **pull request**, and pull requests require **branches**. This chapter is the bridge.
+Phase 3 is "later." Starting with the Workshop chapter, you'll contribute to shared codebases, and that changes the workflow. Many projects protect `main` and require changes through a pull request; others use different policies. Read the repository's contribution guide. This chapter teaches the common branch-and-PR flow.
 
-Good news: it's not a lot more git. Three new commands and one web workflow on GitHub. Read this once before starting Phase 3.
+The common flow adds a few branch operations and one web workflow on GitHub. Read this once before starting Phase 3.
 
 ## What a Branch Is
 
@@ -22,18 +22,18 @@ A pull request (also called a "PR," or on GitLab a "merge request") is a formal 
 
 The PR is the review artifact. It's also the historical record: long after the branch is deleted, the merged PR page preserves the full discussion of why the change was made and what feedback it got. When you later wonder "why is this code like this?" you can often find the answer on the PR that introduced it.
 
-## The Three New Commands
+## The Branch Operations
 
-Beyond the seven from Phase 0, you need three more git commands for the branch-and-PR workflow.
+Beyond the Phase 0 workflow, you need to create and switch branches and publish a new remote branch.
 
-### `git checkout -b <branch-name>`
+### `git switch -c <branch-name>`
 
 **What it does:** Creates a new branch with the given name and switches you to it. Your current working files come with you.
 
 **When you use it:** At the start of any piece of work that will become a pull request.
 
 ```
-git checkout -b add-progress-command
+git switch -c add-progress-command
 ```
 
 Name branches descriptively and in lowercase with hyphens. Good: `add-progress-command`, `fix-empty-title-bug`, `improve-error-messages`. Bad: `my-branch`, `work`, `test`.
@@ -50,15 +50,15 @@ git push -u origin HEAD
 
 `HEAD` is git shorthand for "whatever branch I'm on right now." `-u` (short for `--set-upstream`) tells git to remember the connection. You only need this once per branch.
 
-### `git checkout main`
+### `git switch main`
 
 **What it does:** Switches you back to the main branch.
 
 **When you use it:** After a pull request is merged (or abandoned), to go back to the main line and start fresh work.
 
 ```
-git checkout main
-git pull
+git switch main
+git pull --ff-only
 ```
 
 That two-command sequence is how you refresh your local main with everyone's latest changes before creating your next branch. Get in the habit of pulling main before starting new work.
@@ -69,27 +69,27 @@ There are two ways to contribute to a shared repository, and they determine wher
 
 **Collaborator access.** If you've been added as a collaborator on the repository (common for private team repos and small trusted projects), you can push branches directly to the upstream repo. Your `git push -u origin HEAD` goes straight to the canonical copy, and you open PRs within that same repo. This is the simpler flow.
 
-**Fork-and-PR.** For most open source projects, including the guild-toolkit, you're not a collaborator. The flow there is: click **Fork** on github.com/Navigators-Guild/guild-toolkit to create `github.com/YOUR-USERNAME/guild-toolkit`, clone your fork, add the canonical repo as a second remote called `upstream`, push your branches to your fork (`origin`), then open a PR from your fork's branch back to `upstream/main`. GitHub's PR creation UI handles the cross-repo part automatically — when you click **Compare & pull request**, it correctly identifies the upstream as the target.
+**Fork-and-PR.** For most open-source projects, including the guild-toolkit, you're not a collaborator. Fork the repository, clone your fork, add the canonical repository as `upstream`, push feature branches to your fork (`origin`), then open a PR to the base branch named by the contribution guide. The guild-toolkit currently uses `develop`, not `main`. Always verify the base in GitHub's PR form; its automatic suggestion can be wrong for a repository with a non-default integration branch.
 
-The rest of this chapter assumes either flow. The commands are the same. The only differences are (1) you fork first if you need to, (2) you add an upstream remote if you're using a fork, and (3) you refresh main by pulling from `upstream/main` instead of just `origin/main`.
+The examples below use `main` as the PR base. Substitute the base named by the project's contribution guide—for example, the guild-toolkit currently uses `develop`. With a fork, fetch the canonical base from `upstream` and push your feature branch to `origin`.
 
 ## The Full Workflow
 
 Here's what contributing to a shared repository looks like end-to-end. Assume you've already cloned the repository (or your fork) and you're in its folder.
 
-**1. Refresh main.**
+**1. Refresh the base branch.**
 
 ```
-git checkout main
-git pull
+git switch main
+git pull --ff-only
 ```
 
-This pulls in any changes other people have merged since the last time you worked. Skipping this step is the most common cause of merge conflicts later.
+This pulls in changes merged since the last time you worked. If you use a fork, fetch and fast-forward from the canonical `upstream` base instead. Starting from current work reduces avoidable conflicts.
 
 **2. Create a branch for your work.**
 
 ```
-git checkout -b add-progress-command
+git switch -c add-progress-command
 ```
 
 Pick a name that describes what the branch is for. From this point until you merge, you're working on the branch, not on main.
@@ -98,16 +98,21 @@ Pick a name that describes what the branch is for. From this point until you mer
 
 Exactly like your portfolio projects: let your agent make changes, verify, commit. Each commit should describe one meaningful change.
 
-```
-git add .
+```bash
+git add src/main.rs
+git diff --staged
 git commit -m "Add progress command skeleton"
-git add .
+
+git add src/curriculum.rs tests/curriculum.rs
+git diff --staged
 git commit -m "Parse curriculum TOML and list phases"
-git add .
+
+git add src/output.rs tests/output.rs
+git diff --staged
 git commit -m "Show completion percentages"
 ```
 
-Multiple commits on the same branch is normal and good. You're building a small, readable history of how the feature came together.
+Multiple commits on the same branch are normal. Before each commit, run `git status` and `git diff --staged`; stage selected paths when `git add .` would include unrelated files or secrets.
 
 **4. Push the branch to GitHub.**
 
@@ -133,9 +138,9 @@ Click **Create pull request**.
 
 **6. Wait for CI and reviews.**
 
-If the repository has continuous integration (see the Shipping It chapter for what CI is), it starts running as soon as you push. You'll see yellow dots (pending), green checkmarks (passing), or red Xs (failing) next to your commits on the PR page. If anything goes red, click through, read the log, and fix the problem. Then push another commit to the same branch — the PR updates automatically and CI re-runs.
+If the repository has continuous integration configured for this branch or PR event, it runs after the push or PR creation. You'll see pending, passing, failing, skipped, or neutral checks. Open failed checks, find the first causal error, reproduce it locally when practical, and push a focused fix. The PR then updates and applicable checks run again.
 
-Reviewers will leave comments. Some will be on specific lines of code (inline comments), some on the PR as a whole. Read them all. Address the valid ones with new commits on the same branch. Push those commits — they show up in the PR immediately.
+Reviewers may leave inline or overall comments. Read them all. Address valid findings with new commits on the same branch and explain rejected suggestions with evidence. Never paste credentials or sensitive logs into the PR.
 
 **7. Address review feedback.**
 
@@ -143,29 +148,29 @@ Same loop as the adversarial review from Phase 1: read, decide what's valid, fix
 
 **8. Merge.**
 
-Once the PR is approved and CI is green, a maintainer (or you, if you have merge permission) clicks the **Merge pull request** button on GitHub. Your branch is merged into main, and your code is now part of the project.
+Once the repository's approvals and required checks are satisfied, an authorized maintainer merges according to project policy. The feature branch then becomes part of the selected base branch.
 
 **9. Clean up.**
 
 ```
-git checkout main
-git pull
+git switch main
+git pull --ff-only
 git branch -d add-progress-command
 ```
 
-Switch back to main, pull the now-updated main (which includes your merged changes), and delete the local copy of your branch. You're ready to start the next piece of work.
+Switch back to the actual base branch, fast-forward it from the correct remote, and delete the local feature branch only after confirming the merge. Substitute `develop` when that was the base.
 
 ## Common Problems
 
-**"Merge conflicts."** Sometimes two branches change the same line of the same file in different ways, and git can't figure out which version to keep. The PR page will show a "This branch has conflicts" message with a list of affected files. Fix by: (1) `git checkout main && git pull` to update main, (2) `git checkout your-branch && git merge main`, (3) open each conflicted file in VS Code — it shows both versions clearly with `<<<<<<<`, `=======`, and `>>>>>>>` markers — and pick the right resolution, (4) `git add .` and `git commit` to finalize the merge, (5) `git push`. Your PR updates automatically.
+**"Merge conflicts."** Sometimes two branches change the same lines in incompatible ways, and Git needs a person to choose the result. First preserve uncommitted work. Then: (1) `git switch main && git pull --ff-only` to update local `main`, (2) `git switch your-branch && git merge main`, (3) open each conflicted file in VS Code and resolve the `<<<<<<<`, `=======`, and `>>>>>>>` sections intentionally, (4) run `git status`, stage only the resolved paths with `git add <file>`, and run the relevant checks, (5) `git commit` and `git push`. If the repository prefers rebasing or you do not understand the conflict, stop and ask a maintainer before rewriting history.
 
-**"CI failing on something that works locally."** Most common cause: you forgot to commit a new file, so CI can't find it. Run `git status` and check for untracked files. If everything is committed, read the CI log carefully — the error is usually a specific line number.
+**"CI failing on something that works locally."** Check for uncommitted files, platform differences, toolchain versions, feature flags, missing services, nondeterminism, and environment assumptions. Read the first causal failure, not only the final summary. Redact secrets before sharing logs.
 
-**"I made a commit on the wrong branch."** You meant to create a feature branch first and accidentally committed to main instead. Fix: `git checkout -b my-feature-branch` (creates a branch from your current state), then `git checkout main && git reset --hard origin/main` (resets your local main back to what's on GitHub, discarding the misplaced commits from main only — they're still on your feature branch). This is one of the few destructive git commands; double-check you're on main before running the reset.
+**"I made a commit on the wrong branch."** Stop before pushing. Create a backup branch pointing to the commit and ask an experienced collaborator or your agent for a recovery plan based on `git status`, `git branch --show-current`, and `git log --oneline --decorate -5`. Do not copy a `reset --hard` recipe blindly; it can discard unrelated uncommitted work.
 
-**"My branch is behind main and CI says I need to update."** Someone else merged a PR after you opened yours, and the project requires branches to be up to date with main before merging. Fix: `git checkout main && git pull && git checkout your-branch && git merge main`, resolve any conflicts, push.
+**"My branch is behind the base branch and CI says I need to update."** Someone merged work after you opened yours. Follow the repository's merge-or-rebase policy. For a merge-based `main` workflow: `git switch main`, `git pull --ff-only`, `git switch your-branch`, `git merge main`, resolve and test, then push. Substitute `develop` or another branch when that is the PR base.
 
-**"I pushed a commit that I want to undo."** If the PR hasn't merged yet, you can rewrite the branch. Simplest option: `git reset --hard HEAD~1` (removes the last commit locally) then `git push --force-with-lease` (updates the remote branch). Use `--force-with-lease` not `--force`; the -with-lease version is safer because it refuses to overwrite someone else's work. Do NOT force-push a branch that other people are working on — that's how teams lose work.
+**"I pushed a commit that I want to undo."** The safest shared-history default is `git revert <commit-sha>`, which creates a new commit that reverses the selected change. Rewriting a PR branch may be acceptable under the repository's policy, but coordinate first and preserve a backup; never force-push a branch other people use.
 
 ## Reviewing Someone Else's PR
 
@@ -189,7 +194,7 @@ The author sees your review and responds. The cycle repeats until approval.
 
 You will use the branch-and-PR workflow throughout Phase 3 and Phase 4 — the Workshop chapter requires it, your toolkit contributions go through it, and the portfolio review process uses it as evidence of how you collaborate. You'll also use it anytime you contribute to an open source project outside the guild, which is most of them.
 
-The command vocabulary from Phase 0 still holds. You'll use `git status`, `git add`, `git commit`, and `git push` constantly. `git checkout -b`, `git push -u origin HEAD`, and `git checkout main` are the additions that let you work the way professional teams do.
+The Phase 0 vocabulary still applies. Add `git switch -c <branch>`, `git switch <base>`, and `git push -u origin HEAD` for the common branch-and-PR flow, then follow each repository's base-branch and history policy.
 
 Now you're ready for Phase 3.
 

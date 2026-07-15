@@ -1,0 +1,8 @@
+{
+  "config": {
+    // Prose uses one sentence per source line; rendered Markdown wraps it.
+    "MD013": false,
+    // Many fences show terminal input or mixed input/output rather than a language.
+    "MD040": false
+  }
+}

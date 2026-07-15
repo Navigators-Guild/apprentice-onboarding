@@ -6,7 +6,7 @@ You've learned the concepts. Now you build. This chapter walks you through a com
 
 The project: **a personal bookmark manager.** Something that lets you save links with notes, organize them, and find them later. Simple enough to complete as a first project, useful enough that you'll actually use it.
 
-This project uses HTML, CSS, and JavaScript, not Rust. It's the one exception in the curriculum. For your very first build, seeing something appear in a browser the moment you open the file is the fastest path to "I made a thing." Starting with Phase 2, everything moves to Rust. But right now, the priority is learning the workflow, not the toolchain.
+This project uses HTML, CSS, and JavaScript, not Rust. The browser gives immediate visual feedback for a first portfolio build. Later core projects use Rust, while some tooling and integrations still use other languages. Right now, the priority is learning the workflow and checking observable behavior.
 
 This is a guided walkthrough. Follow along step by step. After this, your next projects will be self-directed.
 
@@ -108,41 +108,43 @@ If something doesn't work, tell the agent exactly what's happening:
 
 This is verification driven development in action. You defined what "working" means *before* building (the design doc), and now you're checking the result against that definition.
 
-**A habit to start now:** Try adding a bookmark with an empty title. Or a URL that's just nonsense. Does the app handle it, or does it silently store garbage? Input validation (checking that data is reasonable before you save it) is a security and quality habit worth building from your very first project. If your app stores whatever it's given without checking, tell the agent: "Add validation. Don't allow empty titles. Check that the URL starts with http:// or https://." You'll learn more about this in the Security chapter later, but the habit starts here.
+**A habit to start now:** Try an empty title and malformed URL. Input validation is a security and quality habit. Ask the agent to parse the URL with the browser's URL API, allow only the `http:` and `https:` schemes for this app, reject missing hostnames, and show an accessible error. A prefix check alone can accept misleading input. The later Security chapter explains why validation must match the use context.
+
+Also ask it to render bookmark titles, notes, and tags with safe DOM text APIs such as `textContent`, not by inserting user strings into `innerHTML`. If links open a new tab, use `rel="noopener noreferrer"`. Store no passwords, tokens, private customer data, or other sensitive content in `localStorage`; it is persistence for this exercise, not a secure vault.
 
 ## Step 5: Add Layers
 
 Once the core works, add features one at a time. Each layer follows the same loop: ask the agent, verify the result, fix any issues.
 
-**Layer 2: Notes and tags**
+### Layer 2: Notes and tags
 
 > "The core bookmark list is working. Now I want to add two fields to the add form: an optional note (a text area for a brief description) and optional tags (comma-separated text that gets stored as a list). Display the note under each bookmark's title, and display tags as small labeled badges."
 
 Verify: Add a bookmark with notes and tags. Do they display correctly? Add one without notes and tags. Does it still work? (This is your first edge case check.)
 
-**Layer 3: Edit and delete**
+### Layer 3: Edit and delete
 
 > "Now add the ability to edit and delete bookmarks. Each bookmark should have a small edit icon and a delete icon. Clicking edit should let me change the title, URL, note, and tags inline. Clicking delete should remove the bookmark after a confirmation. Make sure changes persist in local storage."
 
 Verify: Edit a bookmark. Does the change persist after refresh? Delete a bookmark. Is it gone after refresh? Try editing and then canceling. Does it revert correctly?
 
-**Layer 4: Tag filtering**
+### Layer 4: Tag filtering
 
 > "Now add tag filtering. Above the bookmark list, display all unique tags as clickable buttons. When I click a tag, the list should filter to only show bookmarks with that tag. There should be an 'All' button that removes the filter. The currently active filter should be visually highlighted."
 
 Verify: Click a tag. Does the list filter? Click "All." Does the full list return? Add a new bookmark with a new tag. Does the tag appear in the filter buttons?
 
-**Layer 5: Search**
+### Layer 5: Search
 
 > "Add a search bar next to the tag filters. It should filter the bookmark list in real time as I type, matching against bookmark titles and notes. Search and tag filters should work together. If I have a tag filter active and then search, it should search within the filtered results."
 
 Verify: Search for a word you know is in a bookmark title. Does it filter? Search for something in a note. Does it find it? Activate a tag filter, then search. Does it search within the filtered set? Clear the search. Does the tag filter remain active?
 
-**Layer 6: Polish**
+### Layer 6: Polish
 
 > "The functionality is complete. Now let's polish the interface. I want: better spacing and typography, a subtle color scheme (dark background with light text, dark mode), smooth transitions when filtering and searching, the add form should collapse to a button when not in use to keep the interface clean, and bookmarks should show the domain name extracted from the URL as a subtle label."
 
-Verify: Does it look good? Is it comfortable to use? Are the transitions smooth? Does the form collapse and expand?
+Verify at keyboard-only and narrow mobile widths. Confirm focus remains visible, labels are announced, text has adequate contrast, reduced-motion preferences are respected, and the collapsed form can be opened and closed without a mouse.
 
 ## Step 6: Document the Process
 
@@ -151,6 +153,7 @@ This is what separates a guild project from a random thing you built. Create a f
 **What you built and why.** A paragraph summarizing the project.
 
 **Your build process.** Walk through the layers you built, in order. For each layer, note:
+
 - What you asked the agent to do
 - Whether it worked on the first try
 - What you had to fix or adjust
@@ -166,44 +169,47 @@ This document is part of your portfolio. Reviewers will read it. It's the eviden
 
 ```
 cd ~/guild-projects/guild-portfolio/bookmark-manager
-git add .
-git commit -m "Complete bookmark manager - first portfolio project"
+git add DESIGN.md PROCESS.md index.html
+git diff --staged
+git commit -m "Complete bookmark manager first portfolio project"
 git push
 ```
 
-Your project is now live on GitHub. The code, the design doc, and the process documentation are all visible.
+Use `git status` first and adjust the paths if your project has other intended files. The project is now on GitHub; its visibility follows the repository setting you chose in Phase 0.
 
 ## Step 8: Submit for Adversarial Review
 
-Adversarial review is the core of the methodology — it's what takes your "I built a thing" project and turns it into "I built a thing and then fought with it until it was actually good." For your first build, you're going to get that review from an AI adversary, which is how the curriculum works today (see [00-foundations/06-the-guild.md](../00-foundations/06-the-guild.md) for the full explanation of why). When the guild's community review channel is live, you'll be able to submit to live reviewers as well, but the AI adversary is the default and it works well.
+Adversarial review compares the project with its requirements and named risks. Start with an AI review to practice triage, then use the live Discord **#adversarial-review** channel when you want peer feedback. Neither form is automatically correct; preserve the finding, evidence, decision, and resulting check.
 
 **Step 8a: Push everything.** Make sure your latest code, your DESIGN.md, and your PROCESS.md are all committed and pushed to GitHub:
 
 ```
 git status
-git add .
+git add DESIGN.md PROCESS.md index.html
+git diff --staged
 git commit -m "Prepare bookmark manager for review"
 git push
 ```
 
-Your project should be publicly visible at `github.com/YOUR-USERNAME/guild-portfolio/tree/main/bookmark-manager`.
+Commit only if those files changed. Confirm the pushed commit on GitHub. If the repository is private, grant access through an approved method or share a redacted artifact rather than changing visibility without reviewing the contents.
 
-**Step 8b: Open a fresh conversation.** Don't use the same conversation you built the project in. A builder and an adversary should not share context. Open a new tab/conversation with your agent.
+**Step 8b: Open a fresh conversation.** A separate context can reduce anchoring on the build discussion, but it is not independent proof. Supply the design, supported environment, files, and test results the reviewer needs.
 
 **Step 8c: Give the adversary its role.** Paste a prompt like this, with the bracketed pieces filled in:
 
-> "You are an adversarial reviewer. Your job is to find every weakness, bug, edge case, missing validation, unclear error message, inconsistent naming, security vulnerability, accessibility problem, and documentation gap in the work below. Be specific and harsh. Cite file names and line numbers where you can. Do not soften your critique. Do not add compliments. Assume the person who wrote this is strong enough to hear the truth and fix it.
+> "Review this project against its design and the risk areas below. Separate confirmed defects from risks, questions, and optional improvements. For each finding, cite the requirement and file location, explain impact, and give a reproduction or verification step. Say when evidence is insufficient. Be direct and respectful; do not change the files.
 >
 > The project is a personal bookmark manager built as a first portfolio project. Here is the design document: [paste DESIGN.md contents]. Here is the full source: [paste index.html]. Here is the process log: [paste PROCESS.md]. Produce the review."
 
-**Step 8d: Read the whole thing before reacting.** The roasts will come. Some will be about functionality ("what happens if you paste a URL without https://? Does it break?"). Some about design ("the contrast between your text and background isn't accessible enough"). Some about your process ("your design doc says no import/export, but that would actually be trivial to add and really useful"). Read it all, breathe, then re-read [the Forward](../FORWARD.md) if you need the reminder on why this isn't personal.
+**Step 8d: Read the whole thing before reacting.** Some findings will concern behavior, accessibility, or process; others may be preferences or unsupported speculation. Read the full report, then evaluate each claim rather than reacting to its tone.
 
 **Step 8e: Triage the feedback.** In your PROCESS.md, create a section called `## Review 1` and for every point the adversary raised, write:
+
 - The critique (paraphrase is fine)
 - Your assessment: valid / invalid / partially valid, with one sentence of reasoning
 - If valid: what you're going to do about it
 
-Not every critique will be worth addressing. AI adversaries sometimes reach — that's fine, it's part of the exit signal (see the VDD chapter). Your job is honest evaluation, not blind obedience.
+Not every critique will be worth addressing. Reproduce findings where practical, compare them with the design, and record why you accept, defer, or reject each one. Completion comes from the agreed criteria and risk threshold, not reviewer exhaustion.
 
 **Step 8f: Fix and commit.** Go back and address the valid critiques. Each fix gets its own commit with a descriptive message:
 
@@ -214,7 +220,7 @@ git commit -m "Improve contrast ratio for accessibility"
 
 Push when you're done.
 
-**Step 8g: Second pass (optional but recommended).** Open another fresh conversation, give the same adversarial reviewer prompt with the updated code, and see what it finds now. A second pass often catches things the first one missed and verifies your fixes actually landed. Two or three passes is usually enough — you'll hit the point where the adversary is reaching for nitpicks, which is the exit signal.
+**Step 8g: Targeted second pass (optional).** After fixing confirmed defects, rerun the affected tests and ask a fresh reviewer to check those fixes plus any remaining high-risk area. Additional passes have diminishing value; stop when the defined checks pass and residual risk is documented.
 
 **Step 8h: Submit to the community.** Post your finished build to the **#adversarial-review** channel in the guild [Discord](https://discord.gg/kfM6Q4UBbM). The submission format is simple: link to your GitHub repo, a brief description of what you built, a note on what you specifically want roasted, and a link to your AI-adversary review history so reviewers can see what's already been addressed. Having already run the AI adversarial passes above makes human review feedback tighter and more valuable, because it filters out the obvious issues. The community is still growing, so don't stall waiting on a review — keep moving through the curriculum and come back to address feedback when it arrives.
 
@@ -247,6 +253,7 @@ None of this is failure. It's the normal process of building software. The next 
 This was a guided build. Your next two Apprentice portfolio projects will be self-directed. You choose what to build, you decompose it yourself, you manage the process from design doc to adversarial review.
 
 Some ideas for self-directed projects:
+
 - A flashcard study tool with spaced repetition
 - A personal journal with daily entries and mood tracking
 - A workout log that tracks exercises, sets, and progress over time

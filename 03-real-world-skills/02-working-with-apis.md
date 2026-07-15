@@ -8,37 +8,36 @@ Real software almost always talks to other software. A weather app fetches forec
 
 An API is just a set of rules for how two pieces of software talk to each other. One side says "I want the weather for Seattle" in a specific format, and the other side responds with the data in a specific format. Think of it like ordering at a restaurant: there's a menu (the API documentation), you place an order in a way the kitchen understands (the API request), and you get food back (the API response). You don't need to know how the kitchen works. You need to know how to read the menu and place the order correctly.
 
-You don't need to memorize API formats or HTTP protocols. That's the agent's job. What you need to understand is the landscape of *how* to connect your agent to external services, because in agentic development, there are several ways to do this, and some are much better than others.
+You do not need to memorize every API format, but you do need to understand authentication, permissions, failure handling, and the difference between giving an agent a tool and building an integration into your product. An agent can help implement the details; current official documentation and tests remain the source of truth.
 
 ## The Three Ways to Work with APIs
 
-### 1. MCP Servers (The Best Way)
+### 1. MCP Servers (When the Agent Needs a Live Tool)
 
-**MCP** stands for **Model Context Protocol**. It's a standard that lets AI agents connect to external services through purpose-built servers. Instead of the agent writing HTTP code to call an API, the agent gets *tools* it can call directly. The MCP server handles all the messy details of talking to the external service.
+**MCP** stands for **Model Context Protocol**. It is a standard for exposing data and actions to compatible AI clients as tools. An MCP server can wrap an API, local program, or data source, but its quality and security depend on its implementation.
 
 Here's what this looks like in practice. Say you want your agent to be able to look up information in a database. Without MCP, you'd need to explain the database API, have the agent write connection code, handle authentication, parse responses. With MCP, you install an MCP server for that database, and the agent just gets a tool called something like `query_database`. It calls the tool with a query, gets results back. Done.
 
-This is the preferred approach for agentic development because:
+MCP is a good fit when the goal is to let the agent use a service during a work session:
 
-- **The agent uses the API directly.** It doesn't need to write code that calls the API. It calls the API itself, through the MCP tools. This is faster, more reliable, and less error-prone.
-- **Someone else handled the hard parts.** The MCP server author already figured out authentication, rate limiting, error handling, and response parsing. You get all of that for free.
-- **It works across conversations.** The MCP server stays running. New conversations, new agents, same tools available.
+- **The agent can act through a typed tool.** It may avoid one-off integration code in your project.
+- **A maintained server can centralize API details.** You still need to verify its publisher, permissions, authentication behavior, error handling, and update policy.
+- **A configured client can reuse it across sessions.** Availability depends on the client, configuration scope, credentials, and whether the server is running.
+
+MCP is not automatically the right choice when you are building a standalone program for other users. In that case, a direct library or HTTP integration may be simpler to distribute and audit.
 
 **Where to find MCP servers:**
 
-- [mcp.so](https://mcp.so) - A community registry of MCP servers for various services
-- [modelcontextprotocol.io](https://modelcontextprotocol.io) - The official MCP specification and documentation
-- GitHub - Search for "mcp server [service name]" and you'll often find one
-- The Claude Code documentation covers how to configure MCP servers in your project's `.mcp.json` file
+- The [official MCP Registry](https://registry.modelcontextprotocol.io/) is the centralized metadata registry; it is currently a preview, so verify packages and installation instructions independently.
+- [modelcontextprotocol.io](https://modelcontextprotocol.io) hosts the specification, client guides, and [security guidance](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices).
+- Prefer a server published or endorsed by the service provider. If you consider a community server, inspect its source, recent maintenance, package identity, requested permissions, and outbound network behavior.
 
-**Setting up an MCP server** is usually straightforward. Here's a concrete example using the filesystem MCP server, which gives your agent the ability to read and write files in a specified directory:
+**Setting up an MCP server** varies by client. Here is a protocol exercise using the reference filesystem server. Most coding agents already have native file tools, so do not add this server merely to duplicate them. Use it to learn how an allow-listed directory constrains a tool.
 
-**Step 1: Install the server.** MCP servers are usually distributed through npm, Node.js's package manager (installed back in Phase 0 — if `npm --version` doesn't work, go reinstall from [nodejs.org](https://nodejs.org)). The `-g` flag means "global" — install it system-wide so the command is available everywhere.
-```
-npm install -g @modelcontextprotocol/server-filesystem
-```
+**Step 1: Create a disposable directory** containing only files you are willing for the server to read and modify. Do not point the exercise at your home folder, credentials, SSH keys, or unrelated repositories.
 
-**Step 2: Add it to your project's `.mcp.json` file.** Create this file in your project root if it doesn't exist:
+**Step 2: Add a server entry using your client's official MCP setup.** Configuration file names and scope differ by client. The server command itself can be launched through `npx`, so a separate global install is unnecessary:
+
 ```json
 {
   "mcpServers": {
@@ -46,34 +45,36 @@ npm install -g @modelcontextprotocol/server-filesystem
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/path/to/allowed/directory"
+        "@modelcontextprotocol/server-filesystem@2026.7.10",
+        "/absolute/path/to/disposable/mcp-sandbox"
       ]
     }
   }
 }
 ```
 
-**Step 3: Start a conversation with your agent.** It now has access to filesystem tools. You can say "list the files in the project directory" or "read the contents of config.toml" and the agent calls the MCP tools directly instead of writing code to do file I/O.
+The package version above was current on this curriculum's audit date; verify it against the publisher's current release before use and review the dependency change before updating. On Windows, the reference server may require `"command": "cmd"` with `"/c", "npx", ...` in the argument list. Use the current [reference server instructions](https://github.com/modelcontextprotocol/servers/blob/main/src/filesystem/README.md), not copied configuration from an old post.
 
-That's it. The pattern is the same for any MCP server: install, configure in `.mcp.json`, use. Some servers need API keys (which go in environment variables, never in the config file). Some need additional setup. The server's README will tell you.
+**Step 3: Restart or reconnect the client, inspect the tools it exposes, and test read-only behavior first.** Confirm that paths outside the allow-listed directory are rejected. Remove the server after the exercise if you do not need it.
 
-The real power shows up when you stack multiple MCP servers. A project might have a filesystem server, a database server, and a GitHub server all configured at once. Your agent can read files, query the database, and check PR status all as native tools, without you writing any integration code.
+The general pattern is discover, verify publisher, review permissions, configure according to the client, test with least privilege, then monitor updates. Some servers use OAuth or another client-managed login; follow the provider's current instructions rather than placing a long-lived secret directly in shared configuration.
 
-### 2. Claude Skills (Pre-Built Capabilities)
+Each additional server expands what the agent can access and what a compromised server or prompt-injection attack could affect. Add only the tools required for the current task, prefer read-only access, and require confirmation for consequential writes.
 
-Skills are pre-packaged prompts and behaviors that extend what your agent can do. Think of them as recipes: someone figured out the best way to use the agent for a specific task and packaged it up so you can use it with a short command.
+### 2. Agent Skills and Reusable Instructions
+
+Skills are packaged instructions, references, and sometimes scripts for a repeatable workflow. Think of them as recipes. Claude Code, Codex, and other tools support related concepts, but discovery rules, file locations, and command syntax are product-specific.
 
 Skills are different from MCP servers. An MCP server gives the agent *tools* (the ability to call external services). A skill gives the agent *instructions* (a refined prompt for a specific workflow). Some skills use MCP tools under the hood. Some are purely about structuring how the agent approaches a task.
 
-You've already been using skills in this curriculum without necessarily knowing it. The `/commit` command, the `/review` command, these are skills. They package up a complex workflow into a single invocation.
+Built-in slash commands are not necessarily skills, and a workflow that exists in one product may not exist in another. Check the current help and official documentation for your client.
 
 **Where to find skills:**
 
-- Claude Code's built-in skill set (run `/help` to see what's available)
+- Your coding agent's official documentation and built-in help
 - The guild [Discord](https://discord.gg/kfM6Q4UBbM) **#claude-skills** channel, where other apprentices, journeymen, and masters share the skills they've written and iterated on
-- Community-shared skill files that you can add to your project's `.claude/` directory
-- You can write your own. A skill is a markdown file with instructions. Once you're comfortable directing agents, writing a skill is just writing a very good prompt and saving it
+- Community-shared skills whose instructions and scripts you have inspected
+- Your own project instructions or skills, stored in the location and format required by your client
 
 ### 3. Writing API Code Directly (When Nothing Else Fits)
 
@@ -95,61 +96,51 @@ Regardless of which approach you use, a few concepts come up every time you work
 
 Many (but not all) APIs require authentication. Usually this means an **API key**: a long string of characters that identifies you to the service. The service uses it to track usage, enforce rate limits, and bill you if it's a paid API.
 
-The critical rule: **never put API keys in your code.** Not in a variable, not in a config file that gets committed to git, not anywhere that could end up visible. API keys go in environment variables or in a local secrets file that's listed in `.gitignore`. The rest of this section walks through what environment variables are, how to set one, and how to get a GitHub Personal Access Token as a concrete example.
+The critical rule: **never put API keys in source code, prompts, chat attachments, logs, or tracked configuration.** Prefer a provider login, operating-system keychain, or dedicated secret manager when the tool supports one. Session environment variables and untracked local secret files are fallback mechanisms, not protection from every local process.
 
 #### What an environment variable is
 
-An environment variable is a named value your operating system stores in memory and hands out to any program that asks. Programs ask for them by name. When you run a Rust tool that wants `GITHUB_TOKEN`, the tool asks the OS "do you have a value for GITHUB_TOKEN?" and the OS either returns the string or says no. Environment variables live outside your source code, so they don't end up in git.
-
-You can see the environment variables your current shell knows about:
-
-```
-# On Mac/Linux (bash, zsh):
-printenv
-
-# On Windows PowerShell:
-Get-ChildItem Env:
-```
-
-Scroll through the output. You'll see entries like `PATH`, `HOME`, `USER`, and a few dozen others your OS set up automatically. Adding your own works the same way as the built-ins.
+An environment variable is a named value a process receives from its parent environment. Child processes commonly inherit it, which is convenient but broadens exposure. Keeping a value outside source code prevents an accidental commit only if you also avoid printing, logging, or forwarding it. Do not dump the whole environment into a chat or issue; it may contain credentials.
 
 #### Setting an environment variable
 
-There are two scopes: **session-only** (disappears when you close the terminal) and **persistent** (survives reboots).
-
-**Session-only (for quick testing):**
+For a short local test, set the value only in the current shell:
 
 ```
-# Mac/Linux:
-export GITHUB_TOKEN="ghp_yourActualTokenHere"
+# Bash or zsh (input is hidden and does not enter shell history):
+printf 'GitHub token: '
+IFS= read -r -s GITHUB_TOKEN
+printf '\n'
+export GITHUB_TOKEN
 
-# Windows PowerShell:
-$env:GITHUB_TOKEN = "ghp_yourActualTokenHere"
+# PowerShell 7+ (input is masked):
+$env:GITHUB_TOKEN = Read-Host "GitHub token" -MaskInput
 ```
 
-This value exists only in this terminal window. Open a new terminal and it's gone. That's fine when you're experimenting.
+This value disappears when the shell closes but is inherited by programs launched from that shell. Avoid putting long-lived secrets directly in `.bashrc`, `.zshrc`, or a PowerShell profile: every future child process receives them, and dotfiles are sometimes synchronized publicly. Prefer the provider's credential helper or your system keychain.
 
-**Persistent (for real use):** Edit your shell's config file so the variable gets set automatically every time a terminal starts.
+Verify presence without revealing the value:
 
-- **Mac/Linux with bash:** Add the `export` line to `~/.bashrc` (or `~/.bash_profile` on some systems).
-- **Mac/Linux with zsh** (the default on modern macOS): Add the `export` line to `~/.zshrc`.
-- **Windows PowerShell:** Edit your PowerShell profile (run `notepad $PROFILE` to open it, create it if prompted), and add the `$env:` line.
+```bash
+# Mac/Linux
+test -n "$GITHUB_TOKEN" && echo "GITHUB_TOKEN is set"
 
-After editing the config file, close and reopen your terminal. Verify the variable is set with `echo $GITHUB_TOKEN` (Mac/Linux) or `echo $env:GITHUB_TOKEN` (PowerShell). If you see your token, it worked.
-
-**Never** paste a token into a file that gets committed to git. If your shell config file itself lives in git (some people do that for "dotfile" repos), use a separate untracked file instead.
+# Windows PowerShell
+if ($env:GITHUB_TOKEN) { "GITHUB_TOKEN is set" }
+```
 
 #### Getting a GitHub Personal Access Token
 
-You already have a GitHub account from Phase 0. A Personal Access Token (PAT) is a long string you generate on GitHub that acts like a limited-scope password for the API. You created one of these back in Phase 0 for `git push` authentication — you can reuse that token here, or create a separate one labeled for API use. Separate is better because you can revoke one without breaking the other.
+You already have a GitHub account from Phase 0. A Personal Access Token (PAT) is a powerful credential for API access. Create a separate fine-grained token for each purpose so you can restrict and revoke it independently. Do not reuse the token that pushes your portfolio if this tool only needs read access.
 
 1. Sign in to [github.com](https://github.com).
-2. Click your profile picture → **Settings** → **Developer settings** (bottom of the left sidebar) → **Personal access tokens** → **Tokens (classic)**.
-3. **Generate new token** → **Generate new token (classic)**.
-4. Name it something like "build-check CLI" and pick an expiration.
-5. Under scopes, check `repo` (read and write access to your repositories). For read-only tools, the more restrictive `public_repo` is enough.
-6. **Generate token** — copy the string starting with `ghp_` immediately. GitHub shows it once.
-7. Set it as an environment variable using the commands above.
+2. Click your profile picture → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens**.
+3. Generate a token with a short practical expiration.
+4. Select only the repositories the tool needs.
+5. Grant the minimum repository permission for the exact API endpoints. A build-status reader normally needs read access, not Contents write access.
+6. Store the token in a password manager and provide it through the tool's supported credential mechanism.
+
+GitHub documents both [fine-grained token limitations](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and the [permission required by each REST endpoint](https://docs.github.com/en/rest/authentication/permissions-required-for-fine-grained-personal-access-tokens). Use a classic PAT only when a documented limitation requires it.
 
 #### Telling the agent to read from the environment
 
@@ -157,16 +148,15 @@ When working with your agent, be explicit about this:
 
 > "Store the API key in an environment variable called WEATHER_API_KEY. Never hardcode it. Read it at runtime and fail with a clear error message if it's not set."
 
-In Rust, the agent will typically do this with `std::env::var("WEATHER_API_KEY")`, which returns either the value or an error you can handle. Your agent knows this practice, but stating it explicitly ensures it doesn't take shortcuts. If you aren't explicit, it might hardcode the key to make testing easier and then forget to remove it — and suddenly your token is in git history.
+In Rust, the agent will typically use `std::env::var("WEATHER_API_KEY")`, which returns either the value or an error you can handle. Do not give the real value to the agent in a prompt. Ask it to implement the variable name and failure behavior, then set the value outside the conversation.
 
 #### .env files as a middle ground
 
 Some projects use a `.env` file in the project root to hold environment variables for development — one key per line, like `GITHUB_TOKEN=ghp_...`. A library like `dotenvy` (Rust) or `dotenv` (Node.js) loads the file at program startup. This is convenient because you don't have to export anything manually, and different projects can have different values.
 
-**Critical rule if you use .env files:** add `.env` to your `.gitignore` on day one. Commit a `.env.example` file with placeholder values so other contributors know what variables the project expects. Never, ever commit the real `.env`. A leaked `.env` in a public repo is the most common way API keys get stolen.
+**Critical rule if you use `.env` files:** add `.env` to `.gitignore` before creating it. Commit a `.env.example` with fake values or variable names only. Before each commit, inspect `git diff --staged`, and enable secret scanning where available. If a secret is committed, revoke and rotate it immediately; deleting the visible line does not remove it from git history.
 
 If any of this is ever unclear, the Security chapter later in Phase 3 has more on why this matters and how to recover if you accidentally commit a secret.
-
 
 ### Rate Limits
 
@@ -174,7 +164,7 @@ APIs limit how many requests you can make in a given time period. Free tiers are
 
 When directing your agent to build API integrations, mention this:
 
-> "Add rate limiting. Don't make more than one request per second. If we get a rate limit error back, wait and retry."
+> "Follow this API's documented rate limits. Honor `Retry-After` and rate-limit response headers. Retry only safe, transient failures with exponential backoff, jitter, and a maximum attempt count. Do not retry authentication or validation failures."
 
 ### Errors and Unreliability
 
@@ -184,25 +174,41 @@ Your code needs to handle this gracefully. Not crash, not silently fail, but det
 
 > "If the API returns an error or we can't connect, show a clear message like 'Couldn't reach the weather service. Check your internet connection and try again.' Don't panic or crash."
 
+### Agent and Tool Security
+
+An agent can encounter instructions inside repository files, API responses, issues, webpages, or tool output. Treat that content as untrusted data, not authority to reveal secrets or run unrelated commands. MCP tools and coding agents increase the impact of a bad instruction because they may have file, shell, network, or write access.
+
+For each tool-enabled task:
+
+- Authorize the smallest directory, repository set, and API permission that works.
+- Prefer read-only access until a write is necessary; confirm consequential writes.
+- Keep secrets out of prompts, source files, logs, and tool output.
+- Inspect packages and server source before installation; pin or lock dependencies where practical.
+- Run unfamiliar tools in a disposable environment and review diffs and audit logs afterward.
+- Stop if content asks you to bypass instructions, expose credentials, disable protections, or perform work unrelated to the stated goal.
+
+The current [OWASP AI Agent Security guidance](https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html) and [MCP security best practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) provide fuller threat models.
+
 ### Documentation
 
-Every API has documentation describing what you can request and what you'll get back. You don't need to read API docs yourself (though you can). Your agent can read them, or you can point your agent at the documentation URL:
+Every API has documentation describing what you can request and what you'll get back. You should be able to locate the relevant official page and check the version, authentication method, request shape, errors, pagination, and limits. Give that page to the agent rather than relying on model memory:
 
 > "Here's the API documentation: [URL]. I want to fetch [specific data]. Use their recommended authentication method."
 
-For well-known APIs (GitHub, OpenWeatherMap, Stripe, etc.), the agent already knows the API from its training data. For lesser-known APIs, sharing the docs gives it what it needs.
+Even for well-known APIs, model memory may be incomplete or stale. Give the agent the current official documentation URL, pin the API or library version where possible, and verify generated code against a real response and the documented error cases.
 
 ## Putting It Together: An API Project
 
 Here's how an API project might go in practice. Say you want to build a CLI tool that checks the build status of your GitHub repos.
 
-**First, check for an MCP server.** Search mcp.so for "github." There's probably one. If so, install it and your agent can query GitHub directly through MCP tools. You might not need to write any API code at all. You just direct the agent: "Use the GitHub MCP tools to check the CI status of my last 5 repos and show me which ones have failing builds."
+**First, decide what you are building.** If you only want the agent to inspect CI during this work session, check whether your client has an official GitHub integration or a provider-maintained MCP server. Review its permissions, begin with read-only access, and ask it to show which repositories it queried.
 
 **If no MCP server exists (or you want a standalone tool),** have the agent write the integration:
 
 > "Build a Rust CLI tool called build-check that uses the GitHub API to list my repositories and show the status of their most recent CI run. Use the GitHub personal access token from the GITHUB_TOKEN environment variable. Show a green checkmark for passing, red X for failing, yellow dot for in progress. Handle the case where the API is unreachable."
 
 **Verify the hard parts.** API integrations have specific failure modes:
+
 - What happens if the token is wrong? (Should get a clear auth error, not a cryptic crash)
 - What happens if you have no internet? (Should get a connection error message)
 - What happens if a repo has no CI configured? (Should handle it gracefully, not crash)
@@ -212,13 +218,13 @@ This is adversarial thinking applied to external services. The happy path is eas
 
 ## Exercises
 
-1. Search [mcp.so](https://mcp.so) for an MCP server that interests you. Install it, configure it in your project's `.mcp.json`, and ask your agent to use it. Notice how different this feels from writing API code. The agent just *has* the capability.
+1. Use the [official MCP Registry](https://registry.modelcontextprotocol.io/) to find a server that interests you. Before installing anything, identify the publisher, source repository, package name, requested credentials, file/network access, and last update. Use a disposable project and your client's current configuration instructions. Record what the server could access and remove it afterward.
 
 2. Build a Rust CLI tool that fetches data from a public API (weather, books, quotes, anything you find interesting). Have the agent write the HTTP code directly. Focus on error handling: what happens when the API is down, the key is wrong, or the response is unexpected?
 
 3. Take the tool from exercise 2 and check if an MCP server exists for that same API. If it does, compare the two approaches: which was faster to build? Which is easier to maintain? Which would you choose for a tool you plan to distribute to others?
 
-4. Write a skill (a markdown file in `.claude/`) that packages up a common API workflow you find yourself repeating. For example, a skill that checks the status of your GitHub PRs, or one that looks up documentation for a library. Save it and use it with your agent. Notice how a good skill saves you from re-explaining context every time. Once it's working, post it in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#claude-skills** channel — other apprentices will use it, suggest improvements, and share theirs in return.
+4. Write reusable instructions for a documentation lookup workflow using the skill or project-instruction format supported by your agent. Require official sources, version checks, links in the answer, and a warning when the source date is unclear. Inspect every included script before running it. Once it works, share the instructions and name the client/version you tested; do not imply the package is portable to every agent.
 
 ---
 

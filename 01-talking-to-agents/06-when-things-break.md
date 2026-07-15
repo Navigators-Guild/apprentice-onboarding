@@ -65,7 +65,7 @@ That tells the agent nothing. It doesn't know what "it" is, what "work" means to
 
 This is harder than an error message, because the code appears to work. No crashes, no errors. It just doesn't do what you wanted.
 
-The problem is almost always a gap between what you said and what the agent understood. Go back to your original prompt and compare what you asked for against what you got:
+The cause may be an ambiguous requirement, an implementation bug, stale documentation, incompatible versions, missing environment details, or a wrong agent assumption. First compare the requirement, actual behavior, current code, and environment evidence:
 
 - Did you say "sort by priority" but it sorted alphabetically?
 - Did you say "save to a file" but it saves in a format you can't read back?
@@ -117,7 +117,7 @@ After a while, you'll start recognizing categories of failures. Here are the one
 
 The most important thing about debugging isn't any specific technique. It's the mindset: **something specific is wrong, and you can find it.**
 
-When beginners hit an error, there's a temptation to think "I broke everything" or "this is beyond me." It almost never is. It's almost always one specific thing: a wrong variable name, a missing import, an off-by-one error, a misunderstanding between you and the agent. The error is finite and findable.
+When beginners hit an error, there's a temptation to think "I broke everything" or "this is beyond me." Most failures can be narrowed to one or more concrete causes, but distributed and stateful systems can have interacting causes. Make the failure reproducible, reduce the scope, and keep evidence from each experiment.
 
 Your process:
 
@@ -127,7 +127,7 @@ Your process:
 4. **Apply the fix and test.** If there's a new error, repeat from step 1.
 5. **If you're lost, ask the agent to explain.** "Walk me through what this code does step by step."
 
-This loop handles 95% of problems. The other 5% are where you learn the most, and the guild community is there for those — drop the question (with the exact error, what you tried, and a link to the code) in the **#apprentice-level** channel of the [Discord](https://discord.gg/kfM6Q4UBbM).
+This loop handles many routine failures. When it does not, ask in the **#apprentice-level** Discord channel with a minimal reproduction, the exact redacted error, relevant environment versions, and what you tried. Share code only when you are authorized and have checked it for secrets or sensitive data.
 
 ## Exercises
 

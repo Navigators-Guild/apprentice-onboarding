@@ -4,7 +4,7 @@
 
 You know how to talk to agents. You know how to break problems down, provide context, and verify output. You've built something. Now it's time to talk about *how the guild actually builds software*, because there's a method to it, and the method is what separates work that holds up from work that falls apart the moment someone looks at it sideways.
 
-The methodology is called **Verification-Driven Development (VDD)**, and the engine that powers it is **Iterative Adversarial Refinement (IAR)**. Those are fancy names for a simple idea: build something, prove it works, then hand it to someone whose entire job is to tear it apart. Fix what they find. Repeat until they can't find anything real to complain about.
+This curriculum calls its workflow **Verification-Driven Development (VDD)** and **Iterative Adversarial Refinement (IAR)**. These are guild terms, not established industry standards. The idea is to define evidence before building, implement in reviewable increments, test the result, obtain independent critique, and fix confirmed gaps until the acceptance criteria and risk threshold are met.
 
 ## Why "It Works" Isn't Good Enough
 
@@ -12,19 +12,19 @@ When you build something with an agent and it runs without errors, it's tempting
 
 The problem is that "it works" and "it works correctly" are very different things. Code can run without crashing and still be full of problems. Maybe it handles the happy path fine but breaks on weird input. Maybe it does the right thing most of the time but has a subtle logic error that only shows up on the last day of the month. Maybe it works perfectly today but is structured in a way that makes it impossible to change tomorrow.
 
-The first version of anything is usually the most dangerous version, because it *looks* done. It passes the "does it run?" test. But it hasn't been stressed, questioned, or challenged. VDD exists because we don't trust the first version. We trust the version that survived the process.
+A first working version is weakly evidenced: it may pass the "does it run?" check without having been stressed against edge cases or operational risks. VDD treats it as a candidate and builds confidence through proportionate, observable checks.
 
 ## The Three Roles
 
 VDD works by putting three different perspectives in a loop:
 
-**The Builder** is the AI agent doing the actual construction. It plans, writes code, writes tests, and implements features. In our workflow, this is typically Claude (or whichever agent you're directing). The Builder is fast, knowledgeable, and eager to produce output. It is also prone to taking shortcuts, generating plausible-looking code that has subtle issues, and saying "done" before things are actually done. That's not a flaw. It's just what happens when you optimize for generation speed. The process accounts for it.
+**The Builder** is the coding agent used for implementation. It can plan, edit code, write tests, and run tools within the permissions you grant. Its output quality varies by task, context, model, and feedback. Treat completion claims as hypotheses to check against the repository and acceptance criteria.
 
 **The Human (You)** is the director. You set the goals, define what "correct" means, do the manual verification ("does this actually do what I asked?"), and make judgment calls. You're the one who knows the domain, the audience, and the purpose. The Builder doesn't know any of that unless you tell it. Your job is also to mediate between the Builder and the Adversary, deciding which critiques are real problems and which are noise.
 
-**The Adversary** is the critic. In the guild, this role is filled by a separate AI prompted to be harsh, impatient, and cynical. Its job is to find every flaw, question every assumption, and point out every shortcut. It's not trying to be helpful in the encouraging sense. It's trying to break your work. This is the "roast" in adversarial review, and it's the core of IAR.
+**The Reviewer** is the critic. This may be a human, a separate agent context, a specialized tool, or several of these. Its job is to test the work against requirements and named risk areas, cite evidence, and distinguish confirmed defects from questions. A harsh personality is optional; specificity and independence matter more than hostility.
 
-The key insight: these three roles create tension on purpose. The Builder wants to produce. The Adversary wants to destroy. You sit in the middle, using the tension to drive the work toward something genuinely solid.
+The key insight is separation of responsibilities. The builder produces a candidate, the reviewer challenges it, and the accountable human decides what evidence is sufficient and which actions are authorized.
 
 ## The Loop
 
@@ -36,18 +36,18 @@ Before any code gets written, the work gets decomposed. You already learned this
 
 - **Epics** are the big goals. "Build user authentication" is an epic.
 - **Issues** are the functional pieces within an epic. "Create login endpoint," "add password hashing," "build session management" are issues.
-- **Sub-issues** are the atomic units. Each one is a single, testable piece of work that can be verified independently. "Hash passwords with bcrypt using cost factor 12" is a sub-issue.
+- **Sub-issues** are reviewable units. Each one has an observable outcome and acceptance criteria, such as "store passwords using the current configuration recommended by our selected maintained password-hashing library, with tests for verification and failure."
 
-Think of it like a string of beads. Each bead is a sub-issue. The string is the epic. Every bead has to be accounted for. No gaps, no "we'll figure that out later," no hand-waving. If something needs to happen, there's a bead for it.
+Think of it like a string of beads. Each bead is a sub-issue and the string is the epic. Account for required work, while allowing explicit research tasks and documented unknowns instead of pretending every detail is known upfront.
 
-This matters because it creates **linear accountability**. Every piece of code traces back to a specific sub-issue. Every sub-issue traces to an issue. Every issue traces to an epic. When something breaks, you can follow the chain backwards and find exactly where the problem lives. When someone reviews your work, they can see that nothing was skipped.
+This creates **traceability**. Material changes should connect to a sub-issue, issue, and larger goal. That chain helps investigation and review, but it cannot prove that requirements were complete or identify a defect's cause by itself.
 
 ### Step 2: Build and Verify
 
 The Builder implements the sub-issues one at a time. For each one:
 
 1. **Write the code** that implements the feature or fix.
-2. **Write tests** that prove it works. Not just "it doesn't crash" tests. Tests that check the actual behavior: does the right thing happen with good input? Does the right error happen with bad input? Do edge cases get handled?
+2. **Write tests** that exercise the required behavior. Go beyond "it doesn't crash": does the expected result occur with valid input? Does the specified error occur with invalid input? Which edge cases matter?
 3. **You verify manually.** Does this match what you asked for? Does it feel right? Does it do what the design doc says it should do? This is the human-in-the-loop step, and it catches the things automated tests can't: intent mismatches, UX problems, "technically correct but not what I meant" situations.
 
 Only after you're satisfied that a piece works does it move to the next step.
@@ -58,9 +58,9 @@ This is where it gets interesting. You take your verified, tested code and hand 
 
 A few things make the roast effective:
 
-**The Adversary is prompted to be harsh.** Not rude for the sake of it, but genuinely zero-tolerance. Placeholder comments? Called out. Generic error handling? Called out. Inefficient patterns the Builder used because they were easy? Called out. The Adversary doesn't care about your feelings or the Builder's. It cares about the code.
+**The reviewer gets a checklist and evidence standard.** Placeholder comments, incomplete error handling, security boundaries, performance requirements, and missing tests are reviewed when relevant. Every finding should cite the requirement or code, explain impact, and suggest a way to reproduce it.
 
-**Fresh eyes every time.** The Adversary gets a clean context for every review. This is important. When an AI stays in a long conversation, it tends to get agreeable. It starts accepting things it would have questioned earlier. By resetting the context, every roast hits with the same intensity as the first one. No drift, no softening, no "well, I already mentioned that last time so I'll let it slide."
+**Use an independent view when practical.** A new context or reviewer can reduce shared assumptions, but it also lacks history. Supply the design, acceptance criteria, threat model, supported environment, diff, and test results. Independence without relevant context produces noise.
 
 **It's looking for patterns, not just bugs.** The Adversary catches things like: "You wrote the same error handling logic in six places instead of extracting it." "This function does three unrelated things." "Your test only covers the happy path." "This will break if someone passes null." These are the problems that working code hides from casual inspection.
 
@@ -78,28 +78,26 @@ Then it goes back to the Adversary. Fresh context, fresh roast. The cycle repeat
 
 As the loop tightens and the obvious problems get fixed, something interesting happens: the remaining issues get subtler. The Adversary starts finding edge cases that are hard to test with normal unit tests. "What if this number overflows?" "What if two users hit this endpoint at the exact same millisecond?" "What if the input is technically valid but astronomically large?"
 
-This is where VDD pushes beyond standard testing into what we call **hard truths**: verification methods that don't just check if code works for a set of examples, but prove that certain categories of failure are impossible.
+This is where VDD uses an **evidence ladder**. Different methods answer different questions; none turns the whole application into a proof.
 
 For an apprentice, you don't need to implement these yet. But you should understand the concept:
 
 - **Standard testing** says "I tried 50 inputs and they all worked." That's useful, but it doesn't tell you about input #51.
-- **Hard truth testing** says "I can mathematically prove this function will never overflow, for any input, ever." That's a different level of confidence.
+- **Formal verification** can prove a stated property for the modeled code and assumptions, such as absence of overflow in a bounded function. It does not prove unspecified requirements or unmodeled dependencies.
 
-In practice this means integrating tools into your build pipeline that do things like check for memory safety violations, arithmetic overflows, or known security vulnerabilities. The code doesn't just have to pass tests. It has to pass *proofs*.
+In practice, combine compiler checks, tests, property or mutation testing, static analysis, dependency advisory scans, and formal methods where the risk justifies them. Advisory scanners report known records; they are not proofs. Record what each check covers and what remains unverified.
 
-You'll encounter this more as you advance through the guild. For now, the takeaway is: the goal isn't "it works when I try it." The goal is "I have evidence that it works, and I have evidence about the ways it *can't* fail."
+You'll encounter this more as you advance through the guild. For now, the takeaway is: the goal is not merely "it worked when I tried it." State what each check supports and which relevant failure modes remain untested or ruled out only under assumptions.
 
 ## Knowing When You're Done
 
 One of the hardest things in any creative process is knowing when to stop. VDD has an elegant answer to this.
 
-Remember that the Adversary is prompted to find problems. It *wants* to find problems. It will always try to produce critique, because that's its job.
+Remember that the reviewer is prompted to find problems. An AI reviewer may produce critique even when evidence is weak, while a human reviewer may overlook defects or stop early.
 
-So what happens when the code is actually good? The Adversary starts making things up. It nitpicks things that aren't real issues. It misreads the code. It invents scenarios that can't actually happen. Its critiques stop being grounded in reality.
+Reviewers—human or AI—can miss real problems and can invent false ones at any quality level. Reviewer exhaustion or hallucination is not an exit signal.
 
-This is the exit signal. When the Builder can look at the Adversary's feedback and say "that's not a real problem, you're hallucinating," and this happens consistently across multiple rounds, the code has reached what VDD calls **maximum viable refinement**. The Adversary literally cannot find real problems anymore. It's been pushed to the point of inventing them.
-
-This is a much better stopping point than "I feel like it's done" or "I'm tired of working on this." It's an observable signal: the harshest possible critic has run out of legitimate complaints.
+Stop a refinement cycle when the agreed acceptance criteria pass, required checks are green, confirmed high-severity findings are resolved, residual risks and known limitations are documented, and an accountable person accepts the result for its intended use. Reopen the cycle when requirements, dependencies, or evidence change.
 
 ## A Roast In Action
 
@@ -146,7 +144,7 @@ This is where it gets interesting. A streaming JSON writer for a personal issue 
 
 > "This is a personal CLI tool. The in-memory approach is fine for the expected scale. The atomic write handles the crash case. The streaming suggestion would add complexity without meaningful benefit."
 
-The Adversary was forced to invent a problem because the real ones are fixed. That's the exit signal. Three rounds, two real improvements, one hallucinated critique. Done.
+The last suggestion is not proportionate to the stated scale, so you document why it was rejected. The work is done only if the original acceptance criteria, atomic-write tests, and agreed quality checks pass—not because the reviewer reached for a weak critique.
 
 Notice what happened: the first draft was functional but fragile. The final version handles real failure modes (data loss on crash, missing context in errors, unreadable output). None of those improvements came from testing. They came from someone looking at the code with the specific intent of finding what's wrong. That's the value of the roast.
 
@@ -154,15 +152,15 @@ Notice what happened: the first draft was functional but fragile. The final vers
 
 If you take nothing else from this chapter, take these:
 
-**Don't trust the first draft.** The first version that works is not the best version. It's the starting point. The process that comes after is where quality actually happens.
+**Treat the first draft as a candidate.** A working first version is a starting point. Review and testing can improve confidence, but the process is only useful when its checks match the real requirements and risks.
 
-**Friction is productive.** The adversarial loop feels uncomfortable. Getting your work torn apart isn't fun. But that friction is what polishes the output. Smooth, agreeable feedback produces smooth, mediocre work. Harsh, specific feedback produces work that holds up.
+**Specific disagreement can be productive.** A review is valuable when it exposes assumptions and produces testable findings. Tone does not determine quality; evidence, relevance, and follow-through do.
 
-**Track everything.** Every piece of work should be traceable. If you can't point to why a piece of code exists and what requirement it satisfies, it's either unnecessary or undocumented. Both are problems.
+**Track material work and decisions.** Significant changes should be traceable to a requirement, defect, or maintenance need. Do not turn trivial actions into bookkeeping, but preserve enough context for another person to understand why the code changed.
 
-**Fight entropy.** Long conversations drift. Contexts get stale. Reviewers get soft. VDD fights this by resetting context, enforcing fresh perspectives, and never letting the process coast. Quality degrades by default. You have to actively maintain it.
+**Refresh context deliberately.** Long conversations can drift, context can become stale, and reviewers can anchor on earlier assumptions. Restate requirements, use fresh perspectives where useful, and rerun the relevant checks as the work changes.
 
-**Prove, don't assume.** "It should work" is not evidence. "Here's a test that proves it works" is evidence. "Here's a mathematical proof that it can't fail in this specific way" is strong evidence. Move up this ladder as your skills grow.
+**Show evidence, don't assume.** "It should work" is not evidence. A passing test supports the behavior it asserts. A mathematical proof can be stronger evidence for a stated property under explicit assumptions. Match the evidence to the claim and risk.
 
 ## How This Applies to You Right Now
 
@@ -172,15 +170,15 @@ As an apprentice, you're not going to set up formal verification pipelines or ru
 
 **When you think something works, try to break it.** Put in weird inputs. Refresh the page mid-action. Open it on your phone. Click things twice fast. Think like an adversary.
 
-**When you submit work for review, welcome the roast.** The harshest feedback is the most valuable. If someone tells you "this is great, no notes," be suspicious. If someone tears it apart with specific critiques, be grateful. Then fix it.
+**When you submit work for review, ask for evidence.** A useful reviewer can say both what passed and what failed, cite specifics, and identify uncertainty. Fix confirmed problems; do not reward severity of tone over accuracy.
 
-**Track your work in pieces small enough to verify.** If you can't test a piece of your project independently, it's too big. Break it down further.
+**Track work in pieces that produce inspectable progress.** Some behavior is only meaningful end to end, so use vertical slices and integration tests rather than forcing every code change into an isolated micro-task.
 
-**Don't stop when it works. Stop when you can't break it.** That's a different bar, and clearing it is what builds real skill.
+**Don't stop at the first success.** Stop when the defined evidence passes and the remaining risk is explicit and acceptable for the intended use.
 
 ## Exercises
 
-1. Take the bookmark manager you built in Phase 1. Pretend you're the Adversary. Open a conversation with an agent and prompt it like this: "I'm going to show you some code. Your job is to be extremely critical. Find every flaw, every shortcut, every edge case that isn't handled. Don't be nice about it." Then paste your code. How much does it find? Were you surprised?
+1. Take the bookmark manager you built in Phase 1. Open a fresh conversation and ask: "Review this code against the attached design and acceptance criteria. Report confirmed defects separately from risks and questions. For each finding, cite the relevant requirement and code location, explain impact, and suggest a way to reproduce or test it." Triage what it finds. Which findings survive verification?
 
 2. Take one critique from the adversarial review and fix it. Then submit the fix for another round of critique. Do this three times. Notice how the quality of the critiques changes as the code improves.
 
@@ -188,7 +186,7 @@ As an apprentice, you're not going to set up formal verification pipelines or ru
 
 4. Share your adversarial review experience in the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adversarial-review** channel. What was the most useful critique you received? What was the hardest to fix? What did you learn about your own blind spots? Reading other apprentices' review reports in that channel is almost as valuable as running your own.
 
-This methodology is the backbone of everything we do in the guild. The tools will change, the agents will get better, the specific techniques will evolve. But the core loop (build, verify, get roasted, fix, repeat) works because it's built on honest feedback and hard evidence. That doesn't go out of date.
+This methodology is the backbone of the curriculum. Its practices should evolve with evidence. DORA's 2025 research describes AI as an [amplifier of existing organizational strengths and weaknesses](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/), and METR has observed agents that implement core functionality yet miss [merge-ready quality checks](https://metr.org/blog/2025-08-12-research-update-towards-reconciling-slowdown-with-time-horizons/). The durable lesson is to define evidence, preserve human accountability, and improve the process when measurements disagree with the story.
 
 ---
 

@@ -6,7 +6,7 @@ Up until now, the things you've built have been small enough to hold in your hea
 
 That won't last.
 
-The moment a project gets even moderately complex (say, ten features instead of five, or two people working instead of one), your memory becomes the weakest link. You forget that you still haven't handled the edge case from last week. You lose track of which pieces depend on which. You come back after a weekend and spend twenty minutes figuring out where you left off. And if you're working with an AI agent, the problem is worse, because the agent's memory resets with every new conversation. It has no idea what you did yesterday unless you tell it.
+As a project grows, unaided memory becomes unreliable. You forget the edge case from last week or which pieces depend on which. Agent products may preserve history, project instructions, or summaries, but those features vary and can omit important details. Durable project state should live in files and trackers you can inspect, not only in a conversation.
 
 This is the problem that issue trackers solve. And since you just learned how to build things with agents, you're going to build one.
 
@@ -22,13 +22,13 @@ Strip away the jargon and an issue tracker is just a structured to-do list with 
 
 **Items create a record.** When you close an item, it doesn't vanish. It stays in the history. Three months from now, you can look back and see what you built, in what order, and why. This is your audit trail. For your portfolio, it's evidence that you worked deliberately, not randomly.
 
-**Items survive your memory.** You can close your laptop, go to sleep, and come back tomorrow. The tracker remembers everything. You can start a new conversation with an agent, point it at the tracker, and it instantly knows what's been done and what's left. This is especially critical for AI-assisted work, where conversations end and contexts reset constantly.
+**Items survive a session.** You can close your laptop and return tomorrow. A new agent session can inspect the tracker to reconstruct what is done and what remains. It still needs to read the entries correctly, so treat the tracker as evidence, not automatic understanding.
 
 ## Why Agents Need This Even More Than You Do
 
 Here's something that isn't obvious until you've lived it: when you're directing an AI agent, the issue tracker isn't just for you. It's for the agent too.
 
-Remember from Phase 1: agents have no memory between conversations. Every new conversation starts blank. And even within a single long conversation, context drifts and early details get fuzzy.
+Do not assume an agent has complete, reliable memory between sessions. Some tools preserve history or project state; others start fresh, summarize, or retrieve only selected material. Long sessions can also lose precision as tools compact or select context.
 
 An issue tracker gives the agent something to anchor to. Instead of opening a conversation with a paragraph of context about where you left off, you can say "here's my issue list, we're working on issue #7." The agent immediately knows what's done, what's in progress, and what's next. When the conversation gets long and you need to start fresh, the tracker preserves everything that matters.
 
@@ -105,7 +105,7 @@ Verify each layer before moving to the next. `cargo build` should compile withou
 
 This project teaches you several things the bookmark manager didn't:
 
-**Working in Rust.** This is your first compiled project. You'll get used to the cycle of writing code, compiling, and fixing compiler errors. Rust's compiler is famously strict, and that's a feature: when it does compile, you know entire categories of bugs are impossible. The agent will handle the syntax, but you'll start to recognize what the compiler is telling you.
+**Working in Rust.** This is your first compiled project. You'll get used to writing code, compiling, and fixing compiler errors. A successful safe-Rust compile rules out useful categories of type and memory-safety violations; it does not rule out logic errors. The agent can help with syntax, while you learn to read the evidence the compiler provides.
 
 **CLI design.** Building for the terminal is different from building for a browser. There's no visual layout, no buttons, no mouse clicks. Everything is text in, text out. You'll learn to think about user experience in a text-only environment: clear output formatting, helpful error messages, intuitive command structure.
 
@@ -125,32 +125,36 @@ crosslink is a command-line issue tracker built specifically for AI-assisted dev
 
 ### Why Not Just Use the One You Built?
 
-Your tracker is a learning project. It's great for understanding the concepts. But it's a web app you open in a browser, and it stores data in that browser's local storage. It can't talk to your agent. It can't inject context into a conversation. It can't survive a browser cache clear.
+Your tracker is a local Rust CLI that stores issues in JSON. That is enough to teach commands, states, filtering, and serialization. Its deliberate limits are different: the design is flat, with no sessions, handoff notes, breadcrumbs, subissues, dependency graph, hooks, or coordination features. Adding those safely would require new schemas, migrations, concurrency decisions, and integrations.
 
-crosslink runs in your terminal (where your agent already lives), stores data in a local database file that travels with your project, and is designed from the ground up to bridge the gap between you and your AI agent.
+crosslink is an evolving, local-first CLI built for those broader workflows. The current beta stores project issues in SQLite at `.crosslink/issues.db` and adds sessions, hierarchy, dependencies, recommendations, hooks, and optional multi-agent workflows. Check the [official quickstart](https://forecast-bio.github.io/crosslink/getting-started/quickstart.html) because commands and setup can change while the project is in beta.
 
 ### Installing crosslink
 
-Rust and cargo are already installed from Phase 0, so the install is one command:
+The current release requires Rust 1.87 or newer. Confirm `rustc --version`, update stable Rust if needed, then install:
+
 ```
-cargo install crosslink
+rustup update stable
+cargo install --locked crosslink
 ```
 
 Then initialize it in any project:
+
 ```
 cd ~/guild-projects/guild-portfolio/bookmark-manager
 crosslink init
 ```
 
-That creates a `.crosslink/` folder in your project with a database, configuration, and a set of hooks. All your issues live there, local to the project, no cloud services, no accounts.
+Follow the interactive prompts. Initialization creates local project state under `.crosslink/`; the issue database is `.crosslink/issues.db`. Review the generated configuration and hook choices before accepting them, especially in a repository you did not create.
 
 Verify it worked by running `crosslink --version`. You should see a version number. If you see "command not found" instead, close and reopen your terminal — `cargo install` drops binaries in `~/.cargo/bin/` and your shell needs to reload to find them.
 
 ### The Key Insight: The Agent Does the Tracking
 
-Here's what makes crosslink different from a normal issue tracker: **you don't have to run the commands yourself.** When you run `crosslink init`, it sets up hooks that teach your AI agent how to use crosslink. The agent reads the hooks, understands the system, and starts managing issues on its own.
+Here's what makes crosslink useful for agent-assisted work: **a configured coding agent can run the commands as part of its workflow.** Initialization and client integration do not guarantee that every agent will discover or use it correctly. Tell the agent to read the project instructions, inspect `crosslink --help`, and show you the tracker changes it makes.
 
-You tell the agent "I want to add a search feature." The agent:
+In a workflow where the client instructions and hooks are configured and the agent follows them, you can ask for a search feature and expect it to propose actions such as:
+
 1. Creates an issue in crosslink for the work
 2. Starts a session and marks that issue as active
 3. Breaks it into subissues if it's complex
@@ -158,9 +162,9 @@ You tell the agent "I want to add a search feature." The agent:
 5. Closes the issue when it's done
 6. Leaves handoff notes for the next session
 
-You don't type `crosslink create` or `crosslink close`. The agent does. Your job is the same as it's always been: direct the work, verify the output, and make judgment calls. crosslink just gives the agent a structured place to track everything it's doing, so nothing gets lost between conversations.
+The agent can do the bookkeeping, but you may run the same commands manually. Your job remains direction and quality control: review issue scope, verify status transitions, and confirm that handoff notes match the repository.
 
-This is what it looks like in practice. You start a conversation with your agent and say "let's add search to the recipe app." Behind the scenes, the agent is doing this:
+This is what the intended workflow looks like. Ask the agent to show or summarize the commands rather than assuming they happened:
 
 ```
 crosslink session start
@@ -171,7 +175,7 @@ crosslink close 3
 crosslink session end --notes "Search is done. Tag filtering is next."
 ```
 
-You see the work happening. You test the result. You give feedback. The tracking is handled for you.
+You inspect both the repository and tracker changes, test the result, and give feedback. If the integration does not update the tracker, run the commands yourself or repair the project instructions.
 
 ### The Concepts You Already Know
 
@@ -192,7 +196,7 @@ Because you built a tracker, you understand what the agent is doing. It's not ma
 
 Here's where it goes beyond what you built:
 
-**Sessions and handoff notes.** When the agent starts working, it opens a session. When the conversation ends, it saves handoff notes describing where things stand. Next time you start a conversation (even days later), the agent reads those notes and picks up where it left off. No more re-explaining your entire project every time.
+**Sessions and handoff notes.** A configured workflow can open a session, record the active issue, and save handoff notes when work ends. A later agent can read those durable notes. Verify that the session ended and the notes are accurate; product context, hooks, and agent compliance still vary.
 
 **Breadcrumbs.** During a long conversation, the agent drops breadcrumbs as it works:
 
@@ -219,7 +223,7 @@ Issue #1 is the epic. The subissues are the beads. You can see the whole hierarc
 crosslink issue block 5 3
 ```
 
-Issue #5 is blocked by issue #3. `crosslink issue ready` shows only the issues with no blockers, so the agent (and you) always know what can be worked on right now.
+Issue #5 is blocked by issue #3. `crosslink issue ready` reports open issues whose recorded blockers are resolved, so it is only as accurate as the dependency and status data you maintain.
 
 **Smart suggestions.** The agent can ask crosslink what to do next:
 
@@ -231,35 +235,35 @@ crosslink looks at priorities, dependencies, and progress, and recommends the ne
 
 ### What You Actually Do
 
-Your daily workflow with crosslink is simple because most of it is automatic:
+Your daily workflow with crosslink can be short when the client integration is working:
 
-1. **Start a conversation with your agent.** The agent reads the crosslink state and knows where things stand.
+1. **Start a conversation with your agent.** Ask it to read the project instructions, last handoff, and open issues; confirm what it found.
 2. **Tell it what you want to work on.** "Let's tackle the filtering next" or "there's a bug where search doesn't clear properly."
 3. **Review the output.** The agent builds, you verify. Same as always.
 4. **Check the tracker when you want the big picture.** `crosslink list` shows all open issues. `crosslink issue tree` shows the hierarchy. These are read-only commands you can run yourself anytime to see the state of the project.
 
-The agent handles the bookkeeping. You handle the direction and quality control. That's the division of labor.
+Let the configured agent propose bookkeeping changes, then inspect the tracker just as you inspect code. You retain direction and quality control.
 
 ## The Bigger Picture
 
 Issue tracking might feel like overhead when your projects are small. "I know what I need to do, why do I need to write it down?" You write it down because:
 
-1. **You won't always remember.** Not tomorrow, not next week, definitely not next month.
-2. **Your agent never remembers.** Every new conversation starts blank unless you give it context, and a tracker is the most efficient context you can give.
+1. **Human memory is fallible.** A durable record becomes more valuable after interruptions or handoffs.
+2. **Agent memory is not a reliable system of record.** Product memory and history vary; a tracker is inspectable, versionable context you control.
 3. **Your reviewers need to see it.** Part of the adversarial review process is examining not just what you built but how you organized the work. A clean issue history shows discipline.
-4. **It forces clear thinking.** If you can't write a clear issue title, you haven't thought clearly about what you're building. The act of creating issues *is* the act of decomposition from the previous chapters.
+4. **It encourages clear thinking.** Difficulty writing a clear issue title can reveal an underspecified task. Creating issues is one practical form of the decomposition from the previous chapters.
 
-This is the tracking layer of VDD. The beads on the string. Every piece of work has a record, every record has a status, and nothing falls through the cracks because it was never written down.
+This is the tracking layer of VDD: the beads on the string. Record work at a useful level so status, decisions, and handoffs remain inspectable. A tracker reduces dropped work; it does not eliminate it.
 
 ## Exercises
 
 1. Build the issue tracker from the design doc above using the VDD process. Design doc → layers → verify each layer → polish. This is portfolio project #2.
 
-2. Once your tracker is built, use it to track the remaining work on itself. Create issues for any features you skipped or bugs you found during testing. This is delightfully meta, and it proves the tool works.
+2. Once your tracker is built, use it to track the remaining work on itself. Create issues for any features you skipped or bugs you found during testing. This exercises the tool in a realistic workflow and may expose gaps that isolated tests missed.
 
-3. Install crosslink in one of your existing projects. Then ask your agent to make an improvement to the project. Watch how the agent creates issues, tracks its work, and leaves handoff notes without you having to manage any of it. Run `crosslink list` and `crosslink issue tree` to see what the agent built up.
+3. Install crosslink in one of your existing projects. Ask your agent to make an improvement and to use the tracker. Run `crosslink list`, `crosslink issue tree`, and `crosslink session status` yourself. Compare the requested workflow with the records it actually created.
 
-4. Start a new conversation with your agent in a crosslink-enabled project. Don't give it any context. Just say "check where we left off and let's keep going." See how quickly it picks up the thread from the handoff notes and issue list. Compare this to the old approach of typing a paragraph of context every time.
+4. Start a new conversation with your agent in a crosslink-enabled project. Say "read the project instructions, last handoff, and open issues; summarize the state before changing anything." Check the summary against the repository and tracker, then compare this handoff with manually restating context.
 
 5. Submit your issue tracker to the guild [Discord](https://discord.gg/kfM6Q4UBbM) **#adversarial-review** channel. The roast for this one will be interesting, because your reviewers are people who *use* issue trackers every day. They'll have opinions.
 

@@ -38,7 +38,7 @@ Git tracks changes on your computer. **GitHub** (github.com) is a website that s
 1. Go to [github.com](https://github.com) and create a free account
 2. Remember your username. It becomes part of the web address for all your projects
 
-Your guild portfolio will eventually live on GitHub, publicly visible. That URL (`github.com/yourusername`) becomes part of your professional identity.
+Your guild portfolio can live on GitHub. Keep repositories private when they contain personal data, secrets, employer code, or anything you lack permission to publish. Share only a reviewed portfolio index and projects that are safe to make public.
 
 ## The Seven Commands
 
@@ -67,7 +67,7 @@ You'll see a message like "Initialized empty Git repository." Your project is no
 
 ```
 cd ~/guild-projects
-git clone https://github.com/example/guild-learning-path.git
+git clone https://github.com/Navigators-Guild/apprentice-onboarding.git
 ```
 
 This creates a folder with all the project files inside it, already set up with git tracking.
@@ -94,7 +94,7 @@ The output will show files in different categories. Don't worry about the colors
 git add .
 ```
 
-The `.` means "everything that changed." You can also add specific files by name (`git add index.html`), but `git add .` is fine for now. Don't overthink this step.
+The `.` means "everything that changed," including files you may not intend to publish. Prefer specific paths such as `git add index.html README.md`, then run `git diff --staged` before every commit. Use `git add .` only after `git status` confirms the whole change set belongs together and contains no secrets or private data.
 
 ### `git commit`
 
@@ -108,7 +108,7 @@ git commit -m "Add booking form to the landing page"
 
 The `-m` flag means "message." The text in quotes describes what this save point contains. Write messages that describe *what changed*, not vague notes like "updates" or "stuff." Future you (and portfolio reviewers) will thank you.
 
-**How often should you commit?** Think of it like saving a document. Do it whenever you've completed a meaningful chunk of work. Finished a feature? Commit. Fixed a bug? Commit. Completed a round of changes after a roast? Commit. You can't commit too often. You can definitely commit too rarely.
+**How often should you commit?** Commit a coherent, reviewable change after its relevant checks pass. A feature may need several commits; a one-line fix may need one. Avoid mixing unrelated work or creating meaningless checkpoint commits that make review harder.
 
 ### `git push`
 
@@ -124,22 +124,22 @@ The first time you push, GitHub needs to verify that you're really you. GitHub s
 
 ### One-Time Setup: Authenticating with GitHub
 
-You have two options for proving your identity to GitHub from the terminal. Pick one and follow it through. **The Personal Access Token (PAT) path is easier for beginners**, so that's what we'll walk through here. The SSH key path is shown at the end for anyone who already prefers it.
+You have two common options for proving your identity to GitHub from the terminal. Pick one and follow it through. This chapter walks through a fine-grained Personal Access Token (PAT); SSH is linked afterward.
 
-**Personal Access Token (recommended)**
+#### Fine-grained Personal Access Token
 
-A Personal Access Token is a long password-like string that you create on GitHub and use in place of your account password for git operations. Think of it as a dedicated password just for the command line.
+A Personal Access Token is a password-like secret that you create on GitHub and use in place of your account password for HTTPS git operations. GitHub [recommends fine-grained tokens when possible](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) because you can limit them to selected repositories and permissions.
 
 1. Go to [github.com](https://github.com) and sign in.
 2. Click your profile picture in the top right → **Settings**.
 3. Scroll all the way down the left sidebar and click **Developer settings**.
-4. Click **Personal access tokens** → **Tokens (classic)**.
-5. Click **Generate new token** → **Generate new token (classic)**. (GitHub may prompt you to confirm your account password.)
-6. In the **Note** field, type something like "my laptop" so future-you remembers what this token is for.
-7. Under **Expiration**, pick something reasonable. 90 days is the default and is fine.
-8. Under **Select scopes**, check the box for `repo`. That's the only scope you need. Don't check anything else.
-9. Scroll to the bottom and click **Generate token**.
-10. GitHub shows the token once, as a long string starting with `ghp_`. **Copy it immediately** and paste it somewhere safe temporarily (a password manager is ideal, a sticky note is fine for the next few minutes). **Once you leave this page you cannot see the token again** — GitHub only shows it once. If you lose it, you just generate a new one.
+4. Click **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
+5. Give it a descriptive name such as "portfolio pushes" and choose a short expiration you will notice and renew.
+6. Choose your account as the resource owner and select **Only select repositories**. Select only your portfolio repository.
+7. Under **Repository permissions**, grant **Contents: Read and write**. Leave unrelated permissions at their defaults.
+8. Generate the token. Copy it once into a password manager; do not put it in a note, prompt, repository, or shell history.
+
+GitHub recommends the minimum permissions and shortest practical lifetime for credentials; see its [API credential guidance](https://docs.github.com/en/rest/authentication/keeping-your-api-credentials-secure).
 
 Now push for the first time. In your terminal:
 
@@ -147,22 +147,22 @@ Now push for the first time. In your terminal:
 git push
 ```
 
-Git will prompt for your **username** (your GitHub username) and your **password** (paste the token you just copied, not your account password). On most systems, git stores the token in a "credential helper" after the first successful push, so you only do this once per computer.
+Git will prompt for your **username** (your GitHub username) and your **password** (paste the token, not your account password). A configured credential manager can store it securely. If Git prompts every time, install or configure [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md) instead of saving the token in a plain-text file.
 
 **You know it worked when:** the push completes with no error, and refreshing your repository on github.com shows your commits.
 
 **Common errors and what they mean:**
 
 - `remote: Support for password authentication was removed on August 13, 2021.` You used your account password instead of a Personal Access Token. Go back and paste the token.
-- `remote: Permission to USER/REPO.git denied to OTHER_USER.` The token belongs to a different GitHub account than the one that owns the repo. Double-check which account you signed into on github.com when you created the token.
+- `remote: Permission to USER/REPO.git denied to OTHER_USER.` The token belongs to a different account, does not include this repository, or lacks Contents write permission. Check all three.
 - `fatal: Authentication failed for 'https://github.com/...'` Usually means the token was wrong (typo when pasting) or expired. Generate a fresh token and try again.
 - Terminal shows no feedback when you paste the token. That's normal — terminals silently accept pasted passwords without showing dots or characters. Paste and press Enter.
 
-**SSH keys (alternative, for later)**
+#### SSH keys (alternative, for later)
 
-If you already know how to use SSH keys, or you want to set them up later instead of tokens, the process is: generate a key pair with `ssh-keygen -t ed25519`, copy the contents of `~/.ssh/id_ed25519.pub` into GitHub → Settings → SSH and GPG keys → New SSH key, then change your repository's remote URL from `https://github.com/USER/REPO.git` to `git@github.com:USER/REPO.git`. This is nicer long-term because you don't deal with token expiration, but the setup has more moving parts. Don't stress about it now — the PAT path works fine for years.
+If you already know how to use SSH keys, or want to set them up later, follow GitHub's [SSH setup guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh). SSH avoids PAT expiration for git transport but still requires protecting and occasionally rotating your key.
 
-After the first time, `git push` just works. No more prompts.
+After a credential manager stores the token, `git push` should stop prompting until the credential expires, is revoked, or no longer has access.
 
 ### `git pull`
 
@@ -171,8 +171,10 @@ After the first time, `git push` just works. No more prompts.
 **When you use it:** When someone else has made changes to a shared project (like this learning path repository) and you want to get their updates.
 
 ```
-git pull
+git pull --ff-only
 ```
+
+`--ff-only` updates your branch only when Git can move it forward without creating an unexpected merge commit. If it refuses, run `git status` and inspect how your local history differs before choosing a merge or rebase.
 
 ## The Daily Workflow
 
@@ -180,11 +182,27 @@ In practice, your git usage will follow this pattern almost every time:
 
 1. Do some work (build something, make changes, follow agent instructions)
 2. `git status` - see what changed
-3. `git add .` - stage all the changes
-4. `git commit -m "Description of what I did"` - save the checkpoint
-5. `git push` - send it to GitHub
+3. `git add <the-files-you-intend>` - stage selected changes
+4. `git diff --staged` - inspect exactly what the commit will contain
+5. `git commit -m "Description of what I did"` - save the checkpoint
+6. `git push` - send it to GitHub
 
-That loop (work, status, add, commit, push) is 95% of what you'll ever do with git.
+That loop covers the core solo workflow. Shared projects add branches, reviews, and conflict handling later.
+
+## Keep a Learning Log
+
+Create `LEARNING_LOG.md` in your portfolio and append one dated entry after each meaningful session:
+
+```markdown
+## 2026-07-15
+- Goal: what I intended to finish
+- Tried: commands, prompts, or approaches I used
+- Evidence: tests, observed behavior, or review results
+- Learned: what changed in my mental model
+- Next: the smallest sensible follow-up
+```
+
+Commit the log with the work it describes. Treat it as append-only history: do not rewrite an awkward earlier entry to look smarter; add a correction in the next entry. Reflection is not magic note-taking, but structured reflective interventions have shown a positive average effect across a [meta-analysis of 25 studies](https://doi.org/10.1016/j.tsc.2023.101373). The log also gives reviewers concrete evidence of how your decisions changed.
 
 ## Creating Your First Repository on GitHub
 
@@ -194,7 +212,8 @@ Let's put this together by creating your portfolio repository:
 2. Name it `guild-portfolio`
 3. Add a description: "My apprentice portfolio for the guild"
 4. Check "Add a README file"
-5. Click "Create repository"
+5. Choose **Public** only if the portfolio contains no employer/client code, personal data, secrets, private prompts, or material you lack permission to publish. Otherwise start private and publish redacted artifacts later.
+6. Click "Create repository"
 
 Now clone it to your computer. Note that we clone directly into `~/guild-projects/`, not into a `portfolio/` subfolder — git creates the `guild-portfolio/` directory for you.
 
@@ -204,21 +223,21 @@ git clone https://github.com/YOUR-USERNAME/guild-portfolio.git
 cd guild-portfolio
 ```
 
-You now have a portfolio repository on GitHub connected to a folder on your computer at `~/guild-projects/guild-portfolio/`. Everything you build and push will be publicly visible at `github.com/YOUR-USERNAME/guild-portfolio`.
+You now have a portfolio repository on GitHub connected to `~/guild-projects/guild-portfolio/`. If you selected Public, pushed files are visible at `github.com/YOUR-USERNAME/guild-portfolio`; if you selected Private, only authorized accounts can see them.
 
 ## When Things Go Wrong
 
 Git can occasionally get into confusing states, especially when you're learning. Here's the universal escape hatch:
 
-**If git gives you an error you don't understand:** Copy the exact error message, paste it to your agent, and say "I'm new to git and got this error. What happened and how do I fix it?" The agent will walk you through it. This isn't a failure. It's using the tools available to you, which is literally the skill you're here to learn.
+**If git gives you an error you don't understand:** Capture `git status` and the error, redact tokens, private URLs, usernames, and sensitive paths, then ask your agent to explain before running any destructive command. Request a backup and recovery plan when history could change.
 
-**If you're truly stuck:** The nuclear option is to copy your project files somewhere safe, delete the project folder, clone it fresh from GitHub, and copy your files back in. Inelegant, but it works, and nobody will judge you for it.
+**If you're truly stuck:** Do not delete the original. Clone the repository into a new sibling folder, compare it with the old folder, and recover only the intended uncommitted files after reviewing the diff. Keeping the original preserves recovery options.
 
 ## What You Don't Need to Learn
 
 Git has hundreds of features. You don't need these yet (and might never need them):
 
-- Branching and merging — you'll need these starting in Phase 3 when the Workshop chapter has you contributing to shared codebases. The bridge chapter [Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) in Phase 2 teaches everything you need to know, and it's only three more commands on top of these seven. Come back to it when you get there.
+- Branching and merging — you'll need these starting in Phase 3 when the Workshop chapter has you contributing to shared codebases. The bridge chapter [Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) in Phase 2 teaches the common operations. Come back to it when you get there.
 - Rebasing (even experienced developers argue about this)
 - Cherry-picking (you'll know when you need it)
 - Git hooks (automation for later)

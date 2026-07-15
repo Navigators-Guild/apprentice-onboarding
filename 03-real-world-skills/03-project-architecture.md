@@ -2,19 +2,19 @@
 
 ## When One File Isn't Enough
 
-Your bookmark manager was one file. Your issue tracker was probably a few files. For small tools, that's fine. But at some point every project crosses a threshold where a single file (or a handful of disorganized files) starts working against you. The code gets hard to navigate, hard to test, and hard to change without breaking something else.
+Your bookmark manager was one file. Your issue tracker was probably a few files. For small cohesive tools, that's fine. As responsibilities and coupling grow, a single file or a disorganized set can become harder to navigate, test, and change safely.
 
 This chapter is about recognizing that threshold and knowing how to structure a project so it stays manageable as it grows. More importantly, it's about directing your agent to do this well, because agents have a specific bad habit that you need to know about.
 
 ## The God File Problem
 
-Left to its own devices, an agent will put everything in one file. Or two files. Or it'll make a second file only when the first one hits some truly absurd length. This is called a **god file**: one file that knows everything, does everything, and touches everything.
+Without repository conventions or architectural constraints, an agent may choose one file because it is the shortest path to a demo; it may also over-engineer a small task into too many abstractions. A **god file** is the first failure mode: one file that owns too many unrelated responsibilities and dependencies.
 
-This happens because agents optimize for the simplest way to fulfill your request. "Add a feature" is easiest when all the code is in one place. No imports to manage, no module boundaries to think about, no decisions about where something belongs. Just add it to the bottom of main.rs and it works.
+This can happen when the prompt and checks reward only visible behavior. Appending to `main.rs` may satisfy the immediate test while increasing future coupling. The opposite mistake—designing a large module hierarchy before the behavior is understood—also creates cost.
 
 It works until it doesn't. Here's what goes wrong:
 
-**The agent loses track.** Remember context windows from Phase 1? When a file is 2,000 lines long, the agent can't hold all of it in mind at once. It makes changes in one function that break assumptions in another function 1,500 lines away. You start getting bugs that come from the agent not being able to see the whole picture.
+**Review becomes less reliable.** Large files and diffuse coupling make it harder for humans and agents to inspect every relevant assumption. A tool may search or retrieve distant code, but that does not guarantee it connected all the effects. Tests and explicit module contracts reduce this risk.
 
 **You lose track.** Even if you're not reading code line by line, navigating a god file to find the part that's relevant to your current task gets painful fast. "The bug is somewhere in this 3,000-line file" is a much worse starting point than "the bug is in the database module."
 
@@ -64,6 +64,7 @@ Here's what a real refactoring looks like. Say your issue tracker ended up with 
 You tell your agent:
 
 > "main.rs has grown too large. Refactor it into modules. Here's how I want it split:
+>
 > - `models.rs`: the Issue struct and Priority enum
 > - `storage.rs`: everything that reads or writes the JSON file
 > - `output.rs`: everything that formats output for the terminal
@@ -73,11 +74,11 @@ You tell your agent:
 >
 > Move the code, don't rewrite it. Everything should work exactly the same after the split."
 
-The agent will extract the code into the right files, add the `mod` declarations, update the `use` statements, and make sure everything still compiles. You run `cargo build` to verify, then test that every command still works.
+The agent can propose an extraction, add module declarations, and update imports. Review whether the boundaries match the responsibilities, run formatting and build checks, then test affected commands and integration behavior.
 
 What changed? The *behavior* is identical. The *structure* is transformed. Now when you need to change how storage works, you open `storage.rs`. When you need to add a new command, you add a file in `commands/`. When the adversary roasts your output formatting, you know exactly which file to look at.
 
-The best time to refactor is before the god file gets painful. The second best time is now.
+Refactor when the emerging responsibilities and change patterns justify a boundary. Too early and you guess; too late and coupling makes the move expensive. Preserve behavior with tests before moving code.
 
 ## DRY: Don't Repeat Yourself
 
@@ -105,7 +106,7 @@ Don't let the agent decide the structure organically by cramming things into mai
 
 > "Create a new Rust project. I want a modular structure from the start. Separate files for: CLI argument parsing, data models, storage/persistence, business logic, and output formatting. main.rs should just be the entry point that wires everything together. Keep it under 50 lines."
 
-The agent will scaffold the module structure before writing any features. This is vastly better than trying to refactor a god file later.
+The agent can scaffold the smallest structure supported by the current design. Revisit it after the first vertical slice; architecture is a hypothesis that should change when the code provides better evidence.
 
 ### When Adding Features: Say Where It Goes
 
@@ -127,27 +128,27 @@ If the agent shows you code that looks familiar, ask:
 
 > "This error handling looks similar to what we have in the create command. Is this duplicated? If so, extract it into a shared function."
 
-The agent will often recognize the duplication and fix it. Sometimes it needs you to point it out. Either way, catching it early is much easier than catching it late.
+The agent may recognize the duplication, or it may create a premature abstraction that hides meaningful differences. Ask which behavior is genuinely shared, add tests for each call site, then refactor.
 
 ## When Not to Split
 
 There's a flip side. Some projects are small enough that multiple files add complexity without benefit. If your tool is 150 lines and does one thing, a single `main.rs` is fine. Don't create eight modules for a script.
 
-The rule of thumb: if you can read the entire file and understand what it does without scrolling more than a few times, it's probably fine as one file. The moment you find yourself scrolling around trying to find "the part that handles X," it's time to split.
+A useful signal is whether the file has one cohesive responsibility and can be reviewed without repeatedly jumping between unrelated concerns. Line count and scrolling are prompts to inspect the design, not rules by themselves.
 
 Also, don't split things that are genuinely cohesive. If two functions always change together and always need each other, putting them in separate files just means you're editing two files instead of one every time. Separation of concerns means separating things that have *different* concerns, not arbitrarily scattering code across files.
 
 ## Rust Module Basics
 
-You don't need to understand the Rust module system in depth. The agent handles the syntax (`mod`, `use`, `pub`). But it helps to know the vocabulary so you can have a conversation about it:
+You don't need to memorize the Rust module system before using it. The agent can draft `mod`, `use`, and `pub` declarations, but you should recognize the boundaries you approve:
 
-**A module** is a unit of organization. In Rust, each file is a module. `storage.rs` is the `storage` module.
+**A module** is a unit of organization in Rust's module tree. A module can be inline or loaded from a file such as `storage.rs`; a file does not join the tree until a parent declares it.
 
 **`pub`** means public. If a function or struct is `pub`, other modules can use it. If it's not, it's private to its module. This is how you control boundaries: the storage module exposes a few public functions (`save`, `load`, `delete`) but keeps its internal implementation private.
 
-**A crate** is a package. Your whole project is a crate. The guild-toolkit has multiple crates in a workspace. When you `cargo build`, you're building a crate.
+**A crate** is one Rust compilation unit, such as a library or binary. A Cargo package can contain more than one crate, and a workspace can contain multiple packages. `cargo build` builds the selected package targets and their dependencies.
 
-**`use`** is how one module references another. `use crate::models::Issue;` means "I want to use the `Issue` type from the `models` module." The agent writes all of this. You just need to know the words so you can say things like "make that function public so the commands module can use it."
+**`use`** is how one module brings a name into scope. `use crate::models::Issue;` means "bring the `Issue` type from the `models` module into this scope." Review visibility changes carefully: making a function public expands the API and is not automatically the right fix for a module-boundary problem.
 
 ## The Architecture Conversation
 

@@ -12,7 +12,7 @@ Your capstone project must meet these criteria:
 
 **It solves a real problem.** Not an exercise, not a tutorial project, not a clone of something that already exists. Find a problem you actually have (or a problem someone you know has) and build a solution. "I want to learn Rust" is not a problem statement. "I spend 20 minutes every morning checking three different services for updates and I want a tool that does it in one command" is.
 
-**It uses something unfamiliar.** Your capstone must involve at least one technology, domain, or technique you haven't used before in this curriculum. A new API, a new library, a new problem domain, a new architectural pattern. This proves the most important journeyman skill: you can be dropped into unfamiliar territory and figure it out. You don't just apply what you were taught. You learn what you need.
+**It uses something unfamiliar.** Your capstone must involve at least one technology, domain, or technique you haven't used before in this curriculum. A new API, a new library, a new problem domain, a new architectural pattern. This gives reviewers evidence that you can enter unfamiliar territory, locate reliable information, and learn what the work requires.
 
 **It follows the full VDD cycle.** Design doc before code. Decomposition into tracked issues. Build in layers with verification at each step. Adversarial review (both general and security-focused). Testing at every level appropriate to the project. This is non-negotiable. The process is the point.
 
@@ -34,7 +34,7 @@ On your own. You've seen enough design docs at this point to know the format. De
 
 ### 3. Decompose and Track
 
-Break the project down using crosslink. Epics, issues, sub-issues. The full bead-string. Every piece of work tracked, every decision documented. This isn't just for you. It's part of what evaluators review.
+Break the project down using crosslink: epics, issues, and reviewable sub-issues. Track material work and decisions at a level that supports handoffs and review without turning every keystroke into an issue.
 
 ### 4. Build
 
@@ -42,7 +42,7 @@ You know how. Layers. Verification at each step. Modular architecture from the s
 
 ### 5. Adversarial Review
 
-Run the full roast. General review in fresh context. Security review in fresh context. Edge case review. Fix what's found. Repeat until the adversary is hallucinating.
+Run the full review. Use fresh context for a general review, a security-focused review, and an edge-case review. Triage each finding against the requirements, code, and tool output; fix valid findings and record why you reject the rest. Stop when the acceptance criteria and risk-based checks pass, not when a reviewer runs out of criticism.
 
 ### 6. Ship
 
@@ -67,13 +67,13 @@ This is not a test with a passing grade. There's no rubric that says "must have 
 
 The evaluation is holistic: does this body of work demonstrate that you can identify a real problem, design a solution, execute it with discipline, verify it works, secure it, ship it, and reflect honestly on the process? If yes, you're a journeyman. The quality of your thinking matters more than the complexity of your code.
 
-A simple tool that's beautifully designed, thoroughly tested, honestly documented, and actually shipped to real users will always outperform a complex tool that's half-finished, poorly documented, and only works on the author's machine.
+A small, complete tool usually gives reviewers stronger evidence than a complex tool that is half-finished, poorly documented, or only demonstrated on the author's machine.
 
 ## Timeline
 
 There's no deadline. Some apprentices will finish their capstone in a few weeks. Some will take months. The guild doesn't rush this. What matters is that the work is solid when it's submitted, not that it was fast.
 
-That said, don't let it become the project that's never done. Scope it to something you can ship, ship it, and then improve it over time if you want. Shipped and imperfect beats unshipped and theoretical every time.
+That said, don't let it become the project that's never done. Scope it to something you can ship, publish the honest limitations, and improve it over time when that serves the users.
 
 ---
 

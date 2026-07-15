@@ -4,7 +4,7 @@
 
 Most people imagine code as an arcane language full of symbols and rules that takes years to learn. That image keeps people away. But it's like imagining that cooking requires understanding food chemistry at a molecular level. Molecular gastronomy exists, sure, but billions of people cook every day without it.
 
-You don't need to *write* code. But you do need a basic mental model of what code is and what it does, because that model will make you noticeably better at directing agents. A film director doesn't need to know how to build a camera, but they'd better understand what a camera can and can't do.
+You do not need to begin by writing code from memory. You do need a basic mental model, and you will practice reading diffs, making small edits, and connecting requirements to behavior. A film director need not build a camera, but should understand what it can and cannot do.
 
 ## Code Is Instructions for Machines
 
@@ -16,11 +16,11 @@ Those instructions do a handful of basic things:
 
 **Make decisions.** The computer checks conditions and does different things depending on what it finds. "If the user is logged in, show them their dashboard. If not, show the login page." Every time software behaves differently based on circumstances, there's a decision in the code.
 
-**Repeat actions.** The computer does the same thing over and over, usually with slight variations. "For every email in the inbox, check if it's spam." "For every item in the shopping cart, add up the price." Computers are extraordinarily good at repetition. Millions of operations per second without getting bored or making mistakes.
+**Repeat actions.** The computer does the same thing over and over, usually with slight variations. "For every email in the inbox, check if it's spam." "For every item in the shopping cart, add up the price." Computers can repeat instructions quickly and consistently; bugs arise when the instructions, assumptions, data, or environment are wrong.
 
 **Communicate.** The computer sends and receives information: displaying things on screen, accepting input from a keyboard or touchscreen, sending data to other computers over the internet. Every time you click a button and something happens, code is handling that communication.
 
-That's it. Store, decide, repeat, communicate. Every piece of software in existence is built from combinations of these four operations. The complexity comes from *how many* of them get chained together and how they interact, not from any single operation being complicated.
+Store, decide, repeat, and communicate are a useful beginner model, not a complete taxonomy of computing. Complexity comes from how operations, state, people, dependencies, and environments interact.
 
 ## Why This Matters for Directing Agents
 
@@ -36,7 +36,7 @@ Say you want a tool that helps you manage your book club. Without this mental mo
 
 **Communicate:** Show each member their personal dashboard. Let them type in ratings and notes. Display the group's reading list. Send email reminders about upcoming meetings.
 
-You don't need to know *how* any of this gets coded. The agent handles that. But thinking through these four dimensions gives you a complete picture of what you're asking for, and the agent can build what you need instead of guessing.
+You do not need to know the final implementation before planning. Thinking through these four dimensions gives the agent a better brief and gives you questions to verify; it will not uncover every requirement or eliminate guessing.
 
 ## The Shape of Software
 
@@ -56,7 +56,7 @@ When you write a design document (which you'll learn to do in Phase 1), you're d
 
 One last mental model: software lives in files, and those files live in folders (also called directories). A typical project might have files that define the interface, files that contain the logic, files that configure the database, and files that set up the project itself.
 
-You'll see these files in your projects. You won't need to write them by hand (the agent creates them), but you should be comfortable with the idea that a project is a collection of files working together, not a single monolithic thing. When something goes wrong, it's usually in a specific file, and being able to say "the problem seems to be with the booking form, not the homepage" helps the agent fix it way faster than "it's broken."
+You'll see and sometimes edit these files in your projects. A project is a collection of files working together, not necessarily one monolithic file. When something goes wrong, narrowing the affected behavior, file, and evidence gives an agent a better starting point than "it's broken."
 
 ## Data Formats You'll See: JSON
 
@@ -85,7 +85,7 @@ The pieces:
 - **Square brackets `[ ]`** wrap a list (called an "array").
 - **Keys** are always strings in double quotes (`"title"`).
 - **Values** can be strings in double quotes (`"Bookmark Manager"`), numbers without quotes (`1`, `500`), booleans without quotes (`true`, `false`), lists (`["doll", "maxine"]`), or nested objects (the `settings` section).
-- **Commas** separate items in a list or key-value pairs in an object. Notice there is **no comma after the last item**. This is the #1 cause of JSON errors.
+- **Commas** separate items in a list or key-value pairs in an object. Notice there is **no comma after the last item**. A trailing comma is one common cause of JSON parse errors.
 - **Colons** separate keys from their values.
 
 Here's the same data with a mistake — a trailing comma after `"max_bookmarks": 500`:
@@ -107,7 +107,7 @@ JSON parsers will refuse to read this file and will produce an error like `Unexp
 
 Code is not magic. It's instructions that store information, make decisions, repeat actions, and communicate. Software has layers: interface, logic, data, and connections. Projects live in files and folders.
 
-You now have enough understanding of what code *is* to direct an agent that writes it. You don't need to go deeper. Syntax, language-specific features, algorithmic optimization: that's the agent's job. Your job is to know what you want built and describe it in terms of what it stores, decides, repeats, and communicates.
+You now have a starting model for directing an agent that writes code. Keep deepening it as the projects introduce types, errors, tests, dependencies, security boundaries, and performance. The agent can propose syntax and algorithms; you remain responsible for the requirements and evidence used to accept them.
 
 That's the mental model. Now let's set up your workspace.
 

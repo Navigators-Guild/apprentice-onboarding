@@ -25,7 +25,7 @@ Here are the tools:
 
 There's also `guild-core`, a shared library that provides config loading, error types, output formatting, and a shared data model. Every tool depends on it.
 
-The tools start as stubs. A clap argument parser, a help message, and nothing else. Apprentices implement them.
+The repository is active and changes over time. Some tools or tests may still be stubs; others may already be implemented. Inspect the current default branch and open issues instead of treating the table above as status.
 
 ## How This Is Different from Your Portfolio Projects
 
@@ -38,7 +38,7 @@ The workshop is the opposite. You're walking into an existing codebase with:
 - **Other people's code.** Other apprentices are working on other tools in the same workspace. You'll see their commits, their patterns, their choices. You might need to use something they built in `guild-core`, or notice that they added something you can reuse.
 - **An audience.** The tools you build here will be used by other guild members. That changes how you think about error messages, edge cases, documentation. It's not just for you anymore.
 
-This is what professional software development looks like. Almost nobody starts from a blank screen. Almost everybody inherits a codebase, learns its patterns, and contributes within its structure. This is where you practice that.
+Existing codebases are a large part of professional software development. This is where you practice learning local patterns and contributing within an established structure.
 
 ## Getting Started
 
@@ -49,19 +49,21 @@ Contributing to an upstream repository you don't own follows the **fork-and-PR**
 1. Go to [github.com/Navigators-Guild/guild-toolkit](https://github.com/Navigators-Guild/guild-toolkit) and click the **Fork** button in the top right. GitHub creates `github.com/YOUR-USERNAME/guild-toolkit` — your own copy with full push access.
 2. Clone **your fork**, not the upstream:
 
-```
-cd ~/guild-projects
-git clone https://github.com/YOUR-USERNAME/guild-toolkit.git
-cd guild-toolkit
-```
+   ```bash
+   cd ~/guild-projects
+   git clone https://github.com/YOUR-USERNAME/guild-toolkit.git
+   cd guild-toolkit
+   ```
 
-3. Add the upstream repo as a second remote so you can pull updates from the canonical copy:
+3. Add the upstream repo as a second remote, fetch it, and create a local `develop` branch that tracks the branch used for apprentice contributions:
 
-```
-git remote add upstream https://github.com/Navigators-Guild/guild-toolkit.git
-```
+   ```bash
+   git remote add upstream https://github.com/Navigators-Guild/guild-toolkit.git
+   git fetch upstream
+   git switch --create develop --track upstream/develop
+   ```
 
-Your `origin` is your fork (where you push). Your `upstream` is the canonical repo (where you pull updates from and open PRs to). Later, when you want to refresh your fork with new changes from upstream: `git fetch upstream && git checkout main && git merge upstream/main && git push`.
+Your `origin` is your fork (where you push). Your `upstream` is the canonical repository. The toolkit's current README says apprentice branches start from `develop` and PRs target `develop`, not `main`. Before new work, run `git switch develop`, `git fetch upstream`, and `git merge --ff-only upstream/develop`. Recheck the live README in case maintainers change this policy.
 
 ### Make sure it builds
 
@@ -69,7 +71,7 @@ Your `origin` is your fork (where you push). Your `upstream` is the canonical re
 cargo build --workspace
 ```
 
-This compiles every crate in the workspace. If it succeeds with no errors, your environment is set up correctly.
+This compiles every crate in the workspace. If it succeeds, the workspace builds in your current environment; it does not verify tests, optional features, other platforms, or external services.
 
 ### Explore the structure
 
@@ -83,24 +85,24 @@ You'll see the tool directories. Pick one that interests you and look at what's 
 ls crates/guild-scaffold/src/
 ```
 
-You'll find a `main.rs` with a clap argument parser and a help message. That's the starting point. Read it. Understand what's there before you change anything.
+Inspect what is present now. The crate may be a stub or may have changed since this chapter was written. Read its source, tests, README, and related issues before changing anything.
 
 ### Read guild-core
 
-Before you implement anything, read through `guild-core`. This is the foundation everything else builds on. Understand:
+Before you implement anything, map `guild-core`'s public surface and read the parts your issue touches. Understand where to find:
 
 - How config is loaded (`config.rs`)
 - What the shared data model looks like (`data.rs`)
 - How errors are defined (`error.rs`)
 - How output formatting works (`output.rs`)
 
-You don't need to memorize it. You need to know what's available so you use it instead of reinventing it. When your agent generates code for your tool, you can say "use the output helpers from guild-core" instead of letting it create its own.
+You don't need to memorize it or read unrelated internals. You need enough context to reuse established types and helpers where appropriate. Ask the agent to cite the definitions it plans to use.
 
 ### Pick a tool
 
 Look at the difficulty ratings. If this is your first workshop contribution, start with a beginner tool (`guild-scaffold` or `guild-progress`). Read the tool's `README.md` in its crate directory for a description of what it should do.
 
-Then open a conversation with your agent:
+Then open a conversation with your agent. Replace the example tool and feature with a current, unclaimed issue:
 
 > "I'm working on the guild-toolkit project. Here's the workspace structure [share Cargo.toml]. Here's the shared core library [share guild-core source]. I want to implement guild-progress, which tracks where an apprentice is in the curriculum. Here's the tool's README [share it]. Build the first layer: it should read the curriculum structure and display which chapters the user has completed."
 
@@ -112,11 +114,11 @@ Working on the toolkit isn't just coding. It follows a process:
 
 ### 1. Claim the work
 
-Check what issues exist on the repo. If someone is already working on the tool you want, pick a different one or find a sub-feature to work on. Use crosslink to track your work as always.
+Check the [current issues](https://github.com/Navigators-Guild/guild-toolkit/issues), contribution instructions, linked PRs, and recent activity. Comment or follow the maintainer's claim convention before investing in an issue. A local crosslink entry can track your work, but the GitHub issue is the shared coordination record.
 
 ### 2. Read before you write
 
-Before changing anything, read the existing code. All of `guild-core`. The tool's current state. Any related tools. If your tool will read data that another tool writes, understand the data format. The agent can help: "explain what this module does" is a perfectly good prompt.
+Before changing anything, read the relevant parts of `guild-core`, the tool's current state, tests, and related data formats. Reading the entire workspace may be unnecessary; ask the agent to map dependencies, then verify the files it identifies.
 
 ### 3. Design before you build
 
@@ -128,25 +130,25 @@ Same process as your portfolio projects. Start with the simplest useful version.
 
 ### 5. Submit a pull request
 
-When your feature is working and tested, submit a pull request (PR) to the guild-toolkit repo. If you haven't yet read the [Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) chapter from Phase 2, go do that first — it covers the three new git commands and the GitHub web workflow you'll use here. The short version:
+When your feature is working and tested, submit a pull request (PR) to the guild-toolkit repo. If you haven't yet read the [Branches and Pull Requests](../02-the-methodology/03-branches-and-pull-requests.md) chapter from Phase 2, go do that first—it covers the branch operations and GitHub web workflow you'll use here. The short version:
 
-- Create a feature branch with `git checkout -b your-branch-name` before you start making changes
+- Refresh `develop`, then create a feature branch that follows the repository's current naming convention
 - Commit your work on the branch as usual, then push it with `git push -u origin HEAD` the first time
-- Open the PR on github.com; the description should explain what you built and why
-- The CI must pass (tests, clippy, formatting)
+- Open the PR on github.com with the canonical repository's `develop` branch as the base; the description should reference the issue and explain what changed and why
+- Run the repository's documented local checks and ensure every required CI check passes; if the repository has no CI, report the gap rather than claiming CI passed
 - Other guild members will review your code
 - Address feedback with new commits on the same branch (they show up in the PR automatically)
 - Once approved and green, a maintainer merges the PR and your code ships
 
 This is the first time your code goes through review by people other than your agent. It's the closest thing to the traditional apprentice-submits-work-to-the-master moment.
 
-### 6. Your code ships
+### 6. Your contribution is evaluated
 
-When your PR merges, your code is part of the toolkit. Other guild members use it. You built something real that matters to people beyond yourself. That's the transition from exercises to contributions.
+If maintainers merge the PR, your code becomes part of the toolkit. A submitted or reviewed PR is still useful evidence when maintainers request changes, choose another approach, or close it; open-source contribution does not guarantee merge or adoption.
 
 ## What You Learn Here
 
-Skills this teaches that nothing else in the curriculum does:
+This workshop emphasizes skills that guided greenfield projects exercise less directly:
 
 **Reading existing code.** The most underrated skill in software. Most of your time as a practitioner will be spent understanding what exists, not writing new things. The workshop forces this by design.
 
